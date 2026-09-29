@@ -10,6 +10,9 @@
             --accent-color: #25d366;
             --bg-color: #f8f9fa;
         }
+        html {
+            scroll-behavior: smooth; /* Desplazamiento suave general */
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -216,14 +219,16 @@
             box-shadow: 0 3px 8px rgba(0,0,0,0.04);
             cursor: pointer;
             border-left: 4px solid var(--primary-color);
-            transition: transform 0.2s;
+            transition: all 0.25s ease;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .category-card:hover {
-            transform: translateY(-2px);
-            background: #fcfcfc;
+            transform: translateY(-4px);
+            background: #f2f9f6;
+            box-shadow: 0 6px 15px rgba(27,77,62,0.12);
+            border-left-width: 6px;
         }
         .category-card h3 {
             margin: 0;
@@ -236,6 +241,11 @@
             background: #eee;
             padding: 3px 8px;
             border-radius: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .category-card:hover span {
+            background: var(--primary-color);
+            color: white;
         }
 
         /* --- GRILLA DE PRODUCTOS --- */
@@ -253,6 +263,10 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 12px;
+            transition: background 0.2s;
+        }
+        .reset-filter-btn:hover {
+            background: #5a6268;
         }
         .grid {
             display: grid;
@@ -267,6 +281,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         .card-img {
             width: 100%; height: 160px;
@@ -294,6 +313,7 @@
             padding: 10px 0; border-radius: 5px;
             text-decoration: none; font-weight: bold; font-size: 13px;
             box-sizing: border-box;
+            transition: background-color 0.2s;
         }
         .whatsapp-btn:hover { background-color: #1ebe5d; }
 
@@ -310,14 +330,13 @@
             display: block;
         }
 
-        /* --- NUEVO FOOTER ESTILO CANROCK --- */
+        /* --- FOOTER ACTUALIZADO Y MÁS VISIBLE --- */
         footer {
             background: #e9ecef;
-            color: #333;
-            padding: 30px 20px 15px 20px;
+            color: #222;
+            padding: 35px 20px 20px 20px;
             margin-top: 50px;
-            border-top: 1px solid #ddd;
-            font-size: 14px;
+            border-top: 1px solid #d5d8dc;
         }
         .footer-socials {
             display: flex;
@@ -326,9 +345,13 @@
             margin-bottom: 25px;
         }
         .footer-socials a img {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             object-fit: contain;
+            transition: transform 0.2s;
+        }
+        .footer-socials a img:hover {
+            transform: scale(1.1);
         }
         .footer-content {
             max-width: 1200px;
@@ -338,11 +361,14 @@
             gap: 30px;
             text-align: left;
         }
+        /* Títulos más grandes que las opciones de abajo */
         .footer-col h4 {
-            font-size: 15px;
+            font-size: 18px;
             text-transform: uppercase;
-            color: #222;
-            margin-bottom: 15px;
+            color: #111;
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -354,42 +380,40 @@
             margin: 0;
         }
         .footer-col ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .footer-col ul li a, .footer-col p {
-            color: #555;
+            color: #444;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 15px; /* Opciones más chicas que el título pero con excelente visibilidad */
             transition: color 0.2s;
         }
         .footer-col ul li a:hover {
             color: var(--primary-color);
+            font-weight: 500;
         }
         .footer-col p {
-            margin: 6px 0;
+            margin: 8px 0;
+            font-size: 15px;
         }
         .footer-bottom {
             max-width: 1200px;
-            margin: 30px auto 0 auto;
-            padding-top: 15px;
-            border-top: 1px solid #dcdcdc;
+            margin: 35px auto 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #d0d5dd;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            color: #777;
-            font-size: 12px;
+            gap: 12px;
+            color: #555;
+            font-size: 13px;
         }
         .footer-badges {
             display: flex;
             gap: 15px;
             align-items: center;
             margin-bottom: 5px;
-        }
-        .footer-badges img {
-            height: 28px;
-            object-fit: contain;
         }
 
         /* --- RESPONSIVE PARA CELULARES (ACORDEÓN EN FOOTER) --- */
@@ -405,16 +429,17 @@
                 gap: 0;
             }
             .footer-col {
-                border-bottom: 1px solid #ddd;
+                border-bottom: 1px solid #d5d8dc;
             }
             .footer-col h4 {
-                padding: 12px 0;
+                padding: 15px 0;
                 margin: 0;
                 cursor: pointer;
+                font-size: 16px;
             }
             .footer-col h4::after {
                 content: '⌄';
-                font-size: 18px;
+                font-size: 20px;
                 transition: transform 0.3s;
             }
             .footer-col.active h4::after {
@@ -428,7 +453,7 @@
             }
             .footer-col.active ul, .footer-col.active .footer-info-content {
                 max-height: 200px;
-                padding-bottom: 12px;
+                padding-bottom: 15px;
             }
         }
     </style>
@@ -436,7 +461,7 @@
 <body>
 
     <!-- CABECERA -->
-    <header>
+    <header id="top-header">
         <div class="header-left">
             <img src="efesa-logo.png" alt="Efesa" title="Efesa">
         </div>
@@ -500,7 +525,7 @@
         <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
     </div>
 
-    <div class="container">
+    <div class="container" id="catalog-anchor">
         
         <!-- SECCIÓN SOBRE NOSOTROS -->
         <div class="info-section" id="about-section">
@@ -561,37 +586,35 @@
 
     </div>
 
-    <!-- FOOTER ESTILO CANROCK -->
+    <!-- FOOTER MODIFICADO -->
     <footer>
         <div class="footer-socials">
-            <a href="#" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+            <!-- Espacio reservado para Instagram y Facebook -->
             <a href="#" target="_blank" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+            <a href="#" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
         </div>
 
         <div class="footer-content">
-            <!-- Columna 1 -->
-            <div class="footer-col" id="col-excelencia">
-                <h4 onclick="toggleFooterCol('col-excelencia')">Excelencia Animal</h4>
+            <!-- Columna 1: Contacto -->
+            <div class="footer-col" id="col-contacto">
+                <h4 onclick="toggleFooterCol('col-contacto')">Contacto</h4>
                 <div class="footer-info-content">
-                    <p>📞 Teléfono: 11 5808-3666</p>
                     <p>💬 WhatsApp: 11 5808-3666</p>
-                    <p>✉️ Email: contacto@excelenciaanimal.com</p>
+                    <p>📷 Instagram: @excelenciaanimal</p>
                 </div>
             </div>
 
-            <!-- Columna 2 -->
+            <!-- Columna 2: Productos (Gato, Perro, Accesorios) -->
             <div class="footer-col" id="col-productos">
                 <h4 onclick="toggleFooterCol('col-productos')">Productos</h4>
                 <ul>
-                    <li><a href="#" onclick="filterByCategory('Piedras Comunes'); return false;">Piedras Comunes</a></li>
-                    <li><a href="#" onclick="filterByCategory('Piedras Premium'); return false;">Piedras Premium</a></li>
-                    <li><a href="#" onclick="filterByCategory('Pellets de pino'); return false;">Pellets de pino</a></li>
-                    <li><a href="#" onclick="filterByCategory('Alimentos Húmedos'); return false;">Alimentos Húmedos</a></li>
-                    <li><a href="#" onclick="filterByCategory('Accesorios'); return false;">Accesorios</a></li>
+                    <li><a href="#" onclick="filterByGroup('Gato'); return false;">Gato</a></li>
+                    <li><a href="#" onclick="filterByGroup('Perro'); return false;">Perro</a></li>
+                    <li><a href="#" onclick="filterByGroup('Accesorios'); return false;">Accesorios</a></li>
                 </ul>
             </div>
 
-            <!-- Columna 3 -->
+            <!-- Columna 3: Nuestra Empresa -->
             <div class="footer-col" id="col-empresa">
                 <h4 onclick="toggleFooterCol('col-empresa')">Nuestra Empresa</h4>
                 <ul>
@@ -604,9 +627,7 @@
 
         <div class="footer-bottom">
             <div class="footer-badges">
-                <!-- Iconos ilustrativos de confianza/medios de pago -->
-                <span style="background: #009ee3; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px;">Mercado Pago</span>
-                <span style="background: #28a745; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px;">Compra 100% Segura</span>
+                <span style="background: #28a745; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 12px;">Compra 100% Segura</span>
             </div>
             <p>&copy; 2026 Excelencia Animal. Todos los derechos reservados.</p>
         </div>
@@ -615,26 +636,26 @@
     <!-- SCRIPT GENERAL Y LÓGICA -->
     <script>
         const products = [
-            { id: 1, name: "Piedras Sanitarias Comunes", brand: "Gato Real", category: "Piedras Comunes" },
-            { id: 2, name: "Piedras Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas" },
-            { id: 3, name: "Sílica Gel", brand: "Gato Real", category: "Silicas gel" },
-            { id: 4, name: "Alimento Húmedo Lata", brand: "Gato Real", category: "Alimentos Húmedos" },
-            { id: 5, name: "Piedra Común Económica", brand: "Cat Way", category: "Piedras Comunes" },
-            { id: 6, name: "Pellets de Pino", brand: "Cat Way", category: "Pellets de pino" },
-            { id: 7, name: "Sílica Gel Cristales", brand: "Cat Way", category: "Silicas gel" },
-            { id: 8, name: "Pala y Accesorios", brand: "Cat Way", category: "Accesorios" },
-            { id: 9, name: "Piedras Seleccionadas Premium", brand: "Pets Class", category: "Piedras Premium" },
-            { id: 10, name: "Bentonita Aglomerante", brand: "Pets Class", category: "Bentonitas aglomerantes" },
-            { id: 11, name: "Alimento Balanceado High Premium", brand: "Pets Class", category: "Productos Premium" },
-            { id: 12, name: "Comedero y Accesorios", brand: "Pets Class", category: "Accesorios" },
-            { id: 13, name: "Piedras Premium Especiales", brand: "AR Mascotas", category: "Piedras Premium" },
-            { id: 14, name: "Piedras Perfumadas Especiales", brand: "AR Mascotas", category: "Piedras premium Perfumadas" },
-            { id: 15, name: "Bentonita Fina Aglomerante", brand: "AR Mascotas", category: "Bentonitas aglomerantes" },
-            { id: 16, name: "Alimento Húmedo Sobrecito", brand: "AR Mascotas", category: "Alimentos Húmedos" },
-            { id: 17, name: "Piedras Ultra Premium", brand: "KonKatt", category: "Piedras Premium" },
-            { id: 18, name: "Pellets de Pino Natural", brand: "KonKatt", category: "Pellets de pino" },
-            { id: 19, name: "Alimento Super Premium Gatos", brand: "KonKatt", category: "Productos Premium" },
-            { id: 20, name: "Accesorios Premium", brand: "KonKatt", category: "Accesorios" }
+            { id: 1, name: "Piedras Sanitarias Comunes", brand: "Gato Real", category: "Piedras Comunes", group: "Gato" },
+            { id: 2, name: "Piedras Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato" },
+            { id: 3, name: "Sílica Gel", brand: "Gato Real", category: "Silicas gel", group: "Gato" },
+            { id: 4, name: "Alimento Húmedo Lata", brand: "Gato Real", category: "Alimentos Húmedos", group: "Gato" },
+            { id: 5, name: "Piedra Común Económica", brand: "Cat Way", category: "Piedras Comunes", group: "Gato" },
+            { id: 6, name: "Pellets de Pino", brand: "Cat Way", category: "Pellets de pino", group: "Gato" },
+            { id: 7, name: "Sílica Gel Cristales", brand: "Cat Way", category: "Silicas gel", group: "Gato" },
+            { id: 8, name: "Pala y Accesorios", brand: "Cat Way", category: "Accesorios", group: "Accesorios" },
+            { id: 9, name: "Piedras Seleccionadas Premium", brand: "Pets Class", category: "Piedras Premium", group: "Gato" },
+            { id: 10, name: "Bentonita Aglomerante", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 11, name: "Alimento Balanceado High Premium", brand: "Pets Class", category: "Productos Premium", group: "Perro" },
+            { id: 12, name: "Comedero y Accesorios", brand: "Pets Class", category: "Accesorios", group: "Accesorios" },
+            { id: 13, name: "Piedras Premium Especiales", brand: "AR Mascotas", category: "Piedras Premium", group: "Gato" },
+            { id: 14, name: "Piedras Perfumadas Especiales", brand: "AR Mascotas", category: "Piedras premium Perfumadas", group: "Gato" },
+            { id: 15, name: "Bentonita Fina Aglomerante", brand: "AR Mascotas", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 16, name: "Alimento Húmedo Sobrecito", brand: "AR Mascotas", category: "Alimentos Húmedos", group: "Gato" },
+            { id: 17, name: "Piedras Ultra Premium", brand: "KonKatt", category: "Piedras Premium", group: "Gato" },
+            { id: 18, name: "Pellets de Pino Natural", brand: "KonKatt", category: "Pellets de pino", group: "Gato" },
+            { id: 19, name: "Alimento Super Premium Perros", brand: "KonKatt", category: "Productos Premium", group: "Perro" },
+            { id: 20, name: "Accesorios Premium", brand: "KonKatt", category: "Accesorios", group: "Accesorios" }
         ];
 
         function displayProducts(items) {
@@ -664,12 +685,18 @@
             });
         }
 
+        // Función auxiliar para desplazar suavemente al inicio del catálogo
+        function scrollToCatalog() {
+            document.getElementById('catalog-anchor').scrollIntoView({ behavior: 'smooth' });
+        }
+
         function filterByBrand(brandName) {
             showCatalog();
             const filtered = products.filter(p => p.brand === brandName);
             displayProducts(filtered);
             document.getElementById('results-title').innerText = `Productos de: ${brandName}`;
             document.getElementById('reset-btn').style.display = 'block';
+            scrollToCatalog();
         }
 
         function filterByCategory(categoryName) {
@@ -678,6 +705,17 @@
             displayProducts(filtered);
             document.getElementById('results-title').innerText = `Categoría: ${categoryName}`;
             document.getElementById('reset-btn').style.display = 'block';
+            scrollToCatalog();
+        }
+
+        // Filtro para el menú de productos del footer (Gato, Perro, Accesorios)
+        function filterByGroup(groupName) {
+            showCatalog();
+            const filtered = products.filter(p => p.group === groupName);
+            displayProducts(filtered);
+            document.getElementById('results-title').innerText = `Productos para: ${groupName}`;
+            document.getElementById('reset-btn').style.display = 'block';
+            scrollToCatalog();
         }
 
         function searchProducts() {
@@ -716,6 +754,7 @@
             } else if (section === 'contact') {
                 document.getElementById('contact-section').classList.add('active');
             }
+            scrollToCatalog();
         }
 
         function showCatalog() {
@@ -729,9 +768,9 @@
         function goHome() {
             resetFilters();
             showCatalog();
+            scrollToCatalog();
         }
 
-        /* Función para abrir/cerrar secciones del footer en celular (Acordeón) */
         function toggleFooterCol(colId) {
             if (window.innerWidth <= 768) {
                 const col = document.getElementById(colId);
