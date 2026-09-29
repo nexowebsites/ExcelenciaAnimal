@@ -40,7 +40,7 @@
             align-items: center;
         }
         .header-center img {
-            height: 50px; /* Logo más grande y vistoso */
+            height: 50px; 
             object-fit: contain;
         }
         .header-right {
@@ -72,7 +72,7 @@
             padding: 0;
         }
 
-        /* --- MENÚ DESPLEGABLE (HAMBURGUESA) --- */
+        /* --- MENÚ DESPLEGABLE  --- */
         .dropdown-menu {
             position: absolute;
             top: 70px;
@@ -101,7 +101,7 @@
             color: var(--primary-color);
         }
 
-        /* --- SECCIÓN DE MARCAS (ARRIBA, PARA DAR AIRE) --- */
+        /* --- SECCIÓN DE MARCAS  --- */
         .brands-section {
             background: white;
             padding: 18px 0;
@@ -151,7 +151,7 @@
             border-color: var(--primary-color);
         }
 
-        /* --- CARRUSEL BANNER (MÁS ABAJO Y COMPACTO) --- */
+        /* --- CARRUSEL BANNER  --- */
         .carousel-container {
             position: relative;
             max-width: 1200px;
@@ -195,7 +195,7 @@
             padding: 0 15px;
         }
 
-        /* --- SECCIÓN DE 9 CATEGORÍAS (2 por fila) --- */
+        /* --- CATEGORIAS --- */
         .section-title {
             font-size: 20px;
             color: var(--primary-color);
@@ -310,20 +310,126 @@
             display: block;
         }
 
+        /* --- NUEVO FOOTER ESTILO CANROCK --- */
         footer {
-            text-align: center; padding: 25px;
-            color: #777; font-size: 13px;
-            margin-top: 40px; background: #fff;
-            border-top: 1px solid #eaeaea;
+            background: #e9ecef;
+            color: #333;
+            padding: 30px 20px 15px 20px;
+            margin-top: 50px;
+            border-top: 1px solid #ddd;
+            font-size: 14px;
+        }
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .footer-socials a img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+        .footer-col h4 {
+            font-size: 15px;
+            text-transform: uppercase;
+            color: #222;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: default;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a, .footer-col p {
+            color: #555;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+        .footer-col p {
+            margin: 6px 0;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 30px auto 0 auto;
+            padding-top: 15px;
+            border-top: 1px solid #dcdcdc;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #777;
+            font-size: 12px;
+        }
+        .footer-badges {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .footer-badges img {
+            height: 28px;
+            object-fit: contain;
         }
 
-        /* --- RESPONSIVE PARA CELULARES --- */
+        /* --- RESPONSIVE PARA CELULARES (ACORDEÓN EN FOOTER) --- */
         @media (max-width: 768px) {
             .search-box input { width: 75px; }
             .header-left img { height: 30px; }
             .header-center img { height: 38px; }
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .footer-col {
+                border-bottom: 1px solid #ddd;
+            }
+            .footer-col h4 {
+                padding: 12px 0;
+                margin: 0;
+                cursor: pointer;
+            }
+            .footer-col h4::after {
+                content: '⌄';
+                font-size: 18px;
+                transition: transform 0.3s;
+            }
+            .footer-col.active h4::after {
+                transform: rotate(180deg);
+            }
+            .footer-col ul, .footer-col .footer-info-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                padding-left: 0;
+            }
+            .footer-col.active ul, .footer-col.active .footer-info-content {
+                max-height: 200px;
+                padding-bottom: 12px;
+            }
         }
     </style>
 </head>
@@ -353,7 +459,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE MARCAS (CON LOGOS Y TEXTO) -->
+    <!-- SECCIÓN DE MARCAS -->
     <div class="brands-section" id="brands-container">
         <div class="brands-title">Nuestras Marcas</div>
         <div class="brands-grid">
@@ -375,7 +481,7 @@
         </div>
     </div>
 
-    <!-- CARRUSEL BANNER (UBICADO MÁS ABAJO, CON VIDEOS Y FOTOS) -->
+    <!-- CARRUSEL BANNER  -->
     <div class="carousel-container" id="main-banner">
         <div class="carousel-slide active">
             <video autoplay muted loop playsinline>
@@ -455,8 +561,55 @@
 
     </div>
 
+    <!-- FOOTER ESTILO CANROCK -->
     <footer>
-        <p>&copy; 2026 Excelencia Animal & Efesa. Todos los derechos reservados.</p>
+        <div class="footer-socials">
+            <a href="#" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+            <a href="#" target="_blank" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        </div>
+
+        <div class="footer-content">
+            <!-- Columna 1 -->
+            <div class="footer-col" id="col-excelencia">
+                <h4 onclick="toggleFooterCol('col-excelencia')">Excelencia Animal</h4>
+                <div class="footer-info-content">
+                    <p>📞 Teléfono: 11 5808-3666</p>
+                    <p>💬 WhatsApp: 11 5808-3666</p>
+                    <p>✉️ Email: contacto@excelenciaanimal.com</p>
+                </div>
+            </div>
+
+            <!-- Columna 2 -->
+            <div class="footer-col" id="col-productos">
+                <h4 onclick="toggleFooterCol('col-productos')">Productos</h4>
+                <ul>
+                    <li><a href="#" onclick="filterByCategory('Piedras Comunes'); return false;">Piedras Comunes</a></li>
+                    <li><a href="#" onclick="filterByCategory('Piedras Premium'); return false;">Piedras Premium</a></li>
+                    <li><a href="#" onclick="filterByCategory('Pellets de pino'); return false;">Pellets de pino</a></li>
+                    <li><a href="#" onclick="filterByCategory('Alimentos Húmedos'); return false;">Alimentos Húmedos</a></li>
+                    <li><a href="#" onclick="filterByCategory('Accesorios'); return false;">Accesorios</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3 -->
+            <div class="footer-col" id="col-empresa">
+                <h4 onclick="toggleFooterCol('col-empresa')">Nuestra Empresa</h4>
+                <ul>
+                    <li><a href="#" onclick="showSection('about'); return false;">Sobre nosotros</a></li>
+                    <li><a href="#" onclick="showSection('contact'); return false;">Contactate con nosotros</a></li>
+                    <li><a href="#" onclick="showSection('contact'); return false;">Zonas donde hacemos envíos</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-badges">
+                <!-- Iconos ilustrativos de confianza/medios de pago -->
+                <span style="background: #009ee3; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px;">Mercado Pago</span>
+                <span style="background: #28a745; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 11px;">Compra 100% Segura</span>
+            </div>
+            <p>&copy; 2026 Excelencia Animal. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
     <!-- SCRIPT GENERAL Y LÓGICA -->
@@ -576,6 +729,14 @@
         function goHome() {
             resetFilters();
             showCatalog();
+        }
+
+        /* Función para abrir/cerrar secciones del footer en celular (Acordeón) */
+        function toggleFooterCol(colId) {
+            if (window.innerWidth <= 768) {
+                const col = document.getElementById(colId);
+                col.classList.toggle('active');
+            }
         }
 
         let currentSlide = 0;
