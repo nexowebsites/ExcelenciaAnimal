@@ -52,7 +52,7 @@
         /* --- CABECERA PRINCIPAL --- */
         header {
             background-color: var(--header-bg);
-            padding: 18px 40px;
+            padding: 15px 30px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             display: flex;
             justify-content: space-between;
@@ -63,7 +63,7 @@
         }
         
         .efesa-corner-container img {
-            height: 55px;
+            height: 45px;
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s;
@@ -74,19 +74,22 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 12px; 
+            gap: 10px; 
+            text-align: center;
         }
         .header-center img {
-            height: 75px;
+            height: 55px;
             object-fit: contain;
+            display: none; /* Oculto por defecto en móvil si usas el combinado, se muestra en desktop si se prefiere */
         }
         /* NO EDITADA LA DE EXCELENCIA ANIMAL (mantiene tu estilo exacto) */
         .header-center h1 {
             color: var(--excelencia-orange);
-            font-size: 2.3rem;
+            font-size: 1.8rem;
             margin: 0;
             font-weight: 800;
             letter-spacing: 0.5px;
+            line-height: 1.1;
         }
 
         .search-container {
@@ -96,7 +99,7 @@
             border-radius: 30px;
             padding: 10px 20px;
             border: 2px solid #E2E8F0;
-            width: 350px;
+            width: 320px;
             transition: var(--transition-smooth);
         }
         .search-container:focus-within {
@@ -252,7 +255,7 @@
             padding: 0 25px;
         }
 
-        /* --- SECCIÓN DE MARCAS MÁS VIVA Y ATRACTIVA --- */
+        /* --- SECCIÓN DE MARCAS --- */
         .brands-section {
             background: #FFFFFF;
             padding: 25px 0;
@@ -379,6 +382,7 @@
             transition: var(--transition-smooth);
         }
         .reset-filter-btn:hover { background: #475569; transform: scale(1.05); }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -438,6 +442,30 @@
             transition: var(--transition-smooth);
         }
         .whatsapp-btn:hover { background-color: #20ba5a; transform: scale(1.02); }
+
+        /* Botón Ver Más para la vista resumida */
+        .ver-mas-container {
+            text-align: center;
+            margin-top: 30px;
+            grid-column: 1 / -1;
+        }
+        .ver-mas-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(22, 66, 60, 0.25);
+            transition: var(--transition-smooth);
+        }
+        .ver-mas-btn:hover {
+            background: var(--excelencia-orange);
+            transform: scale(1.05);
+        }
 
         /* --- SECCIONES EXTRA --- */
         .info-section {
@@ -504,14 +532,35 @@
             font-size: 14px;
         }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE OPTIMIZADO PARA MÓVIL --- */
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            header { flex-direction: column; gap: 15px; padding: 15px; }
-            .search-container { width: 100%; }
+            header { 
+                flex-direction: row; 
+                justify-content: space-between;
+                align-items: center; 
+                padding: 10px 15px; 
+                gap: 10px;
+            }
+            .efesa-corner-container img {
+                height: 38px;
+            }
+            .header-center h1 {
+                font-size: 1.25rem;
+            }
+            .search-container { 
+                width: 100%; 
+                margin-top: 5px;
+            }
+            /* En móvil ordenamos cabecera: Logo izq, Título centro */
+            .header-main-mobile {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
             nav.main-nav { display: none; }
             .categories-grid { grid-template-columns: 1fr; }
-            .carousel-container { height: 240px; }
+            .carousel-container { height: 220px; }
             .footer-content { grid-template-columns: 1fr; gap: 30px; }
         }
     </style>
@@ -525,20 +574,32 @@
 
     <!-- CABECERA PRINCIPAL -->
     <header id="top-header">
-        <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
-            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
-        </div>
+        <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: space-between;">
+            <!-- Logo Efesa a la izquierda -->
+            <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
+                <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
+            </div>
 
-        <div class="header-center" onclick="goHome()" title="Volver al inicio">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Logo">
-            <h1>EXCELENCIA ANIMAL</h1>
+            <!-- Título Excelencia Animal en el medio -->
+            <div class="header-center" onclick="goHome()" title="Volver al inicio">
+                <h1>EXCELENCIA ANIMAL</h1>
+            </div>
+            
+            <!-- Buscador adaptable -->
+            <div class="search-container" style="display: none;"> <!-- Oculto en barra superior mobile para ahorrar espacio, o integrado -->
+                <span style="color: #888; font-size: 16px;">🔍</span>
+                <input type="text" id="search-input-top" placeholder="Búsqueda..." onkeyup="searchProducts()">
+            </div>
         </div>
-        
-        <div class="search-container">
+    </header>
+
+    <!-- Buscador dedicado debajo del header para móvil y desktop -->
+    <div style="background: #fff; padding: 12px 20px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: center;">
+        <div class="search-container" style="width: 100%; max-width: 600px;">
             <span style="color: #888; font-size: 16px;">🔍</span>
             <input type="text" id="search-input" placeholder="Búsqueda en catálogo..." onkeyup="searchProducts()">
         </div>
-    </header>
+    </div>
 
     <!-- MENÚ DE NAVEGACIÓN PRINCIPAL -->
     <nav class="main-nav">
@@ -753,16 +814,30 @@
             { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar." },
         ];
 
-        function displayProducts(items) {
+        let isRandomView = true;
+
+        function displayProducts(items, showRandom = false) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
             
-            if (items.length === 0) {
+            let listToDisplay = items;
+
+            // Si estamos en vista general inicial, mostramos solo 2 random
+            if (showRandom && items.length === products.length) {
+                isRandomView = true;
+                // Mezclar y tomar 2 al azar
+                const shuffled = [...products].sort(() => 0.5 - Math.random());
+                listToDisplay = shuffled.slice(0, 2);
+            } else {
+                isRandomView = false;
+            }
+
+            if (listToDisplay.length === 0) {
                 grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #64748B; font-size: 16px; padding: 20px;">No se encontraron productos.</p>';
                 return;
             }
 
-            items.forEach(product => {
+            listToDisplay.forEach(product => {
                 const message = encodeURIComponent(`Hola, quiero consultar stock y precio de ${product.name} (${product.brand})`);
                 const card = document.createElement('div');
                 card.className = 'card';
@@ -779,6 +854,22 @@
                 `;
                 grid.appendChild(card);
             });
+
+            // Si estamos en vista random, agregamos el botón "Ver más productos" debajo
+            if (isRandomView && items.length === products.length) {
+                const verMasContainer = document.createElement('div');
+                verMasContainer.className = 'ver-mas-container';
+                verMasContainer.innerHTML = `
+                    <button class="ver-mas-btn" onclick="showAllProducts()">Ver más productos (Catálogo Completo)</button>
+                `;
+                grid.appendChild(verMasContainer);
+            }
+        }
+
+        function showAllProducts() {
+            displayProducts(products, false);
+            document.getElementById('results-title').innerText = 'Catálogo General';
+            document.getElementById('reset-btn').style.display = 'block';
         }
 
         function scrollToCatalog() {
@@ -788,7 +879,7 @@
         function filterByBrand(brandName) {
             showCatalog();
             const filtered = products.filter(p => p.brand === brandName);
-            displayProducts(filtered);
+            displayProducts(filtered, false);
             document.getElementById('results-title').innerText = `Productos de: ${brandName}`;
             document.getElementById('reset-btn').style.display = 'block';
             scrollToCatalog();
@@ -797,7 +888,7 @@
         function filterByCategory(categoryName) {
             showCatalog();
             const filtered = products.filter(p => p.category === categoryName);
-            displayProducts(filtered);
+            displayProducts(filtered, false);
             document.getElementById('results-title').innerText = `Categoría: ${categoryName}`;
             document.getElementById('reset-btn').style.display = 'block';
             scrollToCatalog();
@@ -807,14 +898,14 @@
             showCatalog();
             const query = document.getElementById('search-input').value.toLowerCase();
             const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query));
-            displayProducts(filtered);
+            displayProducts(filtered, false);
             document.getElementById('results-title').innerText = query ? `Búsqueda: "${query}"` : 'Catálogo General';
             document.getElementById('reset-btn').style.display = query ? 'block' : 'none';
         }
 
         function resetFilters() {
             document.getElementById('search-input').value = '';
-            displayProducts(products);
+            displayProducts(products, true); // Vuelve a mostrar la vista inicial con 2 random
             document.getElementById('results-title').innerText = 'Catálogo General';
             document.getElementById('reset-btn').style.display = 'none';
         }
@@ -861,7 +952,8 @@
             showSlide(currentSlide + direction);
         }
 
-        displayProducts(products);
+        // Inicializamos con vista de 2 productos random y botón Ver Más
+        displayProducts(products, true);
     </script>
 </body>
 </html>
