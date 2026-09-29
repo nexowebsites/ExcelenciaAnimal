@@ -9,9 +9,10 @@
             --primary-color: #1b4d3e;
             --accent-color: #25d366;
             --bg-color: #f8f9fa;
+            --header-dark-bg: #0b192c; /* Color de fondo uniforme para la cabecera */
         }
         html {
-            scroll-behavior: smooth; /* Desplazamiento suave general */
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,9 +24,9 @@
 
         /* --- CABECERA PROFESIONAL --- */
         header {
-            background-color: white;
-            padding: 12px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background-color: var(--header-dark-bg);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -33,9 +34,16 @@
             top: 0;
             z-index: 1000;
         }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
         .header-left img {
             height: 38px;
             object-fit: contain;
+            background: white;
+            padding: 3px 6px;
+            border-radius: 4px;
         }
         .header-center {
             cursor: pointer;
@@ -43,7 +51,7 @@
             align-items: center;
         }
         .header-center img {
-            height: 50px; 
+            height: 42px; 
             object-fit: contain;
         }
         .header-right {
@@ -54,7 +62,7 @@
         .search-box {
             display: flex;
             align-items: center;
-            background: #f1f3f5;
+            background: #ffffff;
             border-radius: 20px;
             padding: 6px 12px;
             border: 1px solid #ddd;
@@ -65,13 +73,14 @@
             outline: none;
             font-size: 13px;
             width: 110px;
+            color: #333;
         }
         .menu-toggle {
             font-size: 24px;
             cursor: pointer;
             background: none;
             border: none;
-            color: var(--primary-color);
+            color: white;
             padding: 0;
         }
 
@@ -361,7 +370,6 @@
             gap: 30px;
             text-align: left;
         }
-        /* Títulos más grandes que las opciones de abajo */
         .footer-col h4 {
             font-size: 18px;
             text-transform: uppercase;
@@ -385,7 +393,7 @@
         .footer-col ul li a, .footer-col p {
             color: #444;
             text-decoration: none;
-            font-size: 15px; /* Opciones más chicas que el título pero con excelente visibilidad */
+            font-size: 15px;
             transition: color 0.2s;
         }
         .footer-col ul li a:hover {
@@ -418,9 +426,9 @@
 
         /* --- RESPONSIVE PARA CELULARES (ACORDEÓN EN FOOTER) --- */
         @media (max-width: 768px) {
-            .search-box input { width: 75px; }
+            .search-box input { width: 70px; }
             .header-left img { height: 30px; }
-            .header-center img { height: 38px; }
+            .header-center img { height: 34px; }
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
             
@@ -589,7 +597,6 @@
     <!-- FOOTER MODIFICADO -->
     <footer>
         <div class="footer-socials">
-            <!-- Espacio reservado para Instagram y Facebook -->
             <a href="#" target="_blank" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
             <a href="#" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
         </div>
@@ -604,7 +611,7 @@
                 </div>
             </div>
 
-            <!-- Columna 2: Productos (Gato, Perro, Accesorios) -->
+            <!-- Columna 2: Productos -->
             <div class="footer-col" id="col-productos">
                 <h4 onclick="toggleFooterCol('col-productos')">Productos</h4>
                 <ul>
@@ -685,7 +692,6 @@
             });
         }
 
-        // Función auxiliar para desplazar suavemente al inicio del catálogo
         function scrollToCatalog() {
             document.getElementById('catalog-anchor').scrollIntoView({ behavior: 'smooth' });
         }
@@ -708,7 +714,6 @@
             scrollToCatalog();
         }
 
-        // Filtro para el menú de productos del footer (Gato, Perro, Accesorios)
         function filterByGroup(groupName) {
             showCatalog();
             const filtered = products.filter(p => p.group === groupName);
