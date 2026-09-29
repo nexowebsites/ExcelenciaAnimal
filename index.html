@@ -47,7 +47,6 @@
         .efesa-corner-container img {
             height: 45px; /* Tamaño ajustado para que luzca bien arriba */
             object-fit: contain;
-            /* Filtro opcional si necesitas que resalte más sobre el fondo oscuro (ej: si es negro puro, puedes usar brightness o dejarlo si ya es claro) */
         }
 
         /* Logo e H1 centrados de Excelencia Animal */
@@ -498,7 +497,6 @@
 
     <!-- CABECERA -->
     <header id="top-header">
-        <!-- LOGO EFESA MOVIDO ARRIBA A LA IZQUIERDA -->
         <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
             <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
         </div>
@@ -524,7 +522,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE MARCAS (YA SIN EFESA) -->
+    <!-- SECCIÓN DE MARCAS -->
     <div class="brands-section" id="brands-container">
         <div class="brands-title">Nuestras Marcas</div>
         <div class="brands-grid">
@@ -604,8 +602,11 @@
                 <div class="category-card" onclick="filterByCategory('Productos Premium')">
                     <h3>Productos Premium</h3><span>Ver más</span>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Alimentos Húmedos')">
-                    <h3>Alimentos Húmedos</h3><span>Ver más</span>
+                <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Gato')">
+                    <h3>Alimentos Húmedos Gato</h3><span>Ver más</span>
+                </div>
+                <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Perro')">
+                    <h3>Alimentos Húmedos Perro</h3><span>Ver más</span>
                 </div>
                 <div class="category-card" onclick="filterByCategory('Accesorios')">
                     <h3>Accesorios</h3><span>Ver más</span>
@@ -664,26 +665,71 @@
 
     <script>
         const products = [
-            { id: 1, name: "Piedras Sanitarias Comunes", brand: "Gato Real", category: "Piedras Comunes", group: "Gato" },
-            { id: 2, name: "Piedras Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato" },
-            { id: 3, name: "Sílica Gel", brand: "Gato Real", category: "Silicas gel", group: "Gato" },
-            { id: 4, name: "Alimento Húmedo Lata", brand: "Gato Real", category: "Alimentos Húmedos", group: "Gato" },
-            { id: 5, name: "Piedra Común Económica", brand: "Cat Way", category: "Piedras Comunes", group: "Gato" },
-            { id: 6, name: "Pellets de Pino", brand: "Cat Way", category: "Pellets de pino", group: "Gato" },
-            { id: 7, name: "Sílica Gel Cristales", brand: "Cat Way", category: "Silicas gel", group: "Gato" },
-            { id: 8, name: "Pala y Accesorios", brand: "Cat Way", category: "Accesorios", group: "Accesorios" },
-            { id: 9, name: "Piedras Seleccionadas Premium", brand: "Pets Class", category: "Piedras Premium", group: "Gato" },
-            { id: 10, name: "Bentonita Aglomerante", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
-            { id: 11, name: "Alimento Balanceado High Premium", brand: "Pets Class", category: "Productos Premium", group: "Perro" },
-            { id: 12, name: "Comedero y Accesorios", brand: "Pets Class", category: "Accesorios", group: "Accesorios" },
-            { id: 13, name: "Piedras Premium Especiales", brand: "AR Mascotas", category: "Piedras Premium", group: "Gato" },
+            // Piedras Comunes
+            { id: 1, name: "4,6 LT Piedras Comunes", brand: "Gato Real", category: "Piedras Comunes", group: "Gato" },
+            { id: 2, name: "9,2 LT Piedras Comunes", brand: "Gato Real", category: "Piedras Comunes", group: "Gato" },
+            { id: 3, name: "23 LT Piedras Comunes", brand: "Gato Real", category: "Piedras Comunes", group: "Gato" },
+            { id: 4, name: "30 LT Piedras Comunes", brand: "Gato Real", category: "Piedras Comunes", group: "Gato" },
+            { id: 5, name: "4,6 LT Piedras Comunes", brand: "Cat Way", category: "Piedras Comunes", group: "Gato" },
+
+            // Piedras Premium
+            { id: 6, name: "4,6 LT Piedras Premium", brand: "Gato Real", category: "Piedras Premium", group: "Gato" },
+            { id: 7, name: "9,2 LT Piedras Premium", brand: "Gato Real", category: "Piedras Premium", group: "Gato" },
+            { id: 8, name: "Piedras Seleccionadas Premium", brand: "Pets Class", category: "Piedras Premium", group: "Gato" },
+            { id: 9, name: "Piedras Premium Especiales", brand: "AR Mascotas", category: "Piedras Premium", group: "Gato" },
+            { id: 10, name: "Piedras Ultra Premium", brand: "KonKatt", category: "Piedras Premium", group: "Gato" },
+
+            // Piedras Perfumadas
+            { id: 11, name: "9,2 LT Lavanda Piedras Premium Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato" },
+            { id: 12, name: "9,2 LT Manzana Piedras Premium Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato" },
+            { id: 13, name: "9,2 LT Citrus Piedras Premium Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato" },
             { id: 14, name: "Piedras Perfumadas Especiales", brand: "AR Mascotas", category: "Piedras premium Perfumadas", group: "Gato" },
-            { id: 15, name: "Bentonita Fina Aglomerante", brand: "AR Mascotas", category: "Bentonitas aglomerantes", group: "Gato" },
-            { id: 16, name: "Alimento Húmedo Sobrecito", brand: "AR Mascotas", category: "Alimentos Húmedos", group: "Gato" },
-            { id: 17, name: "Piedras Ultra Premium", brand: "KonKatt", category: "Piedras Premium", group: "Gato" },
-            { id: 18, name: "Pellets de Pino Natural", brand: "KonKatt", category: "Pellets de pino", group: "Gato" },
-            { id: 19, name: "Alimento Super Premium Perros", brand: "KonKatt", category: "Productos Premium", group: "Perro" },
-            { id: 20, name: "Accesorios Premium", brand: "KonKatt", category: "Accesorios", group: "Accesorios" }
+
+            // Pellets de pino
+            { id: 15, name: "4 kg Pellets de pino", brand: "Cat Way", category: "Pellets de pino", group: "Gato" },
+            { id: 16, name: "15 kg Pellets de pino", brand: "Cat Way", category: "Pellets de pino", group: "Gato" },
+            { id: 17, name: "Pellets de Pino Natural", brand: "KonKatt", category: "Pellets de pino", group: "Gato" },
+
+            // Bentonitas aglomerantes
+            { id: 18, name: "5 kg Bentonitas aglomerantes (Premium)", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 19, name: "12 kg Bentonitas aglomerantes (Premium)", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 20, name: "20 kg Bentonitas aglomerantes (Económica)", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 21, name: "12 kg Bentonitas aglomerantes Perfumada Lavanda", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 22, name: "5 kg Bentonitas aglomerantes Esfera Super Premium", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato" },
+            { id: 23, name: "Bentonita Fina Aglomerante", brand: "AR Mascotas", category: "Bentonitas aglomerantes", group: "Gato" },
+
+            // Silicas gel
+            { id: 24, name: "1,8 kg Neutra Silicas gel", brand: "Gato Real", category: "Silicas gel", group: "Gato" },
+            { id: 25, name: "1,8 kg Lavanda Silicas gel", brand: "Gato Real", category: "Silicas gel", group: "Gato" },
+            { id: 26, name: "Sílica Gel Cristales", brand: "Cat Way", category: "Silicas gel", group: "Gato" },
+
+            // Productos Premium (sin modificar nombres internos según indicación)
+            { id: 27, name: "Carbon Activado x 9,2 LT", brand: "Pets Class", category: "Productos Premium", group: "Perro" },
+            { id: 28, name: "Duo x 9,2 LT", brand: "Pets Class", category: "Productos Premium", group: "Perro" },
+            { id: 29, name: "Duo x 15 kg", brand: "Pets Class", category: "Productos Premium", group: "Perro" },
+            { id: 30, name: "Alimento Balanceado High Premium", brand: "Pets Class", category: "Productos Premium", group: "Perro" },
+            { id: 31, name: "Alimento Super Premium Perros", brand: "KonKatt", category: "Productos Premium", group: "Perro" },
+
+            // Alimentos Húmedos Gato
+            { id: 32, name: "Carne 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato" },
+            { id: 33, name: "Pollo y leche Gatto 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato" },
+            { id: 34, name: "Salmón Rosado 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato" },
+            { id: 35, name: "Frutos del mar 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato" },
+            { id: 36, name: "Atún y Sardina 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato" },
+            { id: 37, name: "Alimento Húmedo Sobrecito", brand: "AR Mascotas", category: "Alimentos Húmedos Gato", group: "Gato" },
+
+            // Alimentos Húmedos Perro
+            { id: 38, name: "Carne 100 gr", brand: "Pets Class", category: "Alimentos Húmedos Perro", group: "Perro" },
+            { id: 39, name: "Pollo 100 gr", brand: "Pets Class", category: "Alimentos Húmedos Perro", group: "Perro" },
+            { id: 40, name: "Pollo y leche cachorro 85 gr", brand: "Pets Class", category: "Alimentos Húmedos Perro", group: "Perro" },
+
+            // Accesorios (sin modificar nombres internos)
+            { id: 41, name: "Cuna para gatos", brand: "Cat Way", category: "Accesorios", group: "Accesorios" },
+            { id: 42, name: "Rascadores redondos", brand: "Cat Way", category: "Accesorios", group: "Accesorios" },
+            { id: 43, name: "Rascadores ovalados", brand: "Cat Way", category: "Accesorios", group: "Accesorios" },
+            { id: 44, name: "Pala y Accesorios", brand: "Cat Way", category: "Accesorios", group: "Accesorios" },
+            { id: 45, name: "Comedero y Accesorios", brand: "Pets Class", category: "Accesorios", group: "Accesorios" },
+            { id: 46, name: "Accesorios Premium", brand: "KonKatt", category: "Accesorios", group: "Accesorios" }
         ];
 
         function displayProducts(items) {
