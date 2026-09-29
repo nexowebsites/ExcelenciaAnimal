@@ -26,7 +26,7 @@
         /* --- CABECERA PRINCIPAL --- */
         header {
             background-color: var(--header-dark-bg);
-            padding: 15px 25px;
+            padding: 12px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
             display: flex;
             justify-content: space-between;
@@ -40,11 +40,9 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            position: absolute;
-            left: 20px;
         }
         .efesa-corner-container img {
-            height: 45px;
+            height: 40px;
             object-fit: contain;
         }
 
@@ -54,38 +52,33 @@
             align-items: center;
             gap: 0px; 
             margin: 0 auto;
-            background-color: var(--header-dark-bg);
-            padding: 5px 15px;
-            border-radius: 8px;
         }
         .header-center img {
-            height: 110px;
+            height: 75px;
             object-fit: contain;
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
-            margin-right: -25px; 
+            margin-right: -15px; 
         }
         .header-center h1 {
             color: var(--excelencia-orange);
-            font-size: 2.6rem;
+            font-size: 1.8rem;
             margin: 0;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 12px;
-            position: absolute;
-            right: 20px;
+            gap: 10px;
         }
         .search-box {
             display: flex;
             align-items: center;
             background: #ffffff;
             border-radius: 20px;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border: 1px solid #ddd;
         }
         .search-box input {
@@ -93,11 +86,11 @@
             background: transparent;
             outline: none;
             font-size: 13px;
-            width: 110px;
+            width: 100px;
             color: #333;
         }
         .menu-toggle {
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             background: none;
             border: none;
@@ -108,7 +101,7 @@
         /* --- MENÚ DESPLEGABLE --- */
         .dropdown-menu {
             position: absolute;
-            top: 75px;
+            top: 65px;
             right: 20px;
             background: white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
@@ -455,11 +448,32 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .search-box input { width: 70px; }
-            .header-center h1 { font-size: 1.1rem; letter-spacing: 0.5px; white-space: nowrap; }
-            .header-center img { height: 55px; margin-right: -10px; }
-            .efesa-corner-container { left: 10px; }
-            .efesa-corner-container img { height: 32px; }
+            header {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+            .efesa-corner-container img {
+                height: 30px;
+            }
+            .header-center img {
+                height: 45px;
+                margin-right: -8px;
+            }
+            .header-center h1 {
+                font-size: 1rem;
+                letter-spacing: 0.2px;
+            }
+            .search-box input {
+                width: 65px;
+                transition: width 0.3s ease;
+            }
+            .search-box input:focus {
+                width: 110px;
+            }
+            .dropdown-menu {
+                top: 65px;
+                right: 12px;
+            }
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
             
