@@ -9,7 +9,7 @@
             --primary-color: #1b4d3e;
             --accent-color: #25d366;
             --bg-color: #f8f9fa;
-            --header-dark-bg: #0d1b2a; 
+            --header-dark-bg: #0d1b2a;
         }
         html {
             scroll-behavior: smooth;
@@ -22,10 +22,10 @@
             color: #333;
         }
 
-        /* --- CABECERA --- */
+        /* --- CABECERA PRINCIPAL MODIFICADA --- */
         header {
             background-color: var(--header-dark-bg);
-            padding: 10px 20px;
+            padding: 15px 25px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.15);
             display: flex;
             justify-content: space-between;
@@ -35,35 +35,32 @@
             z-index: 1000;
         }
         
-        /* Logo Principal: Excelencia Animal (Más grande y destacado) */
+        /* Contenedor central: Texto grande + Logo al costado al tamaño de las letras */
         .header-center {
             cursor: pointer;
             display: flex;
             align-items: center;
+            gap: 15px;
+            margin: 0 auto;
+        }
+        .header-center h1 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
         .header-center img {
-            height: 52px; 
+            height: 32px; /* Ajustado exactamente al tamaño de las letras */
             object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-
-        /* Logo Distribuidora: Efesa (Más chico, secundario) */
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
-        .header-left img {
-            height: 28px;
-            object-fit: contain;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 4px 8px;
-            border-radius: 4px;
         }
 
         .header-right {
             display: flex;
             align-items: center;
             gap: 12px;
+            position: absolute;
+            right: 20px;
         }
         .search-box {
             display: flex;
@@ -433,8 +430,8 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .search-box input { width: 70px; }
-            .header-left img { height: 22px; }
-            .header-center img { height: 40px; }
+            .header-center h1 { font-size: 1.2rem; }
+            .header-center img { height: 24px; }
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
             
@@ -476,12 +473,12 @@
 
     <!-- CABECERA -->
     <header id="top-header">
-        <div class="header-left">
-            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" title="Efesa">
-        </div>
+        <!-- Texto grande de Excelencia Animal y logo al costado al tamaño de las letras -->
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp%20Image%202026-09-29%20at%2012.16.51%20PM.jpeg?raw=true" alt="Excelencia Animal Distribuciones">
+            <h1>EXCELENCIA ANIMAL</h1>
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp%20Image%202026-09-29%20at%2012.16.51%20PM.jpeg?raw=true" alt="Logo">
         </div>
+        
         <div class="header-right">
             <div class="search-box">
                 <span style="font-size: 13px; color: #888;">🔍</span>
