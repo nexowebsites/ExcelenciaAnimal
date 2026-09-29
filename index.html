@@ -9,7 +9,7 @@
             --primary-color: #1b4d3e;
             --accent-color: #25d366;
             --bg-color: #f8f9fa;
-            --header-dark-bg: #1b2a40;
+            --header-dark-bg: #1b2a40; /* Fondo exacto de la cabecera */
             --excelencia-orange: #d96800;
         }
         html {
@@ -36,12 +36,26 @@
             z-index: 1000;
         }
         
-        /* Logo e H1 de Excelencia Animal */
+        /* Logo de EFESA en la esquina superior izquierda del Header */
+        .efesa-corner-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: absolute;
+            left: 20px;
+        }
+        .efesa-corner-container img {
+            height: 45px; /* Tamaño ajustado para que luzca bien arriba */
+            object-fit: contain;
+            /* Filtro opcional si necesitas que resalte más sobre el fondo oscuro (ej: si es negro puro, puedes usar brightness o dejarlo si ya es claro) */
+        }
+
+        /* Logo e H1 centrados de Excelencia Animal */
         .header-center {
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0px; /* Reducido a 0 para eliminar separación por flex */
+            gap: 0px; 
             margin: 0 auto;
             background-color: var(--header-dark-bg);
             padding: 5px 15px;
@@ -51,7 +65,7 @@
             height: 110px;
             object-fit: contain;
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
-            margin-right: -25px; /* MODIFICADO: Esto contrarresta el espacio transparente que trae la imagen a la derecha */
+            margin-right: -25px; 
         }
         .header-center h1 {
             color: var(--excelencia-orange);
@@ -123,25 +137,12 @@
             color: var(--primary-color);
         }
 
-        /* --- SECCIÓN DE MARCAS Y LOGO EFESA EN LA ZONA BLANCA --- */
+        /* --- SECCIÓN DE MARCAS (ZONA BLANCA) --- */
         .brands-section {
             background: white;
             padding: 22px 0 18px 0;
             border-bottom: 1px solid #eaeaea;
             position: relative;
-        }
-        
-        .efesa-corner-container {
-            position: absolute;
-            top: 15px;
-            left: 25px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-        .efesa-corner-container img {
-            height: 38px;
-            object-fit: contain;
         }
 
         .brands-title {
@@ -454,8 +455,8 @@
             .search-box input { width: 70px; }
             .header-center h1 { font-size: 1.1rem; letter-spacing: 0.5px; white-space: nowrap; }
             .header-center img { height: 55px; margin-right: -10px; }
-            .efesa-corner-container { top: 12px; left: 15px; }
-            .efesa-corner-container img { height: 28px; }
+            .efesa-corner-container { left: 10px; }
+            .efesa-corner-container img { height: 32px; }
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
             
@@ -497,6 +498,11 @@
 
     <!-- CABECERA -->
     <header id="top-header">
+        <!-- LOGO EFESA MOVIDO ARRIBA A LA IZQUIERDA -->
+        <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
+            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
+        </div>
+
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Logo">
             <h1>EXCELENCIA ANIMAL</h1>
@@ -518,12 +524,8 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE MARCAS CON EFESA -->
+    <!-- SECCIÓN DE MARCAS (YA SIN EFESA) -->
     <div class="brands-section" id="brands-container">
-        <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
-            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
-        </div>
-
         <div class="brands-title">Nuestras Marcas</div>
         <div class="brands-grid">
             <div class="brand-badge" onclick="filterByBrand('Gato Real')">
