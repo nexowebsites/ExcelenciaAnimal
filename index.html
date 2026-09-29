@@ -36,7 +36,7 @@
             z-index: 1000;
         }
         
-        /* Logo e H1 de Excelencia Animal (Logo muchísimo más grande y letras naranjas) */
+        /* Logo e H1 de Excelencia Animal (Logo más grande y letras naranjas) */
         .header-center {
             cursor: pointer;
             display: flex;
@@ -45,7 +45,7 @@
             margin: 0 auto;
         }
         .header-center img {
-            height: 75px; /* Logo muchísimo más grande */
+            height: 90px; /* Logo */
             object-fit: contain;
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
         }
@@ -449,7 +449,8 @@
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .search-box input { width: 70px; }
-            .header-center h1 { font-size: 1.2rem; }
+            /* Se ajusta el tamaño del título principal para celulares y se evita que se corte */
+            .header-center h1 { font-size: 0.95rem; letter-spacing: 0.5px; white-space: nowrap; }
             .header-center img { height: 45px; }
             .efesa-corner-container { top: 12px; left: 15px; }
             .efesa-corner-container img { height: 28px; }
@@ -496,7 +497,7 @@
     <header id="top-header">
         <!-- Logo muchísimo más grande, letras naranjas, manda al inicio al tocar -->
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_125640535.png" alt="Logo">
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp%20Image%202026-09-29%20at%2012.16.51%20PM.jpeg?raw=true" alt="Logo">
             <h1>EXCELENCIA ANIMAL</h1>
         </div>
         
