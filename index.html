@@ -8,9 +8,10 @@
         :root {
             --primary-color: #1b4d3e;
             --accent-color: #25d366;
-            --bg-color: #f8f9fa;
-            --header-dark-bg: #1b2a40;
+            --bg-color: #f4f6f8;
+            --header-bg: #ffffff;
             --excelencia-orange: #d96800;
+            --text-main: #333333;
         }
         html {
             scroll-behavior: smooth;
@@ -20,14 +21,32 @@
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
-            color: #333;
+            color: var(--text-main);
+        }
+
+        /* --- BARRA SUPERIOR DE CONTACTO --- */
+        .top-bar {
+            background-color: #1b2a40;
+            color: #fff;
+            font-size: 13px;
+            padding: 6px 30px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+        }
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         /* --- CABECERA PRINCIPAL --- */
         header {
-            background-color: var(--header-dark-bg);
-            padding: 18px 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background-color: var(--header-bg);
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -36,18 +55,10 @@
             z-index: 1000;
         }
         
-        .efesa-corner-container {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
         .efesa-corner-container img {
-            height: 55px;
+            height: 50px;
             object-fit: contain;
-            transition: transform 0.2s;
-        }
-        .efesa-corner-container img:hover {
-            transform: scale(1.05);
+            cursor: pointer;
         }
 
         .header-center {
@@ -55,153 +66,126 @@
             display: flex;
             align-items: center;
             gap: 5px; 
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 5px 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .header-center img {
-            height: 95px;
+            height: 70px;
             object-fit: contain;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.4));
-            margin-right: -15px; 
         }
         .header-center h1 {
             color: var(--excelencia-orange);
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             margin: 0;
             font-weight: 800;
-            letter-spacing: 1.2px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            letter-spacing: 0.5px;
         }
 
-        .header-right {
+        .search-container {
             display: flex;
             align-items: center;
-            gap: 15px;
-        }
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: #ffffff;
+            background: #f1f3f5;
             border-radius: 25px;
             padding: 8px 16px;
             border: 1px solid #ddd;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            width: 320px;
         }
-        .search-box input {
+        .search-container input {
             border: none;
             background: transparent;
             outline: none;
             font-size: 14px;
-            width: 150px;
+            width: 100%;
             color: #333;
-        }
-        .menu-toggle {
-            font-size: 26px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-            padding: 0;
-            transition: transform 0.2s;
-        }
-        .menu-toggle:hover {
-            transform: scale(1.1);
+            margin-left: 8px;
         }
 
-        /* --- MENÚ DESPLEGABLE --- */
-        .dropdown-menu {
-            position: absolute;
-            top: 85px;
-            right: 30px;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            width: 210px;
-            display: none;
-            flex-direction: column;
-            z-index: 1100;
-        }
-        .dropdown-menu.active {
-            display: flex;
-        }
-        .dropdown-menu a {
-            padding: 14px 20px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            border-bottom: 1px solid #eee;
-            transition: background 0.2s;
-        }
-        .dropdown-menu a:hover {
-            background: #f8f9fa;
-            color: var(--primary-color);
-        }
-
-        /* --- SECCIÓN DE MARCAS --- */
-        .brands-section {
-            background: white;
-            padding: 22px 0 18px 0;
-            border-bottom: 1px solid #eaeaea;
-            position: relative;
-        }
-
-        .brands-title {
-            font-size: 12px;
-            color: #777;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .brands-grid {
+        /* --- MENÚ DE NAVEGACIÓN PRINCIPAL (ESTILO E-COMMERCE) --- */
+        nav.main-nav {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             display: flex;
             justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+            position: relative;
+            z-index: 900;
         }
-        .brand-badge {
-            background: #f1f3f5;
-            padding: 8px 14px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--primary-color);
-            cursor: pointer;
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #e0e0e0;
-            transition: all 0.2s;
+            gap: 10px;
         }
-        .brand-badge img {
-            height: 22px;
-            width: 22px;
-            object-fit: contain;
-            border-radius: 50%;
+        .nav-item {
+            position: relative;
         }
-        .brand-badge:hover, .brand-badge.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
+        .nav-link {
+            display: block;
+            padding: 14px 18px;
+            color: #444;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s, background 0.2s;
+        }
+        .nav-link:hover, .nav-item:hover .nav-link {
+            color: var(--primary-color);
+            background-color: #f8f9fa;
         }
 
-        /* --- CARRUSEL BANNER --- */
+        /* --- MEGA MENÚ DESPLEGABLE --- */
+        .dropdown-panel {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 0 0 8px 8px;
+            width: 450px;
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            padding: 20px;
+            gap: 20px;
+            border-top: 3px solid var(--primary-color);
+        }
+        .nav-item:hover .dropdown-panel {
+            display: grid;
+        }
+        .dropdown-column h4 {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .dropdown-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .dropdown-column ul li {
+            margin-bottom: 8px;
+        }
+        .dropdown-column ul li a {
+            color: #555;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .dropdown-column ul li a:hover {
+            color: var(--excelencia-orange);
+            font-weight: 500;
+        }
+
+        /* --- CARRUSEL BANNER FULL WIDTH --- */
         .carousel-container {
             position: relative;
-            max-width: 1200px;
-            margin: 25px auto 0 auto;
-            height: 280px;
-            border-radius: 12px;
+            width: 100%;
+            height: 380px;
+            background: #000;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            background: #000;
+            margin-bottom: 30px;
         }
         .carousel-slide {
             position: absolute;
@@ -223,36 +207,84 @@
             top: 50%; transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.5);
             color: white; border: none;
-            padding: 10px; cursor: pointer;
-            font-size: 14px; border-radius: 50%;
+            padding: 12px 16px; cursor: pointer;
+            font-size: 16px; border-radius: 50%;
             z-index: 10;
+            transition: background 0.2s;
         }
-        .prev { left: 15px; }
-        .next { right: 15px; }
+        .carousel-btn:hover { background: rgba(0, 0, 0, 0.8); }
+        .prev { left: 20px; }
+        .next { right: 20px; }
 
         .container {
+            max-width: 1250px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+        }
+
+        /* --- SECCIÓN DE MARCAS --- */
+        .brands-section {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .brands-title {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .brands-grid {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
             max-width: 1200px;
-            margin: 30px auto;
+            margin: 0 auto;
             padding: 0 15px;
+        }
+        .brand-badge {
+            background: #f1f3f5;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.2s;
+        }
+        .brand-badge:hover, .brand-badge.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
         }
 
         /* --- CATEGORIAS --- */
         .section-title {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 8px;
         }
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             margin-bottom: 40px;
         }
         .category-card {
             background: white;
-            padding: 15px 20px;
+            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 3px 8px rgba(0,0,0,0.04);
             cursor: pointer;
@@ -270,15 +302,15 @@
         }
         .category-card h3 {
             margin: 0;
-            font-size: 15px;
+            font-size: 16px;
             color: #333;
         }
         .category-card span {
             font-size: 12px;
             color: #666;
             background: #eee;
-            padding: 3px 8px;
-            border-radius: 10px;
+            padding: 4px 10px;
+            border-radius: 12px;
             transition: background 0.2s, color 0.2s;
         }
         .category-card:hover span {
@@ -291,24 +323,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .reset-filter-btn {
             background: #6c757d;
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 6px 14px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13px;
             transition: background 0.2s;
         }
-        .reset-filter-btn:hover {
-            background: #5a6268;
-        }
+        .reset-filter-btn:hover { background: #5a6268; }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
         .card {
@@ -331,9 +361,9 @@
             display: flex; align-items: center; justify-content: center;
             color: #666; font-size: 12px; font-weight: 500;
         }
-        .card-body { padding: 15px; }
+        .card-body { padding: 18px; }
         .card-brand {
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
             color: #888;
             font-weight: bold;
@@ -341,14 +371,14 @@
             display: block;
         }
         .card-title {
-            font-size: 15px; font-weight: bold;
-            margin: 0 0 6px 0; color: #222;
+            font-size: 16px; font-weight: bold;
+            margin: 0 0 8px 0; color: #222;
         }
         .card-desc {
-            font-size: 12px;
+            font-size: 13px;
             color: #555;
-            margin-bottom: 12px;
-            line-height: 1.3;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
         .whatsapp-btn {
             display: block; width: 100%;
@@ -361,41 +391,23 @@
         }
         .whatsapp-btn:hover { background-color: #1ebe5d; }
 
-        /* --- SECCIONES EXTRA --- */
+        /* --- SECCIONES EXTRA (Sobre Nosotros / Contacto) --- */
         .info-section {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 8px;
             margin-bottom: 30px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
             display: none;
         }
-        .info-section.active {
-            display: block;
-        }
+        .info-section.active { display: block; }
 
         /* --- FOOTER --- */
         footer {
             background: #e9ecef;
             color: #222;
-            padding: 35px 20px 20px 20px;
-            margin-top: 50px;
+            padding: 40px 20px 20px 20px;
             border-top: 1px solid #d5d8dc;
-        }
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        .footer-socials a img {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
-            transition: transform 0.2s;
-        }
-        .footer-socials a img:hover {
-            transform: scale(1.1);
         }
         .footer-content {
             max-width: 1200px;
@@ -406,129 +418,54 @@
             text-align: left;
         }
         .footer-col h4 {
-            font-size: 18px;
+            font-size: 16px;
             text-transform: uppercase;
             color: #111;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: default;
         }
         .footer-col ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
+        .footer-col ul li { margin-bottom: 10px; }
         .footer-col ul li a, .footer-col p {
             color: #444;
             text-decoration: none;
-            font-size: 15px;
-            transition: color 0.2s;
+            font-size: 14px;
         }
-        .footer-col ul li a:hover {
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-        .footer-col p {
-            margin: 8px 0;
-            font-size: 15px;
-        }
+        .footer-col ul li a:hover { color: var(--primary-color); }
         .footer-bottom {
             max-width: 1200px;
-            margin: 35px auto 0 auto;
+            margin: 30px auto 0 auto;
             padding-top: 20px;
             border-top: 1px solid #d0d5dd;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
             color: #555;
             font-size: 13px;
         }
-        .footer-badges {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            margin-bottom: 5px;
-        }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE BÁSICO --- */
         @media (max-width: 768px) {
-            header {
-                padding: 10px 12px;
-                gap: 8px;
-            }
-            .efesa-corner-container img {
-                height: 35px;
-            }
-            .header-center {
-                padding: 2px 10px;
-            }
-            .header-center img {
-                height: 50px;
-                margin-right: -8px;
-            }
-            .header-center h1 {
-                font-size: 1.1rem;
-                letter-spacing: 0.2px;
-            }
-            .search-box {
-                padding: 5px 10px;
-            }
-            .search-box input {
-                width: 70px;
-            }
-            .dropdown-menu {
-                top: 70px;
-                right: 12px;
-            }
+            .top-bar { display: none; }
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            .search-container { width: 100%; }
+            nav.main-nav { display: none; } /* Ocultar menú de PC en celular si se desea */
             .categories-grid { grid-template-columns: 1fr; }
-            .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .footer-col {
-                border-bottom: 1px solid #d5d8dc;
-            }
-            .footer-col h4 {
-                padding: 15px 0;
-                margin: 0;
-                cursor: pointer;
-                font-size: 16px;
-            }
-            .footer-col h4::after {
-                content: '⌄';
-                font-size: 20px;
-                transition: transform 0.3s;
-            }
-            .footer-col.active h4::after {
-                transform: rotate(180deg);
-            }
-            .footer-col ul, .footer-col .footer-info-content {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease-out;
-                padding-left: 0;
-            }
-            .footer-col.active ul, .footer-col.active .footer-info-content {
-                max-height: 200px;
-                padding-bottom: 15px;
-            }
+            .carousel-container { height: 220px; }
+            .footer-content { grid-template-columns: 1fr; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CABECERA -->
+    <!-- BARRA SUPERIOR DE CONTACTO -->
+    <div class="top-bar">
+        <a href="https://wa.me/5491158083666" target="_blank">💬 Contáctenos: 11 5808-3666</a>
+    </div>
+
+    <!-- CABECERA PRINCIPAL -->
     <header id="top-header">
         <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
             <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
@@ -539,45 +476,76 @@
             <h1>EXCELENCIA ANIMAL</h1>
         </div>
         
-        <div class="header-right">
-            <div class="search-box">
-                <span style="font-size: 14px; color: #888;">🔍</span>
-                <input type="text" id="search-input" placeholder="Buscar productos..." onkeyup="searchProducts()">
-            </div>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        </div>
-
-        <!-- MENÚ DESPLEGABLE -->
-        <div class="dropdown-menu" id="dropdownMenu">
-            <a href="#" onclick="goHome(); closeMenu();">Inicio / Catálogo</a>
-            <a href="#" onclick="showSection('about'); closeMenu();">Sobre Nosotros</a>
-            <a href="#" onclick="showSection('contact'); closeMenu();">Contacto</a>
+        <div class="search-container">
+            <span style="color: #888;">🔍</span>
+            <input type="text" id="search-input" placeholder="Búsqueda en catálogo..." onkeyup="searchProducts()">
         </div>
     </header>
 
-    <!-- SECCIÓN DE MARCAS -->
-    <div class="brands-section" id="brands-container">
-        <div class="brands-title">Nuestras Marcas</div>
-        <div class="brands-grid">
-            <div class="brand-badge" onclick="filterByBrand('Gato Real')">
-                <img src="logo-gatoreal.png" alt="" onerror="this.style.display='none'"> Gato Real
-            </div>
-            <div class="brand-badge" onclick="filterByBrand('Cat Way')">
-                <img src="logo-catway.png" alt="" onerror="this.style.display='none'"> Cat Way
-            </div>
-            <div class="brand-badge" onclick="filterByBrand('Pets Class')">
-                <img src="logo-petsclass.png" alt="" onerror="this.style.display='none'"> Pets Class
-            </div>
-            <div class="brand-badge" onclick="filterByBrand('AR Mascotas')">
-                <img src="logo-armascotas.png" alt="" onerror="this.style.display='none'"> AR Mascotas
-            </div>
-            <div class="brand-badge" onclick="filterByBrand('KonKatt')">
-                <img src="logo-konkatt.png" alt="" onerror="this.style.display='none'"> KonKatt
-            </div>
-        </div>
-    </div>
+    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL (ESTILO CANROCK) -->
+    <nav class="main-nav">
+        <ul class="nav-list">
+            <!-- ALIMENTOS CON MENÚ DESPLEGABLE -->
+            <li class="nav-item">
+                <a href="#" class="nav-link">ALIMENTOS ▾</a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-column">
+                        <h4>Perros</h4>
+                        <ul>
+                            <li><a href="#" onclick="filterByCategory('Alimentos Húmedos Perro')">Alimentos Húmedos</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Gatos</h4>
+                        <ul>
+                            <li><a href="#" onclick="filterByCategory('Alimentos Húmedos Gato')">Alimentos Húmedos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
 
-    <!-- CARRUSEL BANNER -->
+            <!-- SANITARIOS CON MENÚ DESPLEGABLE -->
+            <li class="nav-item">
+                <a href="#" class="nav-link">SANITARIOS ▾</a>
+                <div class="dropdown-panel">
+                    <div class="dropdown-column">
+                        <h4>Piedras y Sílica</h4>
+                        <ul>
+                            <li><a href="#" onclick="filterByCategory('Piedras Comunes')">Piedras Comunes</a></li>
+                            <li><a href="#" onclick="filterByCategory('Piedras Premium')">Piedras Premium</a></li>
+                            <li><a href="#" onclick="filterByCategory('Piedras premium Perfumadas')">Piedras Perfumadas</a></li>
+                            <li><a href="#" onclick="filterByCategory('Silicas gel')">Sílicas gel</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown-column">
+                        <h4>Ecológicos y Aglomerantes</h4>
+                        <ul>
+                            <li><a href="#" onclick="filterByCategory('Pellets de pino')">Pellets de pino</a></li>
+                            <li><a href="#" onclick="filterByCategory('Bentonitas aglomerantes')">Bentonitas aglomerantes</a></li>
+                            <li><a href="#" onclick="filterByCategory('Productos Premium')">Productos Premium</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <!-- ACCESORIOS -->
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="filterByCategory('Accesorios'); return false;">ACCESORIOS</a>
+            </li>
+
+            <!-- ZONAS DE ENVÍOS -->
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="showSection('contact'); return false;">ZONAS DE ENVÍOS</a>
+            </li>
+
+            <!-- SOBRE NOSOTROS -->
+            <li class="nav-item">
+                <a href="#" class="nav-link" onclick="showSection('about'); return false;">SOBRE NOSOTROS</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- CARRUSEL BANNER FULL WIDTH -->
     <div class="carousel-container" id="main-banner">
         <div class="carousel-slide active">
             <video autoplay muted loop playsinline>
@@ -596,23 +564,35 @@
         <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
     </div>
 
+    <!-- SECCIÓN DE MARCAS -->
+    <div class="brands-section" id="brands-container">
+        <div class="brands-title">Nuestras Marcas</div>
+        <div class="brands-grid">
+            <div class="brand-badge" onclick="filterByBrand('Gato Real')">Gato Real</div>
+            <div class="brand-badge" onclick="filterByBrand('Cat Way')">Cat Way</div>
+            <div class="brand-badge" onclick="filterByBrand('Pets Class')">Pets Class</div>
+            <div class="brand-badge" onclick="filterByBrand('AR Mascotas')">AR Mascotas</div>
+            <div class="brand-badge" onclick="filterByBrand('KonKatt')">KonKatt</div>
+        </div>
+    </div>
+
     <div class="container" id="catalog-anchor">
         
-        <!-- SECCIÓN SOBRE NOSOTROS -->
+        <!-- SOBRE NOSOTROS -->
         <div class="info-section" id="about-section">
             <h2 class="section-title">Sobre Nosotros</h2>
-            <p>Información institucional de Excelencia Animal.</p>
+            <p>Somos una distribuidora líder enfocada en brindar la mejor calidad y variedad en productos para mascotas. Excelencia Animal.</p>
         </div>
 
-        <!-- SECCIÓN CONTACTO -->
+        <!-- CONTACTO / ENVÍOS -->
         <div class="info-section" id="contact-section">
-            <h2 class="section-title">Contacto</h2>
-            <p>📲 <strong>WhatsApp:</strong> <a href="https://wa.me/5491158083666" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">11 5808-3666</a></p>
+            <h2 class="section-title">Zonas de Envíos y Contacto</h2>
+            <p>📲 <strong>WhatsApp de ventas y consultas:</strong> <a href="https://wa.me/5491158083666" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">11 5808-3666</a></p>
         </div>
 
         <!-- CATÁLOGO -->
         <div id="catalog-view">
-            <h2 class="section-title" style="margin-top: 20px;">Categorías de Productos</h2>
+            <h2 class="section-title" style="margin-top: 10px;">Categorías Principales</h2>
             <div class="categories-grid">
                 <div class="category-card" onclick="filterByCategory('Piedras Comunes')">
                     <h3>Piedras Comunes</h3><span>Ver más</span>
@@ -621,7 +601,7 @@
                     <h3>Piedras Premium</h3><span>Ver más</span>
                 </div>
                 <div class="category-card" onclick="filterByCategory('Piedras premium Perfumadas')">
-                    <h3>Piedras premium Perfumadas</h3><span>Ver más</span>
+                    <h3>Piedras Perfumadas</h3><span>Ver más</span>
                 </div>
                 <div class="category-card" onclick="filterByCategory('Pellets de pino')">
                     <h3>Pellets de pino</h3><span>Ver más</span>
@@ -630,10 +610,7 @@
                     <h3>Bentonitas aglomerantes</h3><span>Ver más</span>
                 </div>
                 <div class="category-card" onclick="filterByCategory('Silicas gel')">
-                    <h3>Silicas gel</h3><span>Ver más</span>
-                </div>
-                <div class="category-card" onclick="filterByCategory('Productos Premium')">
-                    <h3>Productos Premium</h3><span>Ver más</span>
+                    <h3>Sílicas gel</h3><span>Ver más</span>
                 </div>
                 <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Gato')">
                     <h3>Alimentos Húmedos Gato</h3><span>Ver más</span>
@@ -658,94 +635,61 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="footer-socials">
-            <a href="#" target="_blank" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-            <a href="#" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
-        </div>
-
         <div class="footer-content">
-            <div class="footer-col" id="col-contacto">
-                <h4 onclick="toggleFooterCol('col-contacto')">Contacto</h4>
-                <div class="footer-info-content">
-                    <p>💬 WhatsApp: 11 5808-3666</p>
-                    <p>📷 Instagram: @excelenciaanimal</p>
-                </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <p>💬 WhatsApp: 11 5808-3666</p>
+                <p>📧 Email: contacto@excelenciaanimal.com</p>
             </div>
-            <div class="footer-col" id="col-productos">
-                <h4 onclick="toggleFooterCol('col-productos')">Productos</h4>
+            <div class="footer-col">
+                <h4>Secciones</h4>
                 <ul>
-                    <li><a href="#" onclick="filterByGroup('Gato'); return false;">Gato</a></li>
-                    <li><a href="#" onclick="filterByGroup('Perro'); return false;">Perro</a></li>
-                    <li><a href="#" onclick="filterByGroup('Accesorios'); return false;">Accesorios</a></li>
+                    <li><a href="#" onclick="goHome(); return false;">Inicio / Catálogo</a></li>
+                    <li><a href="#" onclick="showSection('about'); return false;">Sobre Nosotros</a></li>
+                    <li><a href="#" onclick="showSection('contact'); return false;">Zonas de Envíos</a></li>
                 </ul>
             </div>
-            <div class="footer-col" id="col-empresa">
-                <h4 onclick="toggleFooterCol('col-empresa')">Nuestra Empresa</h4>
-                <ul>
-                    <li><a href="#" onclick="showSection('about'); return false;">Sobre nosotros</a></li>
-                    <li><a href="#" onclick="showSection('contact'); return false;">Contactate con nosotros</a></li>
-                </ul>
+            <div class="footer-col">
+                <h4>Distribuidora</h4>
+                <p>Excelencia Animal - Todos los derechos reservados &copy; 2026</p>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <div class="footer-badges">
-                <span style="background: #28a745; color: white; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 12px;">Compra 100% Segura</span>
-            </div>
-            <p>&copy; 2026 Excelencia Animal. Todos los derechos reservados.</p>
+            <p>Compra 100% Segura y Mayorista</p>
         </div>
     </footer>
 
     <script>
         const products = [
-            // Piedras Comunes
             { id: 1, name: "Piedras Comunes - 4,6 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Piedras sanitarias tradicionales para el cuidado diario de tu felino." },
             { id: 2, name: "Piedras Comunes - 9,2 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Excelente absorción y rendimiento en presentación mediana." },
             { id: 3, name: "Piedras Comunes - 23 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Formato ahorro para mayor duración en el hogar." },
             { id: 4, name: "Piedras Comunes - 30 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Presentación institucional y gran rendimiento." },
-
-            // Piedras Premium
             { id: 5, name: "Piedras Premium - 4,6 LT", brand: "Gato Real", category: "Piedras Premium", group: "Gato", desc: "Mayor control de humedad y calidad superior." },
             { id: 6, name: "Piedras Premium - 9,2 LT", brand: "Gato Real", category: "Piedras Premium", group: "Gato", desc: "Piedras seleccionadas de alta gama para gatos exigentes." },
-
-            // Piedras Perfumadas
             { id: 7, name: "Piedras Premium Perfumadas - 9,2 LT Lavanda", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Agradable aroma a lavanda y gran poder secante." },
             { id: 8, name: "Piedras Premium Perfumadas - 9,2 LT Manzana", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Fórmula con aroma a manzana para neutralizar olores." },
             { id: 9, name: "Piedras Premium Perfumadas - 9,2 LT Citrus", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Fragancia cítrica refrescante de larga duración." },
-            
-            // Pellets de pino
             { id: 10, name: "Pellets de pino - 4 kg", brand: "Cat Way", category: "Pellets de pino", group: "Gato", desc: "Alternativa ecológica 100% natural de madera." },
             { id: 11, name: "Pellets de pino - 15 kg", brand: "Cat Way", category: "Pellets de pino", group: "Gato", desc: "Bolsa grande ideal para uso prolongado." },
-        
-            // Bentonitas aglomerantes
             { id: 12, name: "Bentonitas aglomerantes - 5 kg (Premium)", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Forma bloques sólidos fáciles de retirar." },
             { id: 13, name: "Bentonitas aglomerantes - 12 kg (Premium)", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Rendimiento superior en presentación de 12 kg." },
             { id: 14, name: "Bentonitas aglomerantes - 20 kg (Económica)", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Mayor cantidad al mejor precio." },
             { id: 15, name: "Bentonitas aglomerantes - 12 kg Perfumada Lavanda Premium", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Aglomerante con rico aroma a lavanda." },
             { id: 16, name: "Bentonitas aglomerantes - 5 kg Esfera Super Premium", brand: "Pets Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Gránulos esféricos de máxima eficacia." },
-        
-            // Silicas gel
             { id: 17, name: "Silicas gel - 1,8 kg Neutra", brand: "Gato Real", category: "Silicas gel", group: "Gato", desc: "Cristales de sílice sin perfume con absorción total." },
             { id: 18, name: "Silicas gel - 1,8 kg Lavanda", brand: "Gato Real", category: "Silicas gel", group: "Gato", desc: "Cristales con suave toque de lavanda." },
-
-            // Productos Premium
             { id: 19, name: "Productos Premium - Carbon Activado x 9,2 LT", brand: "Pets Class", category: "Productos Premium", group: "Perro", desc: "Máxima neutralización de olores con carbón activo." },
             { id: 20, name: "Productos Premium - Duo 9,2 LT", brand: "Pets Class", category: "Productos Premium", group: "Perro", desc: "Fórmula dual de gran efectividad." },
             { id: 21, name: "Productos Premium - Duo 15 kg", brand: "Pets Class", category: "Productos Premium", group: "Perro", desc: "Presentación de gran formato para máxima duración." },
-
-            // Alimentos Húmedos Gato
             { id: 22, name: "Alimentos Húmedos Gato - Carne 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Delicioso sabor a carne en cómoda porción." },
             { id: 23, name: "Alimentos Húmedos Gatito - Pollo y leche 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Receta especial con pollo y leche." },
             { id: 24, name: "Alimentos Húmedos Gato - Salmón Rosado 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Exquisito alimento húmedo con sabor a salmón." },
             { id: 25, name: "Alimentos Húmedos Gato - Frutos del mar 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Variedad marina que le encantará a tu gato." },
             { id: 26, name: "Alimentos Húmedos Gato - Atún y Sardina 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Combinación ideal de pescado fresco." },
-
-            // Alimentos Húmedos Perro
             { id: 27, name: "Alimentos Húmedos Perro - Carne 100 gr", brand: "Pets Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Alimento húmedo nutritivo sabor carne para perros." },
             { id: 28, name: "Alimentos Húmedos Perro - Pollo 100 gr", brand: "Pets Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Receta jugosa de pollo para consentir a tu can." },
             { id: 29, name: "Alimentos Húmedos Cachorro - Pollo y leche 85 gr", brand: "Pets Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Especialmente formulado para la etapa de cachorro." },
-
-            // Accesorios
             { id: 30, name: "Accesorios - Cuna para gatos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Cuna suave y cómoda para el descanso de tu felino." },
             { id: 31, name: "Accesorios - Rascadores redondos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Ideal para el cuidado de sus uñas y entretenimiento." },
             { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar." },
@@ -801,15 +745,6 @@
             scrollToCatalog();
         }
 
-        function filterByGroup(groupName) {
-            showCatalog();
-            const filtered = products.filter(p => p.group === groupName);
-            displayProducts(filtered);
-            document.getElementById('results-title').innerText = `Productos para: ${groupName}`;
-            document.getElementById('reset-btn').style.display = 'block';
-            scrollToCatalog();
-        }
-
         function searchProducts() {
             showCatalog();
             const query = document.getElementById('search-input').value.toLowerCase();
@@ -824,14 +759,6 @@
             displayProducts(products);
             document.getElementById('results-title').innerText = 'Catálogo General';
             document.getElementById('reset-btn').style.display = 'none';
-        }
-
-        function toggleMenu() {
-            document.getElementById('dropdownMenu').classList.toggle('active');
-        }
-
-        function closeMenu() {
-            document.getElementById('dropdownMenu').classList.remove('active');
         }
 
         function showSection(section) {
@@ -861,13 +788,6 @@
             resetFilters();
             showCatalog();
             scrollToCatalog();
-        }
-
-        function toggleFooterCol(colId) {
-            if (window.innerWidth <= 768) {
-                const col = document.getElementById(colId);
-                col.classList.toggle('active');
-            }
         }
 
         let currentSlide = 0;
