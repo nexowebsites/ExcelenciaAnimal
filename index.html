@@ -21,7 +21,7 @@
         /* --- CABECERA PROFESIONAL --- */
         header {
             background-color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             display: flex;
             justify-content: space-between;
@@ -31,35 +31,37 @@
             z-index: 1000;
         }
         .header-left img {
-            height: 40px;
+            height: 38px;
             object-fit: contain;
         }
         .header-center {
             cursor: pointer;
+            display: flex;
+            align-items: center;
         }
         .header-center img {
-            height: 45px;
+            height: 50px; /* Logo más grande y vistoso */
             object-fit: contain;
         }
         .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
         .search-box {
             display: flex;
             align-items: center;
             background: #f1f3f5;
             border-radius: 20px;
-            padding: 5px 12px;
+            padding: 6px 12px;
             border: 1px solid #ddd;
         }
         .search-box input {
             border: none;
             background: transparent;
             outline: none;
-            font-size: 14px;
-            width: 130px;
+            font-size: 13px;
+            width: 110px;
         }
         .menu-toggle {
             font-size: 24px;
@@ -67,17 +69,18 @@
             background: none;
             border: none;
             color: var(--primary-color);
+            padding: 0;
         }
 
         /* --- MENÚ DESPLEGABLE (HAMBURGUESA) --- */
         .dropdown-menu {
             position: absolute;
-            top: 65px;
+            top: 70px;
             right: 20px;
             background: white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             border-radius: 8px;
-            width: 200px;
+            width: 210px;
             display: none;
             flex-direction: column;
             z-index: 1100;
@@ -86,7 +89,7 @@
             display: flex;
         }
         .dropdown-menu a {
-            padding: 12px 20px;
+            padding: 14px 20px;
             text-decoration: none;
             color: #333;
             font-size: 14px;
@@ -98,13 +101,65 @@
             color: var(--primary-color);
         }
 
-        /* --- CARRUSEL BANNER (MÁS COMPACTO) --- */
+        /* --- SECCIÓN DE MARCAS (ARRIBA, PARA DAR AIRE) --- */
+        .brands-section {
+            background: white;
+            padding: 18px 0;
+            border-bottom: 1px solid #eaeaea;
+            text-align: center;
+        }
+        .brands-title {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        .brands-grid {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .brand-badge {
+            background: #f1f3f5;
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.2s;
+        }
+        .brand-badge img {
+            height: 22px;
+            width: 22px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+        .brand-badge:hover, .brand-badge.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* --- CARRUSEL BANNER (MÁS ABAJO Y COMPACTO) --- */
         .carousel-container {
             position: relative;
-            max-width: 100%;
-            height: 250px; /* Achicado para resaltar logos */
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 25px auto 0 auto;
+            height: 280px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             background: #000;
         }
         .carousel-slide {
@@ -133,54 +188,6 @@
         }
         .prev { left: 15px; }
         .next { right: 15px; }
-
-        /* --- SECCIÓN DE MARCAS (CON LOGOS Y TEXTO) --- */
-        .brands-section {
-            background: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            text-align: center;
-        }
-        .brands-title {
-            font-size: 13px;
-            color: #777;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .brands-grid {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        .brand-badge {
-            background: #f1f3f5;
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 13px;
-            color: var(--primary-color);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #e0e0e0;
-            transition: all 0.2s;
-        }
-        .brand-badge img {
-            height: 20px;
-            width: 20px;
-            object-fit: contain;
-        }
-        .brand-badge:hover, .brand-badge.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
 
         .container {
             max-width: 1200px;
@@ -290,7 +297,7 @@
         }
         .whatsapp-btn:hover { background-color: #1ebe5d; }
 
-        /* --- SECCIÓN SOBRE NOSOTROS Y CONTACTO (Ocultas por defecto, se muestran con el menú) --- */
+        /* --- SECCIONES EXTRA (Sobre Nosotros / Contacto) --- */
         .info-section {
             background: white;
             padding: 30px;
@@ -310,13 +317,13 @@
             border-top: 1px solid #eaeaea;
         }
 
-        /* Ajustes específicos para celulares */
+        /* --- RESPONSIVE PARA CELULARES --- */
         @media (max-width: 768px) {
-            .search-box input { width: 90px; }
-            .header-left img { height: 32px; }
-            .header-center img { height: 35px; }
+            .search-box input { width: 75px; }
+            .header-left img { height: 30px; }
+            .header-center img { height: 38px; }
             .categories-grid { grid-template-columns: 1fr; }
-            .carousel-container { height: 180px; }
+            .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
         }
     </style>
 </head>
@@ -328,11 +335,11 @@
             <img src="efesa-logo.png" alt="Efesa" title="Efesa">
         </div>
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
-            <img src="excelencia-logo.png" alt="Excelencia Animal">
+            <img src="excelencia-logo.png" alt="Excelencia Animal Distribuciones">
         </div>
         <div class="header-right">
             <div class="search-box">
-                <span style="font-size: 14px; color: #888;">🔍</span>
+                <span style="font-size: 13px; color: #888;">🔍</span>
                 <input type="text" id="search-input" placeholder="Buscar..." onkeyup="searchProducts()">
             </div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -346,28 +353,9 @@
         </div>
     </header>
 
-    <!-- CARRUSEL BANNER MÁS COMPACTO -->
-    <div class="carousel-container" id="main-banner">
-        <div class="carousel-slide active">
-            <video autoplay muted loop playsinline>
-                <source src="TU_VIDEO_1.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="carousel-slide">
-            <img src="TU_FOTO.jpg" alt="Banner">
-        </div>
-        <div class="carousel-slide">
-            <video autoplay muted loop playsinline>
-                <source src="TU_VIDEO_2.mp4" type="video/mp4">
-            </video>
-        </div>
-        <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
-    </div>
-
-    <!-- SECCIÓN DE MARCAS CON LOGOS Y TEXTO -->
+    <!-- SECCIÓN DE MARCAS (CON LOGOS Y TEXTO) -->
     <div class="brands-section" id="brands-container">
-        <div class="brands-title">Filtrar por Marca</div>
+        <div class="brands-title">Nuestras Marcas</div>
         <div class="brands-grid">
             <div class="brand-badge" onclick="filterByBrand('Gato Real')">
                 <img src="logo-gatoreal.png" alt="" onerror="this.style.display='none'"> Gato Real
@@ -387,24 +375,43 @@
         </div>
     </div>
 
+    <!-- CARRUSEL BANNER (UBICADO MÁS ABAJO, CON VIDEOS Y FOTOS) -->
+    <div class="carousel-container" id="main-banner">
+        <div class="carousel-slide active">
+            <video autoplay muted loop playsinline>
+                <source src="video-catway.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-slide">
+            <video autoplay muted loop playsinline>
+                <source src="video-konkatt.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="carousel-slide">
+            <img src="banner-foto.jpg" alt="Banner Promocional">
+        </div>
+        <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+
     <div class="container">
         
-        <!-- SECCIÓN SOBRE NOSOTROS (Oculta hasta hacer clic en el menú) -->
+        <!-- SECCIÓN SOBRE NOSOTROS -->
         <div class="info-section" id="about-section">
             <h2 class="section-title">Sobre Nosotros</h2>
-            <p>Acá irá la información institucional de la empresa que me pases próximamente para contar la historia y trayectoria de Excelencia Animal y Efesa en la distribución.</p>
+            <p>Aquí irá la información institucional de Excelencia Animal y Efesa cuando me pases los detalles para completar la historia de la distribuidora.</p>
         </div>
 
-        <!-- SECCIÓN CONTACTO (Oculta hasta hacer clic en el menú) -->
+        <!-- SECCIÓN CONTACTO -->
         <div class="info-section" id="contact-section">
             <h2 class="section-title">Contacto</h2>
             <p>📲 <strong>WhatsApp:</strong> <a href="https://wa.me/5491158083666" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: bold;">11 5808-3666</a></p>
             <p>📷 <strong>Instagram:</strong> <a href="#" target="_blank" style="color: #c13584; text-decoration: none; font-weight: bold;">@excelenciaanimal</a></p>
         </div>
 
-        <!-- SECCIÓN DE 9 CATEGORÍAS (2 por fila en orden exacto) -->
+        <!-- SECCIÓN DE 9 CATEGORÍAS Y CATÁLOGO -->
         <div id="catalog-view">
-            <h2 class="section-title">Categorías de Productos</h2>
+            <h2 class="section-title" style="margin-top: 20px;">Categorías de Productos</h2>
             <div class="categories-grid">
                 <div class="category-card" onclick="filterByCategory('Piedras Comunes')">
                     <h3>Piedras Comunes</h3><span>Ver más</span>
