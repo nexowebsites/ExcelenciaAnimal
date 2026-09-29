@@ -9,7 +9,7 @@
             --primary-color: #1b4d3e;
             --accent-color: #25d366;
             --bg-color: #f8f9fa;
-            --header-dark-bg: #1b2a40; /* Fondo exacto de la cabecera */
+            --header-dark-bg: #1b2a40;
             --excelencia-orange: #d96800;
         }
         html {
@@ -36,25 +36,26 @@
             z-index: 1000;
         }
         
-        /* Logo e H1 de Excelencia Animal - AGRANDADOS */
+        /* Logo e H1 de Excelencia Animal */
         .header-center {
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0px; /* Reducido a 0 para eliminar separación por flex */
             margin: 0 auto;
             background-color: var(--header-dark-bg);
             padding: 5px 15px;
             border-radius: 8px;
         }
         .header-center img {
-            height: 110px; /* Aumentado de 90px a 110px para que sea más grande */
+            height: 110px;
             object-fit: contain;
             filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+            margin-right: -25px; /* MODIFICADO: Esto contrarresta el espacio transparente que trae la imagen a la derecha */
         }
         .header-center h1 {
             color: var(--excelencia-orange);
-            font-size: 2.6rem; /* Aumentado de 2.2rem a 2.6rem para mayor impacto */
+            font-size: 2.6rem;
             margin: 0;
             font-weight: 800;
             letter-spacing: 1px;
@@ -452,7 +453,7 @@
         @media (max-width: 768px) {
             .search-box input { width: 70px; }
             .header-center h1 { font-size: 1.1rem; letter-spacing: 0.5px; white-space: nowrap; }
-            .header-center img { height: 55px; }
+            .header-center img { height: 55px; margin-right: -10px; }
             .efesa-corner-container { top: 12px; left: 15px; }
             .efesa-corner-container img { height: 28px; }
             .categories-grid { grid-template-columns: 1fr; }
