@@ -22,7 +22,7 @@
             color: #333;
         }
 
-        /* --- CABECERA PRINCIPAL MODIFICADA --- */
+        /* --- CABECERA PRINCIPAL --- */
         header {
             background-color: var(--header-dark-bg);
             padding: 15px 25px;
@@ -35,13 +35,17 @@
             z-index: 1000;
         }
         
-        /* Contenedor central: Texto grande + Logo al costado al tamaño de las letras */
+        /* Excelencia Animal: Logo a la izquierda del texto, manda al inicio al tocarlo */
         .header-center {
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             margin: 0 auto;
+        }
+        .header-center img {
+            height: 32px; /* Ajustado exactamente al tamaño de las letras */
+            object-fit: contain;
         }
         .header-center h1 {
             color: #ffffff;
@@ -49,10 +53,6 @@
             margin: 0;
             font-weight: 800;
             letter-spacing: 0.5px;
-        }
-        .header-center img {
-            height: 32px; /* Ajustado exactamente al tamaño de las letras */
-            object-fit: contain;
         }
 
         .header-right {
@@ -116,13 +116,27 @@
             color: var(--primary-color);
         }
 
-        /* --- SECCIÓN DE MARCAS --- */
+        /* --- SECCIÓN DE MARCAS Y LOGO EFESA EN LA ZONA BLANCA --- */
         .brands-section {
             background: white;
             padding: 18px 0;
             border-bottom: 1px solid #eaeaea;
-            text-align: center;
+            position: relative;
         }
+        
+        /* Contenedor para ubicar a Efesa en la zona blanca que marcaste */
+        .efesa-corner-container {
+            position: absolute;
+            top: 15px;
+            left: 25px;
+            display: flex;
+            align-items: center;
+        }
+        .efesa-corner-container img {
+            height: 26px; /* Tamaño armónico para la zona blanca */
+            object-fit: contain;
+        }
+
         .brands-title {
             font-size: 12px;
             color: #777;
@@ -130,6 +144,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: bold;
+            text-align: center;
         }
         .brands-grid {
             display: flex;
@@ -432,6 +447,8 @@
             .search-box input { width: 70px; }
             .header-center h1 { font-size: 1.2rem; }
             .header-center img { height: 24px; }
+            .efesa-corner-container { top: 12px; left: 15px; }
+            .efesa-corner-container img { height: 20px; }
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 210px; margin: 15px 10px 0 10px; border-radius: 8px; }
             
@@ -473,10 +490,10 @@
 
     <!-- CABECERA -->
     <header id="top-header">
-        <!-- Texto grande de Excelencia Animal y logo al costado al tamaño de las letras -->
+        <!-- Logo a la izquierda del texto y al tocarlo manda al inicio -->
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
-            <h1>EXCELENCIA ANIMAL</h1>
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp%20Image%202026-09-29%20at%2012.16.51%20PM.jpeg?raw=true" alt="Logo">
+            <h1>EXCELENCIA ANIMAL</h1>
         </div>
         
         <div class="header-right">
@@ -495,8 +512,13 @@
         </div>
     </header>
 
-    <!-- SECCIÓN DE MARCAS -->
+    <!-- SECCIÓN DE MARCAS CON EFESA EN LA ZONA BLANCA -->
     <div class="brands-section" id="brands-container">
+        <!-- Logo de Efesa ubicado en la zona blanca que marcaste -->
+        <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
+            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
+        </div>
+
         <div class="brands-title">Nuestras Marcas</div>
         <div class="brands-grid">
             <div class="brand-badge" onclick="filterByBrand('Gato Real')">
@@ -742,7 +764,7 @@
         function showSection(section) {
             document.getElementById('catalog-view').style.display = 'none';
             document.getElementById('main-banner').style.display = 'none';
-            document.getElementById('brands-container').style.display = 'none';
+            document.getElementById('brands-container').style.display = 'block'; // Mantiene visible la zona de marcas/Efesa
             document.getElementById('about-section').classList.remove('active');
             document.getElementById('contact-section').classList.remove('active');
 
