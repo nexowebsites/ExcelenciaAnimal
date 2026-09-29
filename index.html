@@ -28,7 +28,7 @@
             color: var(--text-main);
         }
 
-        /* --- BARRA SUPERIOR DE CONTACTO --- */
+        /* --- BARRA SUPERIOR DE CONTACTO (PC) --- */
         .top-bar {
             background: linear-gradient(135deg, #102C25, #16423C);
             color: #fff;
@@ -80,7 +80,6 @@
             height: 75px;
             object-fit: contain;
         }
-        /* NO EDITADA LA DE EXCELENCIA ANIMAL (mantiene tu estilo exacto en PC) */
         .header-center h1 {
             color: var(--excelencia-orange);
             font-size: 2.3rem;
@@ -207,7 +206,7 @@
             transform: translateX(4px);
         }
 
-        /* --- ELEMENTOS EXCLUSIVOS PARA MÓVIL (Ocultos en PC) --- */
+        /* --- ELEMENTOS EXCLUSIVOS PARA MÓVIL --- */
         .mobile-header, .mobile-drawer, .hamburger-btn {
             display: none;
         }
@@ -537,10 +536,10 @@
         /* --- RESPONSIVE / DISEÑO EXCLUSIVO PARA MÓVIL --- */
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            header { display: none; } /* Ocultamos la cabecera de PC en celular */
-            nav.main-nav { display: none; } /* Ocultamos menú horizontal de PC */
+            header { display: none; } /* Ocultamos cabecera PC */
+            nav.main-nav { display: none; } /* Ocultamos menú horizontal PC */
 
-            /* Cabecera Móvil Limpia (Logo izq, Hamburguesa der) */
+            /* Cabecera Móvil Limpia */
             .mobile-header {
                 display: flex;
                 justify-content: space-between;
@@ -576,13 +575,13 @@
                 transition: var(--transition-smooth);
             }
 
-            /* Panel Desplegable Lateral Móvil (Drawer desde la derecha) */
+            /* Panel Desplegable Lateral Móvil (Drawer) */
             .mobile-drawer {
                 display: block;
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 280px;
+                width: 310px;
                 height: 100%;
                 background: #FFFFFF;
                 box-shadow: -5px 0 25px rgba(0,0,0,0.15);
@@ -595,49 +594,104 @@
             .mobile-drawer.open {
                 right: 0;
             }
+            .drawer-top-area {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 2px solid #E2E8F0;
+                padding-bottom: 15px;
+                margin-bottom: 20px;
+            }
+            /* ESPACIO PARA EL LOGO DE EXCELENCIA ANIMAL EN CELULAR */
+            .drawer-excelencia-logo {
+                max-width: 140px;
+                height: auto;
+                object-fit: contain;
+            }
             .drawer-close {
-                font-size: 24px;
+                font-size: 28px;
                 background: none;
                 border: none;
                 color: #64748B;
                 cursor: pointer;
-                float: right;
-                margin-bottom: 20px;
-            }
-            .drawer-menu-section {
-                margin-bottom: 20px;
-            }
-            .drawer-menu-section h4 {
-                font-size: 14px;
-                font-family: 'Outfit', sans-serif;
-                color: var(--primary-color);
-                text-transform: uppercase;
-                border-bottom: 2px solid #E2E8F0;
-                padding-bottom: 6px;
-                margin: 0 0 10px 0;
-            }
-            .drawer-menu-section ul {
-                list-style: none;
                 padding: 0;
-                margin: 0;
-            }
-            .drawer-menu-section ul li {
-                margin-bottom: 10px;
-            }
-            .drawer-menu-section ul li a {
-                color: #475569;
-                text-decoration: none;
-                font-size: 14px;
-                font-weight: 500;
-                display: block;
-                padding: 6px 0;
-            }
-            .drawer-menu-section ul li a:hover {
-                color: var(--excelencia-orange);
-                padding-left: 5px;
+                line-height: 1;
             }
 
-            /* Overlay oscuro de fondo cuando se abre el menú */
+            /* Elementos del menú lateral con fuentes más grandes y cómodas */
+            .drawer-accordion-item {
+                margin-bottom: 12px;
+                border-bottom: 1px solid #F1F5F9;
+                padding-bottom: 10px;
+            }
+            .drawer-accordion-btn {
+                width: 100%;
+                background: none;
+                border: none;
+                text-align: left;
+                font-size: 17px;
+                font-family: 'Outfit', sans-serif;
+                font-weight: 700;
+                color: var(--primary-color);
+                padding: 12px 10px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 8px;
+                transition: background 0.2s;
+            }
+            .drawer-accordion-btn:hover {
+                background: #F4F7F6;
+            }
+            .drawer-submenu {
+                display: none;
+                padding-left: 15px;
+                margin-top: 8px;
+                list-style: none;
+                margin-bottom: 0;
+            }
+            .drawer-submenu.open {
+                display: block;
+            }
+            .drawer-submenu li {
+                margin-bottom: 12px;
+            }
+            .drawer-submenu li a {
+                color: #475569;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 600;
+                display: block;
+                padding: 6px 10px;
+                border-radius: 6px;
+                transition: all 0.2s;
+            }
+            .drawer-submenu li a:hover {
+                color: var(--excelencia-orange);
+                background: #FFFBEB;
+                padding-left: 14px;
+            }
+
+            .drawer-direct-link {
+                display: block;
+                font-size: 17px;
+                font-family: 'Outfit', sans-serif;
+                font-weight: 700;
+                color: var(--primary-color);
+                text-decoration: none;
+                padding: 14px 10px;
+                border-radius: 8px;
+                margin-bottom: 12px;
+                border-bottom: 1px solid #F1F5F9;
+                transition: background 0.2s;
+            }
+            .drawer-direct-link:hover {
+                background: #F4F7F6;
+                color: var(--excelencia-orange);
+            }
+
+            /* Overlay oscuro */
             .drawer-overlay {
                 display: none;
                 position: fixed;
@@ -677,7 +731,7 @@
         </div>
     </header>
 
-    <!-- CABECERA MÓVIL (Solo se ve en celular) -->
+    <!-- CABECERA MÓVIL (Solo celular) -->
     <div class="mobile-header">
         <div class="mobile-logo" onclick="goHome()" style="cursor: pointer;">
             <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
@@ -689,22 +743,32 @@
         </button>
     </div>
 
-    <!-- MENÚ LATERAL MÓVIL (DRAWER DERECHO) -->
+    <!-- MENÚ LATERAL MÓVIL (DRAWER DERECHO CON ACORDEÓN) -->
     <div class="drawer-overlay" id="drawer-overlay" onclick="toggleMobileMenu()"></div>
     <div class="mobile-drawer" id="mobile-drawer">
-        <button class="drawer-close" onclick="toggleMobileMenu()">&times;</button>
+        <div class="drawer-top-area">
+            <!-- 🌟 AQUÍ PUEDES PONER/COPIAR EL LOGO DE EXCELENCIA ANIMAL EN CELULAR 🌟 -->
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Excelencia Animal" class="drawer-excelencia-logo">
+            <button class="drawer-close" onclick="toggleMobileMenu()">&times;</button>
+        </div>
         
-        <div class="drawer-menu-section">
-            <h4>Alimentos</h4>
-            <ul>
+        <!-- Acordeón: Alimentos -->
+        <div class="drawer-accordion-item">
+            <button class="drawer-accordion-btn" onclick="toggleSubmenu('submenu-alimentos')">
+                Alimentos <span>▾</span>
+            </button>
+            <ul class="drawer-submenu" id="submenu-alimentos">
                 <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Alimentos Húmedos Perro')">Húmedos Perro</a></li>
                 <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Alimentos Húmedos Gato')">Húmedos Gato</a></li>
             </ul>
         </div>
 
-        <div class="drawer-menu-section">
-            <h4>Sanitarios</h4>
-            <ul>
+        <!-- Acordeón: Sanitarios -->
+        <div class="drawer-accordion-item">
+            <button class="drawer-accordion-btn" onclick="toggleSubmenu('submenu-sanitarios')">
+                Sanitarios <span>▾</span>
+            </button>
+            <ul class="drawer-submenu" id="submenu-sanitarios">
                 <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Piedras Comunes')">Piedras Comunes</a></li>
                 <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Piedras Premium')">Piedras Premium</a></li>
                 <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Piedras premium Perfumadas')">Piedras Perfumadas</a></li>
@@ -715,14 +779,10 @@
             </ul>
         </div>
 
-        <div class="drawer-menu-section">
-            <h4>Secciones</h4>
-            <ul>
-                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Accesorios')">Accesorios</a></li>
-                <li><a href="#" onclick="toggleMobileMenu(); showSection('contact')">Zonas de Envíos</a></li>
-                <li><a href="#" onclick="toggleMobileMenu(); showSection('about')">Sobre Nosotros</a></li>
-            </ul>
-        </div>
+        <!-- Enlaces directos con tipografía grande -->
+        <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); filterByCategory('Accesorios')">Accesorios</a>
+        <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); showSection('contact')">Zonas de Envíos</a>
+        <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); showSection('about')">Sobre Nosotros</a>
     </div>
 
     <!-- BUSCADOR MÓVIL / GENERAL -->
@@ -823,7 +883,7 @@
         <!-- SOBRE NOSOTROS -->
         <div class="info-section" id="about-section">
             <h2 class="section-title">Sobre Nosotros</h2>
-            <p style="font-size: 16px; line-height: 1.6; color: #475569;">Somos una distribuidora líder enfocada en brindar la mejor calidad, confianza y variedad en productos para mascotas. Excelencia Animal.</p>
+            <p style="font-size: 16px; line-height: 1.6; color: #475569;">iNFO SOBRE EXCELENCIA ANIMAL.</p>
         </div>
 
         <!-- CONTACTO / ENVÍOS -->
@@ -897,7 +957,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Compra 100% Segura y Mayorista</p>
+            <p>Compra 100% Segura.</p>
         </div>
     </footer>
 
@@ -1069,6 +1129,11 @@
             const overlay = document.getElementById('drawer-overlay');
             drawer.classList.toggle('open');
             overlay.classList.toggle('active');
+        }
+
+        function toggleSubmenu(submenuId) {
+            const submenu = document.getElementById(submenuId);
+            submenu.classList.toggle('open');
         }
 
         let currentSlide = 0;
