@@ -282,7 +282,7 @@
 
     <div class="container">
         
-        <!-- SECCIÓN DE 9 CATEGORÍAS (2 por fila) -->
+        <!-- SECCIÓN DE 9 CATEGORÍAS (2 por fila en orden exacto) -->
         <h2 class="section-title">Categorías de Productos</h2>
         <div class="categories-grid">
             <div class="category-card" onclick="filterByCategory('Piedras Comunes')">
@@ -330,31 +330,40 @@
         <p>&copy; 2026 Distribuidora de Alimentos y Piedras. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- SCRIPT DE INTERACTIVIDAD, CARRUSEL Y FILTROS -->
+    <!-- SCRIPT DE PRODUCTOS, MARCAS Y CATEGORÍAS -->
     <script>
-        // Base de datos de productos de las 5 marcas y 9 categorías
         const products = [
-            { id: 1, name: "Piedra Sanitaria Común 25kg", brand: "Gato Real", category: "Piedras Comunes" },
-            { id: 2, name: "Piedra Común Económica", brand: "Cat Way", category: "Piedras Comunes" },
-            { id: 3, name: "Piedras Seleccionadas Premium", brand: "Pets Class", category: "Piedras Premium" },
-            { id: 4, name: "Piedras Premium Especiales", brand: "KonKatt", category: "Piedras Premium" },
-            { id: 5, name: "Piedras Perfumadas Lavanda", brand: "AR Mascotas", category: "Piedras premium Perfumadas" },
-            { id: 6, name: "Piedras Perfumadas Talco", brand: "Gato Real", category: "Piedras premium Perfumadas" },
-            { id: 7, name: "Pellets de Pino Ecológico 15kg", brand: "Cat Way", category: "Pellets de pino" },
-            { id: 8, name: "Pellets de Pino Natural", brand: "KonKatt", category: "Pellets de pino" },
-            { id: 9, name: "Bentonita Aglomerante Ultra", brand: "Pets Class", category: "Bentonitas aglomerantes" },
-            { id: 10, name: "Bentonita Aglomerante Fina", brand: "AR Mascotas", category: "Bentonitas aglomerantes" },
-            { id: 11, name: "Sílica Gel Cristales x 4kg", brand: "Gato Real", category: "Silicas gel" },
-            { id: 12, name: "Sílica Gel Perlas", brand: "Cat Way", category: "Silicas gel" },
-            { id: 13, name: "Alimento Balanceado High Premium 20kg", brand: "Pets Class", category: "Productos Premium" },
-            { id: 14, name: "Alimento Super Premium Gatos", brand: "KonKatt", category: "Productos Premium" },
-            { id: 15, name: "Sobre Alimento Húmedo Pollo", brand: "AR Mascotas", category: "Alimentos Húmedos" },
-            { id: 16, name: "Lata Alimento Húmedo Pescado", brand: "Gato Real", category: "Alimentos Húmedos" },
-            { id: 17, name: "Pala Sanitaria Plástica", brand: "Cat Way", category: "Accesorios" },
-            { id: 18, name: "Comedero Doble Acero", brand: "Pets Class", category: "Accesorios" }
+            // Gato Real
+            { id: 1, name: "Piedras Sanitarias Comunes", brand: "Gato Real", category: "Piedras Comunes" },
+            { id: 2, name: "Piedras Perfumadas", brand: "Gato Real", category: "Piedras premium Perfumadas" },
+            { id: 3, name: "Sílica Gel", brand: "Gato Real", category: "Silicas gel" },
+            { id: 4, name: "Alimento Húmedo Lata", brand: "Gato Real", category: "Alimentos Húmedos" },
+            
+            // Cat Way
+            { id: 5, name: "Piedra Común Económica", brand: "Cat Way", category: "Piedras Comunes" },
+            { id: 6, name: "Pellets de Pino", brand: "Cat Way", category: "Pellets de pino" },
+            { id: 7, name: "Sílica Gel Cristales", brand: "Cat Way", category: "Silicas gel" },
+            { id: 8, name: "Pala y Accesorios", brand: "Cat Way", category: "Accesorios" },
+
+            // Pets Class
+            { id: 9, name: "Piedras Seleccionadas Premium", brand: "Pets Class", category: "Piedras Premium" },
+            { id: 10, name: "Bentonita Aglomerante", brand: "Pets Class", category: "Bentonitas aglomerantes" },
+            { id: 11, name: "Alimento Balanceado High Premium", brand: "Pets Class", category: "Productos Premium" },
+            { id: 12, name: "Comedero y Accesorios", brand: "Pets Class", category: "Accesorios" },
+
+            // AR Mascotas
+            { id: 13, name: "Piedras Premium Especiales", brand: "AR Mascotas", category: "Piedras Premium" },
+            { id: 14, name: "Piedras Perfumadas Especiales", brand: "AR Mascotas", category: "Piedras premium Perfumadas" },
+            { id: 15, name: "Bentonita Fina Aglomerante", brand: "AR Mascotas", category: "Bentonitas aglomerantes" },
+            { id: 16, name: "Alimento Húmedo Sobrecito", brand: "AR Mascotas", category: "Alimentos Húmedos" },
+
+            // KonKatt
+            { id: 17, name: "Piedras Ultra Premium", brand: "KonKatt", category: "Piedras Premium" },
+            { id: 18, name: "Pellets de Pino Natural", brand: "KonKatt", category: "Pellets de pino" },
+            { id: 19, name: "Alimento Super Premium Gatos", brand: "KonKatt", category: "Productos Premium" },
+            { id: 20, name: "Accesorios Premium", brand: "KonKatt", category: "Accesorios" }
         ];
 
-        // Función para mostrar los productos en pantalla
         function displayProducts(items) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
@@ -382,15 +391,13 @@
             });
         }
 
-        // Filtrar por Marca
         function filterByBrand(brandName) {
             const filtered = products.filter(p => p.brand === brandName);
             displayProducts(filtered);
-            document.getElementById('results-title.innerHTML').innerText = `Productos de: ${brandName}`;
+            document.getElementById('results-title').innerText = `Productos de: ${brandName}`;
             document.getElementById('reset-btn').style.display = 'block';
         }
 
-        // Filtrar por Categoría
         function filterByCategory(categoryName) {
             const filtered = products.filter(p => p.category === categoryName);
             displayProducts(filtered);
@@ -398,14 +405,12 @@
             document.getElementById('reset-btn').style.display = 'block';
         }
 
-        // Restablecer filtros
         function resetFilters() {
             displayProducts(products);
             document.getElementById('results-title').innerText = 'Catálogo General';
             document.getElementById('reset-btn').style.display = 'none';
         }
 
-        // Carrusel automático y por flechas
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
 
@@ -419,7 +424,6 @@
             showSlide(currentSlide + direction);
         }
 
-        // Inicializar mostrando todos los productos al cargar la página
         displayProducts(products);
     </script>
 </body>
