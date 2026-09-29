@@ -49,10 +49,10 @@
         }
         .top-bar a:hover { opacity: 0.8; }
 
-        /* --- CABECERA PRINCIPAL --- */
+        /* --- CABECERA PRINCIPAL (PC) --- */
         header {
             background-color: var(--header-bg);
-            padding: 15px 30px;
+            padding: 18px 40px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             display: flex;
             justify-content: space-between;
@@ -63,7 +63,7 @@
         }
         
         .efesa-corner-container img {
-            height: 45px;
+            height: 55px;
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s;
@@ -74,22 +74,19 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px; 
-            text-align: center;
+            gap: 12px; 
         }
         .header-center img {
-            height: 55px;
+            height: 75px;
             object-fit: contain;
-            display: none; /* Oculto por defecto en móvil si usas el combinado, se muestra en desktop si se prefiere */
         }
-        /* NO EDITADA LA DE EXCELENCIA ANIMAL (mantiene tu estilo exacto) */
+        /* NO EDITADA LA DE EXCELENCIA ANIMAL (mantiene tu estilo exacto en PC) */
         .header-center h1 {
             color: var(--excelencia-orange);
-            font-size: 1.8rem;
+            font-size: 2.3rem;
             margin: 0;
             font-weight: 800;
             letter-spacing: 0.5px;
-            line-height: 1.1;
         }
 
         .search-container {
@@ -99,7 +96,7 @@
             border-radius: 30px;
             padding: 10px 20px;
             border: 2px solid #E2E8F0;
-            width: 320px;
+            width: 350px;
             transition: var(--transition-smooth);
         }
         .search-container:focus-within {
@@ -118,7 +115,7 @@
             margin-left: 10px;
         }
 
-        /* --- MENÚ DE NAVEGACIÓN PRINCIPAL --- */
+        /* --- MENÚ DE NAVEGACIÓN PRINCIPAL (PC) --- */
         nav.main-nav {
             background-color: #FFFFFF;
             border-bottom: 2px solid #EAECEE;
@@ -154,7 +151,7 @@
             background-color: #F4F7F6;
         }
 
-        /* --- MEGA MENÚ DESPLEGABLE CON ANIMACIÓN DE APERTURA --- */
+        /* --- MEGA MENÚ DESPLEGABLE (PC) --- */
         .dropdown-panel {
             position: absolute;
             top: 100%;
@@ -208,6 +205,11 @@
             color: var(--excelencia-orange);
             font-weight: 700;
             transform: translateX(4px);
+        }
+
+        /* --- ELEMENTOS EXCLUSIVOS PARA MÓVIL (Ocultos en PC) --- */
+        .mobile-header, .mobile-drawer, .hamburger-btn {
+            display: none;
         }
 
         /* --- CARRUSEL BANNER FULL WIDTH --- */
@@ -304,7 +306,7 @@
             box-shadow: 0 6px 15px rgba(22, 66, 60, 0.25);
         }
 
-        /* --- CATEGORÍAS MÁS GRANDES Y ATRACTIVAS --- */
+        /* --- CATEGORÍAS --- */
         .section-title {
             font-size: 26px;
             font-family: 'Outfit', sans-serif;
@@ -443,7 +445,7 @@
         }
         .whatsapp-btn:hover { background-color: #20ba5a; transform: scale(1.02); }
 
-        /* Botón Ver Más para la vista resumida */
+        /* Botón Ver Más */
         .ver-mas-container {
             text-align: center;
             margin-top: 30px;
@@ -485,7 +487,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- FOOTER ORIGINAL AMPLIADO Y CON MÁS VIDA --- */
+        /* --- FOOTER --- */
         footer {
             background: linear-gradient(135deg, #1E293B, #0F172A);
             color: #F8FAFC;
@@ -532,33 +534,119 @@
             font-size: 14px;
         }
 
-        /* --- RESPONSIVE OPTIMIZADO PARA MÓVIL --- */
+        /* --- RESPONSIVE / DISEÑO EXCLUSIVO PARA MÓVIL --- */
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            header { 
-                flex-direction: row; 
-                justify-content: space-between;
-                align-items: center; 
-                padding: 10px 15px; 
-                gap: 10px;
-            }
-            .efesa-corner-container img {
-                height: 38px;
-            }
-            .header-center h1 {
-                font-size: 1.25rem;
-            }
-            .search-container { 
-                width: 100%; 
-                margin-top: 5px;
-            }
-            /* En móvil ordenamos cabecera: Logo izq, Título centro */
-            .header-main-mobile {
+            header { display: none; } /* Ocultamos la cabecera de PC en celular */
+            nav.main-nav { display: none; } /* Ocultamos menú horizontal de PC */
+
+            /* Cabecera Móvil Limpia (Logo izq, Hamburguesa der) */
+            .mobile-header {
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-                gap: 12px;
+                background: #FFFFFF;
+                padding: 12px 20px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+                position: sticky;
+                top: 0;
+                z-index: 1000;
             }
-            nav.main-nav { display: none; }
+            .mobile-logo img {
+                height: 40px;
+                object-fit: contain;
+            }
+            .hamburger-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 28px;
+                height: 22px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+            }
+            .hamburger-btn span {
+                display: block;
+                width: 100%;
+                height: 3px;
+                background-color: var(--primary-color);
+                border-radius: 3px;
+                transition: var(--transition-smooth);
+            }
+
+            /* Panel Desplegable Lateral Móvil (Drawer desde la derecha) */
+            .mobile-drawer {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100%;
+                background: #FFFFFF;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+                z-index: 2000;
+                transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                overflow-y: auto;
+                padding: 25px 20px;
+                box-sizing: border-box;
+            }
+            .mobile-drawer.open {
+                right: 0;
+            }
+            .drawer-close {
+                font-size: 24px;
+                background: none;
+                border: none;
+                color: #64748B;
+                cursor: pointer;
+                float: right;
+                margin-bottom: 20px;
+            }
+            .drawer-menu-section {
+                margin-bottom: 20px;
+            }
+            .drawer-menu-section h4 {
+                font-size: 14px;
+                font-family: 'Outfit', sans-serif;
+                color: var(--primary-color);
+                text-transform: uppercase;
+                border-bottom: 2px solid #E2E8F0;
+                padding-bottom: 6px;
+                margin: 0 0 10px 0;
+            }
+            .drawer-menu-section ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .drawer-menu-section ul li {
+                margin-bottom: 10px;
+            }
+            .drawer-menu-section ul li a {
+                color: #475569;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: 500;
+                display: block;
+                padding: 6px 0;
+            }
+            .drawer-menu-section ul li a:hover {
+                color: var(--excelencia-orange);
+                padding-left: 5px;
+            }
+
+            /* Overlay oscuro de fondo cuando se abre el menú */
+            .drawer-overlay {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.4);
+                z-index: 1500;
+            }
+            .drawer-overlay.active { display: block; }
+
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 220px; }
             .footer-content { grid-template-columns: 1fr; gap: 30px; }
@@ -567,44 +655,87 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR DE CONTACTO -->
+    <!-- BARRA SUPERIOR DE CONTACTO (PC) -->
     <div class="top-bar">
         <a href="https://wa.me/5491158083666" target="_blank">💬 Contáctenos: 11 5808-3666</a>
     </div>
 
-    <!-- CABECERA PRINCIPAL -->
+    <!-- CABECERA PRINCIPAL (PC) -->
     <header id="top-header">
-        <div style="display: flex; align-items: center; gap: 15px; width: 100%; justify-content: space-between;">
-            <!-- Logo Efesa a la izquierda -->
-            <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
-                <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
-            </div>
-
-            <!-- Título Excelencia Animal en el medio -->
-            <div class="header-center" onclick="goHome()" title="Volver al inicio">
-                <h1>EXCELENCIA ANIMAL</h1>
-            </div>
-            
-            <!-- Buscador adaptable -->
-            <div class="search-container" style="display: none;"> <!-- Oculto en barra superior mobile para ahorrar espacio, o integrado -->
-                <span style="color: #888; font-size: 16px;">🔍</span>
-                <input type="text" id="search-input-top" placeholder="Búsqueda..." onkeyup="searchProducts()">
-            </div>
+        <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
+            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
         </div>
-    </header>
 
-    <!-- Buscador dedicado debajo del header para móvil y desktop -->
-    <div style="background: #fff; padding: 12px 20px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: center;">
-        <div class="search-container" style="width: 100%; max-width: 600px;">
+        <div class="header-center" onclick="goHome()" title="Volver al inicio">
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Logo">
+            <h1>EXCELENCIA ANIMAL</h1>
+        </div>
+        
+        <div class="search-container">
             <span style="color: #888; font-size: 16px;">🔍</span>
             <input type="text" id="search-input" placeholder="Búsqueda en catálogo..." onkeyup="searchProducts()">
         </div>
+    </header>
+
+    <!-- CABECERA MÓVIL (Solo se ve en celular) -->
+    <div class="mobile-header">
+        <div class="mobile-logo" onclick="goHome()" style="cursor: pointer;">
+            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
+        </div>
+        <button class="hamburger-btn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 
-    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL -->
+    <!-- MENÚ LATERAL MÓVIL (DRAWER DERECHO) -->
+    <div class="drawer-overlay" id="drawer-overlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-drawer" id="mobile-drawer">
+        <button class="drawer-close" onclick="toggleMobileMenu()">&times;</button>
+        
+        <div class="drawer-menu-section">
+            <h4>Alimentos</h4>
+            <ul>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Alimentos Húmedos Perro')">Húmedos Perro</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Alimentos Húmedos Gato')">Húmedos Gato</a></li>
+            </ul>
+        </div>
+
+        <div class="drawer-menu-section">
+            <h4>Sanitarios</h4>
+            <ul>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Piedras Comunes')">Piedras Comunes</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Piedras Premium')">Piedras Premium</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Piedras premium Perfumadas')">Piedras Perfumadas</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Silicas gel')">Sílicas gel</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Pellets de pino')">Pellets de pino</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Bentonitas aglomerantes')">Bentonitas aglomerantes</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Productos Premium')">Productos Premium</a></li>
+            </ul>
+        </div>
+
+        <div class="drawer-menu-section">
+            <h4>Secciones</h4>
+            <ul>
+                <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Accesorios')">Accesorios</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); showSection('contact')">Zonas de Envíos</a></li>
+                <li><a href="#" onclick="toggleMobileMenu(); showSection('about')">Sobre Nosotros</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- BUSCADOR MÓVIL / GENERAL -->
+    <div style="background: #fff; padding: 12px 20px; border-bottom: 1px solid #E2E8F0; display: flex; justify-content: center;">
+        <div class="search-container" style="width: 100%; max-width: 600px;">
+            <span style="color: #888; font-size: 16px;">🔍</span>
+            <input type="text" id="search-input-mobile" placeholder="Búsqueda en catálogo..." onkeyup="searchProductsMobile()">
+        </div>
+    </div>
+
+    <!-- MENÚ DE NAVEGACIÓN PRINCIPAL (PC) -->
     <nav class="main-nav">
         <ul class="nav-list">
-            <!-- ALIMENTOS CON MENÚ DESPLEGABLE -->
             <li class="nav-item">
                 <a href="#" class="nav-link">ALIMENTOS ▾</a>
                 <div class="dropdown-panel">
@@ -622,8 +753,6 @@
                     </div>
                 </div>
             </li>
-
-            <!-- SANITARIOS CON MENÚ DESPLEGABLE -->
             <li class="nav-item">
                 <a href="#" class="nav-link">SANITARIOS ▾</a>
                 <div class="dropdown-panel">
@@ -646,18 +775,12 @@
                     </div>
                 </div>
             </li>
-
-            <!-- ACCESORIOS -->
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="filterByCategory('Accesorios'); return false;">ACCESORIOS</a>
             </li>
-
-            <!-- ZONAS DE ENVÍOS -->
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="showSection('contact'); return false;">ZONAS DE ENVÍOS</a>
             </li>
-
-            <!-- SOBRE NOSOTROS -->
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="showSection('about'); return false;">SOBRE NOSOTROS</a>
             </li>
@@ -752,7 +875,7 @@
 
     </div>
 
-    <!-- FOOTER ORIGINAL AMPLIADO -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <div class="footer-col">
@@ -814,22 +937,15 @@
             { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar." },
         ];
 
-        let isRandomView = true;
-
         function displayProducts(items, showRandom = false) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
             
             let listToDisplay = items;
 
-            // Si estamos en vista general inicial, mostramos solo 2 random
             if (showRandom && items.length === products.length) {
-                isRandomView = true;
-                // Mezclar y tomar 2 al azar
                 const shuffled = [...products].sort(() => 0.5 - Math.random());
                 listToDisplay = shuffled.slice(0, 2);
-            } else {
-                isRandomView = false;
             }
 
             if (listToDisplay.length === 0) {
@@ -855,8 +971,7 @@
                 grid.appendChild(card);
             });
 
-            // Si estamos en vista random, agregamos el botón "Ver más productos" debajo
-            if (isRandomView && items.length === products.length) {
+            if (showRandom && items.length === products.length) {
                 const verMasContainer = document.createElement('div');
                 verMasContainer.className = 'ver-mas-container';
                 verMasContainer.innerHTML = `
@@ -903,9 +1018,19 @@
             document.getElementById('reset-btn').style.display = query ? 'block' : 'none';
         }
 
+        function searchProductsMobile() {
+            showCatalog();
+            const query = document.getElementById('search-input-mobile').value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query));
+            displayProducts(filtered, false);
+            document.getElementById('results-title').innerText = query ? `Búsqueda: "${query}"` : 'Catálogo General';
+            document.getElementById('reset-btn').style.display = query ? 'block' : 'none';
+        }
+
         function resetFilters() {
-            document.getElementById('search-input').value = '';
-            displayProducts(products, true); // Vuelve a mostrar la vista inicial con 2 random
+            if(document.getElementById('search-input')) document.getElementById('search-input').value = '';
+            if(document.getElementById('search-input-mobile')) document.getElementById('search-input-mobile').value = '';
+            displayProducts(products, true);
             document.getElementById('results-title').innerText = 'Catálogo General';
             document.getElementById('reset-btn').style.display = 'none';
         }
@@ -939,6 +1064,13 @@
             scrollToCatalog();
         }
 
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
 
@@ -952,7 +1084,6 @@
             showSlide(currentSlide + direction);
         }
 
-        // Inicializamos con vista de 2 productos random y botón Ver Más
         displayProducts(products, true);
     </script>
 </body>
