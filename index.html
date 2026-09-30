@@ -88,31 +88,14 @@
             letter-spacing: 0.5px;
         }
 
-        .search-container {
-            display: flex;
-            align-items: center;
-            background: #F1F4F3;
-            border-radius: 30px;
-            padding: 10px 20px;
-            border: 2px solid #E2E8F0;
-            width: 350px;
-            transition: var(--transition-smooth);
+        /* Logo de Pets Class en la esquina superior derecha (PC) */
+        .header-right-logo img {
+            height: 50px;
+            object-fit: contain;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
-        .search-container:focus-within {
-            border-color: var(--primary-light);
-            background: #FFF;
-            box-shadow: 0 0 0 4px rgba(106, 156, 137, 0.15);
-        }
-        .search-container input {
-            border: none;
-            background: transparent;
-            outline: none;
-            font-size: 15px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            width: 100%;
-            color: #333;
-            margin-left: 10px;
-        }
+        .header-right-logo img:hover { transform: scale(1.05); }
 
         /* --- MENÚ DE NAVEGACIÓN PRINCIPAL (PC) --- */
         nav.main-nav {
@@ -761,9 +744,9 @@
             <h1>EXCELENCIA ANIMAL</h1>
         </div>
         
-        <div class="search-container">
-            <span style="color: #888; font-size: 16px;">🔍</span>
-            <input type="text" id="search-input" placeholder="Búsqueda en catálogo..." onkeyup="searchProducts()">
+        <!-- Logo de Pets Class en reemplazo del buscador en la PC -->
+        <div class="header-right-logo" onclick="goHome()" title="Pets Class">
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Pets Class">
         </div>
     </header>
 
@@ -903,7 +886,7 @@
 
     <!-- SECCIÓN DE MARCAS -->
     <div class="brands-section" id="brands-container">
-        <!-- Logos laterales (Efesa a la izquierda y Pets Class a la derecha) visibles en celular -->
+        <!-- Logos laterales visibles en celular -->
         <div class="brands-header-wrapper">
             <a href="#" target="_blank">
                 <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" class="brand-side-logo">
