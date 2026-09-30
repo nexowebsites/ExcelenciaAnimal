@@ -88,7 +88,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Logo de Pets Class a la derecha en la PC */
         .header-right-logo img {
             height: 60px;
             object-fit: contain;
@@ -189,8 +188,44 @@
             transform: translateX(4px);
         }
 
-        /* --- ELEMENTOS MÓVIL (Por defecto ocultos en PC) --- */
-        .mobile-header, .mobile-drawer, .hamburger-btn, .mobile-search-bar {
+        /* --- BUSCADOR UNIFICADO (Idéntico en PC y Celular) --- */
+        .search-section-wrapper {
+            background: #FFFFFF;
+            padding: 14px 20px;
+            border-bottom: 1px solid #E2E8F0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: #F1F4F3;
+            border-radius: 30px;
+            padding: 10px 20px;
+            border: 2px solid #E2E8F0;
+            width: 100%;
+            max-width: 600px;
+            transition: var(--transition-smooth);
+        }
+        .search-container:focus-within {
+            border-color: var(--primary-light);
+            background: #FFF;
+            box-shadow: 0 0 0 4px rgba(106, 156, 137, 0.15);
+        }
+        .search-container input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 15px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            width: 100%;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        /* --- ELEMENTOS MÓVIL --- */
+        .mobile-header, .mobile-drawer, .hamburger-btn {
             display: none;
         }
 
@@ -260,7 +295,7 @@
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s;
-            display: none; /* Oculto en PC */
+            display: none;
         }
         .brand-side-logo:hover {
             transform: scale(1.05);
@@ -537,17 +572,8 @@
         /* --- RESPONSIVE / DISEÑO EXCLUSIVO PARA MÓVIL --- */
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            header { display: none; } /* Ocultamos cabecera PC en celular */
-            nav.main-nav { display: none; } /* Ocultamos menú horizontal PC en celular */
-
-            /* Buscador móvil visible únicamente en celular */
-            .mobile-search-bar {
-                display: flex !important;
-                background: #fff;
-                padding: 12px 20px;
-                border-bottom: 1px solid #E2E8F0;
-                justify-content: center;
-            }
+            header { display: none; } /* Ocultamos cabecera PC */
+            nav.main-nav { display: none; } /* Ocultamos menú horizontal PC */
 
             /* Cabecera Móvil Limpia */
             .mobile-header {
@@ -744,7 +770,6 @@
             <h1>EXCELENCIA ANIMAL</h1>
         </div>
         
-        <!-- Logo de Pets Class en la esquina superior derecha (PC) -->
         <div class="header-right-logo" onclick="goHome()" title="Pets Class">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Pets Class">
         </div>
@@ -770,7 +795,6 @@
             <button class="drawer-close" onclick="toggleMobileMenu()">&times;</button>
         </div>
         
-        <!-- Acordeón: Alimentos -->
         <div class="drawer-accordion-item">
             <button class="drawer-accordion-btn" onclick="toggleSubmenu('submenu-alimentos')">
                 Alimentos <span>▾</span>
@@ -781,7 +805,6 @@
             </ul>
         </div>
 
-        <!-- Acordeón: Sanitarios -->
         <div class="drawer-accordion-item">
             <button class="drawer-accordion-btn" onclick="toggleSubmenu('submenu-sanitarios')">
                 Sanitarios <span>▾</span>
@@ -797,18 +820,9 @@
             </ul>
         </div>
 
-        <!-- Enlaces directos con tipografía grande -->
         <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); filterByCategory('Accesorios')">Accesorios</a>
         <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); showSection('contact')">Zonas de Envíos</a>
         <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); showSection('about')">Sobre Nosotros</a>
-    </div>
-
-    <!-- BUSCADOR MÓVIL (Visible únicamente en celulares) -->
-    <div class="mobile-search-bar">
-        <div class="search-container" style="width: 100%; max-width: 600px;">
-            <span style="color: #888; font-size: 16px;">🔍</span>
-            <input type="text" id="search-input-mobile" placeholder="Búsqueda en catálogo..." onkeyup="searchProductsMobile()">
-        </div>
     </div>
 
     <!-- MENÚ DE NAVEGACIÓN PRINCIPAL (PC) -->
@@ -864,6 +878,14 @@
             </li>
         </ul>
     </nav>
+
+    <!-- BUSCADOR EXACTO (Aparece idéntico en PC y Celular ocupando el espacio que mostraste) -->
+    <div class="search-section-wrapper">
+        <div class="search-container">
+            <span style="color: #888; font-size: 16px;">🔍</span>
+            <input type="text" id="search-input" placeholder="Búsqueda en catálogo..." onkeyup="searchProducts()">
+        </div>
+    </div>
 
     <!-- CARRUSEL BANNER FULL WIDTH -->
     <div class="carousel-container" id="main-banner">
@@ -1098,9 +1120,9 @@
             scrollToCatalog();
         }
 
-        function searchProductsMobile() {
+        function searchProducts() {
             showCatalog();
-            const query = document.getElementById('search-input-mobile').value.toLowerCase();
+            const query = document.getElementById('search-input').value.toLowerCase();
             const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query));
             displayProducts(filtered, false);
             document.getElementById('results-title').innerText = query ? `Búsqueda: "${query}"` : 'Catálogo General';
@@ -1108,7 +1130,7 @@
         }
 
         function resetFilters() {
-            if(document.getElementById('search-input-mobile')) document.getElementById('search-input-mobile').value = '';
+            if(document.getElementById('search-input')) document.getElementById('search-input').value = '';
             displayProducts(products, true);
             document.getElementById('results-title').innerText = 'Catálogo General';
             document.getElementById('reset-btn').style.display = 'none';
