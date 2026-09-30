@@ -556,20 +556,20 @@
             header { display: none; } /* Ocultamos cabecera PC */
             nav.main-nav { display: none; } /* Ocultamos menú horizontal PC */
 
-            /* Cabecera Móvil Limpia */
+            /* Cabecera Móvil Rediseñada y Equilibrada */
             .mobile-header {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 background: #FFFFFF;
-                padding: 12px 20px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+                padding: 16px 20px; /* Más espacio arriba y abajo para que no se vea apretado */
+                box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Sombra un poco más definida */
                 position: sticky;
                 top: 0;
                 z-index: 1000;
             }
             .mobile-logo img {
-                height: 110px;
+                height: 95px; /* Tamaño destacado pero cómodo para la vista */
                 object-fit: contain;
             }
             .hamburger-btn {
@@ -590,6 +590,7 @@
                 background-color: var(--primary-color);
                 border-radius: 3px;
                 transition: var(--transition-smooth);
+            }
             }
 
             /* Tamaños específicos para los logos laterales en celular */
