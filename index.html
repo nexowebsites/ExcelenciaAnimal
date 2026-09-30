@@ -472,6 +472,12 @@
             display: flex; align-items: center; justify-content: center;
             color: #475569; font-size: 13px; font-weight: 600;
         }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
         .card-body { padding: 20px; }
         .card-brand {
             font-size: 12px;
@@ -1048,38 +1054,38 @@
 
     <script>
         const products = [
-            { id: 1, name: "Piedras Comunes - 4,6 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Piedras sanitarias tradicionales para el cuidado diario de tu felino." },
-            { id: 2, name: "Piedras Comunes - 9,2 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Excelente absorción y rendimiento en presentación mediana." },
-            { id: 3, name: "Piedras Comunes - 23 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Formato ahorro para mayor duración en el hogar." },
-            { id: 4, name: "Piedras Comunes - 30 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Presentación institucional y gran rendimiento." },
-            { id: 5, name: "Piedras Premium - 4,6 LT", brand: "Gato Real", category: "Piedras Premium", group: "Gato", desc: "Mayor control de humedad y calidad superior." },
-            { id: 6, name: "Piedras Premium - 9,2 LT", brand: "Gato Real", category: "Piedras Premium", group: "Gato", desc: "Piedras seleccionadas de alta gama para gatos exigentes." },
-            { id: 7, name: "Piedras Premium Perfumadas - 9,2 LT Lavanda", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Agradable aroma a lavanda y gran poder secante." },
-            { id: 8, name: "Piedras Premium Perfumadas - 9,2 LT Manzana", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Fórmula con aroma a manzana para neutralizar olores." },
-            { id: 9, name: "Piedras Premium Perfumadas - 9,2 LT Citrus", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Fragancia cítrica refrescante de larga duración." },
-            { id: 10, name: "Pellets de pino - 4 kg", brand: "Cat Way", category: "Pellets de pino", group: "Gato", desc: "Alternativa ecológica 100% natural de madera." },
-            { id: 11, name: "Pellets de pino - 15 kg", brand: "Cat Way", category: "Pellets de pino", group: "Gato", desc: "Bolsa grande ideal para uso prolongado." },
-            { id: 12, name: "Bentonitas aglomerantes - 5 kg (Premium)", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Forma bloques sólidos fáciles de retirar." },
-            { id: 13, name: "Bentonitas aglomerantes - 12 kg (Premium)", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Rendimiento superior en presentación de 12 kg." },
-            { id: 14, name: "Bentonitas aglomerantes - 20 kg (Económica)", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Mayor cantidad al mejor precio." },
-            { id: 15, name: "Bentonitas aglomerantes - 12 kg Perfumada Lavanda Premium", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Aglomerante con rico aroma a lavanda." },
-            { id: 16, name: "Bentonitas aglomerantes - 5 kg Esfera Super Premium", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Gránulos esféricos de máxima eficacia." },
-            { id: 17, name: "Silicas gel - 1,8 kg Neutra", brand: "Gato Real", category: "Silicas gel", group: "Gato", desc: "Cristales de sílice sin perfume con absorción total." },
-            { id: 18, name: "Silicas gel - 1,8 kg Lavanda", brand: "Gato Real", category: "Silicas gel", group: "Gato", desc: "Cristales con suave toque de lavanda." },
-            { id: 19, name: "Productos Premium - Carbon Activado x 9,2 LT", brand: "Pet´s Class", category: "Productos Premium", group: "Perro", desc: "Máxima neutralización de olores con carbón activo." },
-            { id: 20, name: "Productos Premium - Duo 9,2 LT", brand: "Pet´s Class", category: "Productos Premium", group: "Perro", desc: "Fórmula dual de gran efectividad." },
-            { id: 21, name: "Productos Premium - Duo 15 kg", brand: "Pet´s Class", category: "Productos Premium", group: "Perro", desc: "Presentación de gran formato para máxima duración." },
-            { id: 22, name: "Alimentos Húmedos Gato - Carne 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Delicioso sabor a carne en cómoda porción." },
-            { id: 23, name: "Alimentos Húmedos Gatito - Pollo y leche 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Receta especial con pollo y leche." },
-            { id: 24, name: "Alimentos Húmedos Gato - Salmón Rosado 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Exquisito alimento húmedo con sabor a salmón." },
-            { id: 25, name: "Alimentos Húmedos Gato - Frutos del mar 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Variedad marina que le encantará a tu gato." },
-            { id: 26, name: "Alimentos Húmedos Gato - Atún y Sardina 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Combinación ideal de pescado fresco." },
-            { id: 27, name: "Alimentos Húmedos Perro - Carne 100 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Alimento húmedo nutritivo sabor carne para perros." },
-            { id: 28, name: "Alimentos Húmedos Perro - Pollo 100 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Receta jugosa de pollo para consentir a tu can." },
-            { id: 29, name: "Alimentos Húmedos Cachorro - Pollo y leche 85 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Especialmente formulado para la etapa de cachorro." },
-            { id: 30, name: "Accesorios - Cuna para gatos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Cuna suave y cómoda para el descanso de tu felino." },
-            { id: 31, name: "Accesorios - Rascadores redondos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Ideal para el cuidado de sus uñas y entretenimiento." },
-            { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar." },
+            { id: 1, name: "Piedras Comunes - 4,6 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Piedras sanitarias tradicionales para el cuidado diario de tu felino.", image: "PEGAR LINK FOTO 1" },
+            { id: 2, name: "Piedras Comunes - 9,2 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Excelente absorción y rendimiento en presentación mediana.", image: "PEGAR LINK FOTO 2" },
+            { id: 3, name: "Piedras Comunes - 23 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Formato ahorro para mayor duración en el hogar.", image: "PEGAR LINK FOTO 3" },
+            { id: 4, name: "Piedras Comunes - 30 LT", brand: "Gato Real", category: "Piedras Comunes", group: "Gato", desc: "Presentación institucional y gran rendimiento.", image: "PEGAR LINK FOTO 4" },
+            { id: 5, name: "Piedras Premium - 4,6 LT", brand: "Gato Real", category: "Piedras Premium", group: "Gato", desc: "Mayor control de humedad y calidad superior.", image: "PEGAR LINK FOTO 5" },
+            { id: 6, name: "Piedras Premium - 9,2 LT", brand: "Gato Real", category: "Piedras Premium", group: "Gato", desc: "Piedras seleccionadas de alta gama para gatos exigentes.", image: "PEGAR LINK FOTO 6" },
+            { id: 7, name: "Piedras Premium Perfumadas - 9,2 LT Lavanda", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Agradable aroma a lavanda y gran poder secante.", image: "PEGAR LINK FOTO 7" },
+            { id: 8, name: "Piedras Premium Perfumadas - 9,2 LT Manzana", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Fórmula con aroma a manzana para neutralizar olores.", image: "PEGAR LINK FOTO 8" },
+            { id: 9, name: "Piedras Premium Perfumadas - 9,2 LT Citrus", brand: "Gato Real", category: "Piedras premium Perfumadas", group: "Gato", desc: "Fragancia cítrica refrescante de larga duración.", image: "PEGAR LINK FOTO 9" },
+            { id: 10, name: "Pellets de pino - 4 kg", brand: "Cat Way", category: "Pellets de pino", group: "Gato", desc: "Alternativa ecológica 100% natural de madera.", image: "PEGAR LINK FOTO 10" },
+            { id: 11, name: "Pellets de pino - 15 kg", brand: "Cat Way", category: "Pellets de pino", group: "Gato", desc: "Bolsa grande ideal para uso prolongado.", image: "PEGAR LINK FOTO 11" },
+            { id: 12, name: "Bentonitas aglomerantes - 5 kg (Premium)", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Forma bloques sólidos fáciles de retirar.", image: "PEGAR LINK FOTO 12" },
+            { id: 13, name: "Bentonitas aglomerantes - 12 kg (Premium)", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Rendimiento superior en presentación de 12 kg.", image: "PEGAR LINK FOTO 13" },
+            { id: 14, name: "Bentonitas aglomerantes - 20 kg (Económica)", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Mayor cantidad al mejor precio.", image: "PEGAR LINK FOTO 14" },
+            { id: 15, name: "Bentonitas aglomerantes - 12 kg Perfumada Lavanda Premium", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Aglomerante con rico aroma a lavanda.", image: "PEGAR LINK FOTO 15" },
+            { id: 16, name: "Bentonitas aglomerantes - 5 kg Esfera Super Premium", brand: "Pet´s Class", category: "Bentonitas aglomerantes", group: "Gato", desc: "Gránulos esféricos de máxima eficacia.", image: "PEGAR LINK FOTO 16" },
+            { id: 17, name: "Silicas gel - 1,8 kg Neutra", brand: "Gato Real", category: "Silicas gel", group: "Gato", desc: "Cristales de sílice sin perfume con absorción total.", image: "PEGAR LINK FOTO 17" },
+            { id: 18, name: "Silicas gel - 1,8 kg Lavanda", brand: "Gato Real", category: "Silicas gel", group: "Gato", desc: "Cristales con suave toque de lavanda.", image: "PEGAR LINK FOTO 18" },
+            { id: 19, name: "Productos Premium - Carbon Activado x 9,2 LT", brand: "Pet´s Class", category: "Productos Premium", group: "Perro", desc: "Máxima neutralización de olores con carbón activo.", image: "PEGAR LINK FOTO 19" },
+            { id: 20, name: "Productos Premium - Duo 9,2 LT", brand: "Pet´s Class", category: "Productos Premium", group: "Perro", desc: "Fórmula dual de gran efectividad.", image: "PEGAR LINK FOTO 20" },
+            { id: 21, name: "Productos Premium - Duo 15 kg", brand: "Pet´s Class", category: "Productos Premium", group: "Perro", desc: "Presentación de gran formato para máxima duración.", image: "PEGAR LINK FOTO 21" },
+            { id: 22, name: "Alimentos Húmedos Gato - Carne 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Delicioso sabor a carne en cómoda porción.", image: "PEGAR LINK FOTO 22" },
+            { id: 23, name: "Alimentos Húmedos Gatito - Pollo y leche 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Receta especial con pollo y leche.", image: "PEGAR LINK FOTO 23" },
+            { id: 24, name: "Alimentos Húmedos Gato - Salmón Rosado 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Exquisito alimento húmedo con sabor a salmón.", image: "PEGAR LINK FOTO 24" },
+            { id: 25, name: "Alimentos Húmedos Gato - Frutos del mar 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Variedad marina que le encantará a tu gato.", image: "PEGAR LINK FOTO 25" },
+            { id: 26, name: "Alimentos Húmedos Gato - Atún y Sardina 85 gr", brand: "Gato Real", category: "Alimentos Húmedos Gato", group: "Gato", desc: "Combinación ideal de pescado fresco.", image: "PEGAR LINK FOTO 26" },
+            { id: 27, name: "Alimentos Húmedos Perro - Carne 100 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Alimento húmedo nutritivo sabor carne para perros.", image: "PEGAR LINK FOTO 27" },
+            { id: 28, name: "Alimentos Húmedos Perro - Pollo 100 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Receta jugosa de pollo para consentir a tu can.", image: "PEGAR LINK FOTO 28" },
+            { id: 29, name: "Alimentos Húmedos Cachorro - Pollo y leche 85 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Especialmente formulado para la etapa de cachorro.", image: "PEGAR LINK FOTO 29" },
+            { id: 30, name: "Accesorios - Cuna para gatos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Cuna suave y cómoda para el descanso de tu felino.", image: "PEGAR LINK FOTO 30" },
+            { id: 31, name: "Accesorios - Rascadores redondos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Ideal para el cuidado de sus uñas y entretenimiento.", image: "PEGAR LINK FOTO 31" },
+            { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar.", image: "PEGAR LINK FOTO 32" },
         ];
 
         function displayProducts(items, showRandom = false) {
@@ -1103,7 +1109,9 @@
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.innerHTML = `
-                    <div class="card-img">Foto ${product.name}</div>
+                    <div class="card-img">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
                     <div class="card-body">
                         <span class="card-brand">${product.brand}</span>
                         <h3 class="card-title">${product.name}</h3>
