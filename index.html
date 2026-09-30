@@ -188,7 +188,7 @@
             transform: translateX(4px);
         }
 
-        /* --- BUSCADOR UNIFICADO (Idéntico en PC y Celular) --- */
+        /* --- BUSCADOR UNIFICADO --- */
         .search-section-wrapper {
             background: #FFFFFF;
             padding: 14px 20px;
@@ -274,10 +274,10 @@
             padding: 0 25px;
         }
 
-        /* --- SECCIÓN DE MARCAS --- */
+        /* --- SECCIÓN DE MARCAS ESTILO TARJETAS (IGUAL A LAS FOTOS DE REFERENCIA) --- */
         .brands-section {
             background: #FFFFFF;
-            padding: 25px 0;
+            padding: 35px 20px;
             border-bottom: 2px solid #EAECEE;
             margin-bottom: 35px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
@@ -286,9 +286,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto 15px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: 0 auto 20px auto;
         }
         .brand-side-logo {
             height: 40px;
@@ -301,7 +300,7 @@
             transform: scale(1.05);
         }
         .brands-title {
-            font-size: 13px;
+            font-size: 14px;
             color: #64748B;
             margin: 0 auto;
             text-transform: uppercase;
@@ -310,46 +309,61 @@
             text-align: center;
             font-family: 'Outfit', sans-serif;
         }
+        
+        /* Grilla de Marcas Estilo Tarjeta */
         .brands-grid {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 1200px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 15px;
         }
-        .brand-badge {
-            background: linear-gradient(135deg, #F1F5F9, #E2E8F0);
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 13px;
-            font-family: 'Outfit', sans-serif;
-            color: var(--primary-color);
+        .brand-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 18px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: var(--transition-smooth);
             cursor: pointer;
+        }
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary-light);
+        }
+        .brand-card-img-box {
+            height: 60px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            border: 2px solid transparent;
-            transition: var(--transition-smooth);
+            justify-content: center;
+            margin-bottom: 12px;
+            width: 100%;
         }
-        /* Ajuste de tamaño para las imágenes de los logos dentro de las marcas */
-        .brand-badge img {
-            width: 24px;
-            height: 24px;
+        .brand-card-img-box img {
+            max-height: 50px;
+            max-width: 100%;
             object-fit: contain;
-            display: block;
         }
-        .brand-badge:hover, .brand-badge.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+        .brand-ver-productos-btn {
+            background-color: #E96D00; /* Color naranja idéntico a las referencias */
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(22, 66, 60, 0.25);
+            border: none;
+            border-radius: 6px;
+            padding: 7px 0;
+            width: 100%;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: background 0.2s;
         }
-        /* Asegurar que el texto cambie a blanco al hacer hover o estar activo */
-        .brand-badge:hover img, .brand-badge.active img {
-            filter: brightness(0) invert(1);
+        .brand-ver-productos-btn:hover {
+            background-color: #cf6000;
         }
 
         /* --- CATEGORÍAS --- */
@@ -491,7 +505,6 @@
         }
         .whatsapp-btn:hover { background-color: #20ba5a; transform: scale(1.02); }
 
-        /* Botón Ver Más */
         .ver-mas-container {
             text-align: center;
             margin-top: 30px;
@@ -515,7 +528,6 @@
             transform: scale(1.05);
         }
 
-        /* --- SECCIONES EXTRA --- */
         .info-section {
             background: white;
             padding: 45px;
@@ -580,13 +592,12 @@
             font-size: 14px;
         }
 
-        /* --- RESPONSIVE / DISEÑO EXCLUSIVO PARA MÓVIL --- */
+        /* --- RESPONSIVE / MÓVIL (Patrón de 2 columnas + 5ta centrada abajo) --- */
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            header { display: none; } /* Ocultamos cabecera PC */
-            nav.main-nav { display: none; } /* Ocultamos menú horizontal PC */
+            header { display: none; }
+            nav.main-nav { display: none; }
 
-            /* Cabecera Móvil Limpia */
             .mobile-header {
                 display: flex;
                 justify-content: space-between;
@@ -622,19 +633,25 @@
                 transition: var(--transition-smooth);
             }
 
-            /* Logos laterales visibles en celular */
             .brand-side-logo {
                 display: block;
                 height: 34px;
             }
-            .brands-title {
-                margin: 0;
+            .brands-title { margin: 0; }
+            .brands-header-wrapper { padding: 0 15px; }
+
+            /* Configuración especial para celular: 2 columnas, y la 5ta tarjeta toma toda la fila y se centra */
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                padding: 0 10px;
             }
-            .brands-header-wrapper {
-                padding: 0 15px;
+            .brand-card:nth-child(5) {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                margin: 0 auto;
             }
 
-            /* Panel Desplegable Lateral Móvil (Drawer) */
             .mobile-drawer {
                 display: block;
                 position: fixed;
@@ -650,9 +667,7 @@
                 padding: 25px 20px;
                 box-sizing: border-box;
             }
-            .mobile-drawer.open {
-                right: 0;
-            }
+            .mobile-drawer.open { right: 0; }
             .drawer-top-area {
                 display: flex;
                 justify-content: space-between;
@@ -696,10 +711,6 @@
                 justify-content: space-between;
                 align-items: center;
                 border-radius: 8px;
-                transition: background 0.2s;
-            }
-            .drawer-accordion-btn:hover {
-                background: #F4F7F6;
             }
             .drawer-submenu {
                 display: none;
@@ -708,12 +719,8 @@
                 list-style: none;
                 margin-bottom: 0;
             }
-            .drawer-submenu.open {
-                display: block;
-            }
-            .drawer-submenu li {
-                margin-bottom: 12px;
-            }
+            .drawer-submenu.open { display: block; }
+            .drawer-submenu li { margin-bottom: 12px; }
             .drawer-submenu li a {
                 color: #475569;
                 text-decoration: none;
@@ -722,14 +729,7 @@
                 display: block;
                 padding: 6px 10px;
                 border-radius: 6px;
-                transition: all 0.2s;
             }
-            .drawer-submenu li a:hover {
-                color: var(--excelencia-orange);
-                background: #FFFBEB;
-                padding-left: 14px;
-            }
-
             .drawer-direct-link {
                 display: block;
                 font-size: 17px;
@@ -741,11 +741,6 @@
                 border-radius: 8px;
                 margin-bottom: 12px;
                 border-bottom: 1px solid #F1F5F9;
-                transition: background 0.2s;
-            }
-            .drawer-direct-link:hover {
-                background: #F4F7F6;
-                color: var(--excelencia-orange);
             }
 
             .drawer-overlay {
@@ -798,7 +793,7 @@
         </button>
     </div>
 
-    <!-- MENÚ LATERAL MÓVIL (DRAWER DERECHO CON ACORDEÓN) -->
+    <!-- MENÚ LATERAL MÓVIL (DRAWER) -->
     <div class="drawer-overlay" id="drawer-overlay" onclick="toggleMobileMenu()"></div>
     <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-top-area">
@@ -890,7 +885,7 @@
         </ul>
     </nav>
 
-    <!-- BUSCADOR EXACTO -->
+    <!-- BUSCADOR -->
     <div class="search-section-wrapper">
         <div class="search-container">
             <span style="color: #888; font-size: 16px;">🔍</span>
@@ -917,35 +912,53 @@
         <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
     </div>
 
-    <!-- SECCIÓN DE MARCAS -->
+    <!-- SECCIÓN DE MARCAS ESTILO TARJETAS -->
     <div class="brands-section" id="brands-container">
         <div class="brands-header-wrapper">
             <a href="#" target="_blank">
                 <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" class="brand-side-logo">
             </a>
-
             <div class="brands-title">Nuestras Marcas</div>
-
             <a href="#" target="_blank">
                 <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Pet's Class" class="brand-side-logo">
             </a>
         </div>
 
         <div class="brands-grid">
-            <div class="brand-badge" onclick="filterByBrand('KonKatt')">
-                <img src="ruta-logo-konkatt.png" alt="KonKatt"> KonKatt
+            <!-- Marca 1 -->
+            <div class="brand-card" onclick="filterByBrand('KonKatt')">
+                <div class="brand-card-img-box">
+                    <img src="ruta-logo-konkatt.png" alt="KonKatt">
+                </div>
+                <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
-            <div class="brand-badge" onclick="filterByBrand('Cat Way')">
-                <img src="ruta-logo-catway.png" alt="Cat Way"> Cat Way
+            <!-- Marca 2 -->
+            <div class="brand-card" onclick="filterByBrand('Cat Way')">
+                <div class="brand-card-img-box">
+                    <img src="ruta-logo-catway.png" alt="Cat Way">
+                </div>
+                <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
-            <div class="brand-badge" onclick="filterByBrand('Gato Real')">
-                <img src="ruta-logo-gatoreal.png" alt="Gato Real"> Gato Real
+            <!-- Marca 3 -->
+            <div class="brand-card" onclick="filterByBrand('Gato Real')">
+                <div class="brand-card-img-box">
+                    <img src="ruta-logo-gatoreal.png" alt="Gato Real">
+                </div>
+                <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
-            <div class="brand-badge" onclick="filterByBrand('AR Mascotas')">
-                <img src="ruta-logo-armascotas.png" alt="AR Mascotas"> AR Mascotas
+            <!-- Marca 4 -->
+            <div class="brand-card" onclick="filterByBrand('AR Mascotas')">
+                <div class="brand-card-img-box">
+                    <img src="ruta-logo-armascotas.png" alt="AR Mascotas">
+                </div>
+                <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
-            <div class="brand-badge" onclick="filterByBrand('Pet´s Class')">
-                <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class"> Pet's Class
+            <!-- Marca 5 (Se quedará centrada abajo en celular) -->
+            <div class="brand-card" onclick="filterByBrand('Pet´s Class')">
+                <div class="brand-card-img-box">
+                    <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class">
+                </div>
+                <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
         </div>
     </div>
