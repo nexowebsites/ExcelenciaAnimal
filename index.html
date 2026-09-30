@@ -272,9 +272,10 @@
             max-width: 1250px;
             margin: 0 auto 50px auto;
             padding: 0 25px;
+            box-sizing: border-box;
         }
 
-        /* --- SECCIÓN DE MARCAS ESTILO TARJETAS (IGUAL A LAS FOTOS DE REFERENCIA) --- */
+        /* --- SECCIÓN DE MARCAS ESTILO TARJETAS --- */
         .brands-section {
             background: #FFFFFF;
             padding: 35px 20px;
@@ -310,7 +311,6 @@
             font-family: 'Outfit', sans-serif;
         }
         
-        /* Grilla de Marcas Estilo Tarjeta */
         .brands-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -330,6 +330,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             transition: var(--transition-smooth);
             cursor: pointer;
+            box-sizing: border-box;
         }
         .brand-card:hover {
             transform: translateY(-5px);
@@ -350,7 +351,7 @@
             object-fit: contain;
         }
         .brand-ver-productos-btn {
-            background-color: #E96D00; /* Color naranja idéntico a las referencias */
+            background-color: #E96D00;
             color: white;
             border: none;
             border-radius: 6px;
@@ -396,6 +397,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-sizing: border-box;
         }
         .category-card:hover {
             transform: translateY(-6px);
@@ -425,7 +427,7 @@
             color: white;
         }
 
-        /* --- GRILLA DE PRODUCTOS --- */
+        /* --- GRILLA DE PRODUCTOS (CORREGIDA PARA EVITAR ENCIMAMIENTOS) --- */
         .products-header {
             display: flex;
             justify-content: space-between;
@@ -447,8 +449,9 @@
         
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* Estructura sólida de 3 columnas para evitar desbordes */
             gap: 25px;
+            width: 100%;
         }
         .card {
             background: white;
@@ -460,6 +463,8 @@
             justify-content: space-between;
             border: 1px solid #E2E8F0;
             transition: var(--transition-smooth);
+            width: 100%;
+            box-sizing: border-box;
         }
         .card:hover {
             transform: translateY(-6px);
@@ -467,18 +472,32 @@
             border-color: var(--primary-light);
         }
         .card-img {
-            width: 100%; height: 170px;
-            background: linear-gradient(135deg, #E2E8F0, #CBD5E1);
-            display: flex; align-items: center; justify-content: center;
-            color: #475569; font-size: 13px; font-weight: 600;
+            width: 100%; 
+            height: 200px;
+            background: #FFFFFF;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            color: #475569; 
+            font-size: 13px; 
+            font-weight: 600;
+            padding: 10px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #F1F5F9;
         }
 
         .card-img img {
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
         }
-        .card-body { padding: 20px; }
+        .card-body { 
+            padding: 20px; 
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
         .card-brand {
             font-size: 12px;
             text-transform: uppercase;
@@ -489,8 +508,11 @@
             display: block;
         }
         .card-title {
-            font-size: 17px; font-family: 'Outfit', sans-serif; font-weight: 700;
-            margin: 0 0 10px 0; color: #1E293B;
+            font-size: 17px; 
+            font-family: 'Outfit', sans-serif; 
+            font-weight: 700;
+            margin: 0 0 10px 0; 
+            color: #1E293B;
         }
         .card-desc {
             font-size: 14px;
@@ -499,15 +521,21 @@
             line-height: 1.5;
         }
         .whatsapp-btn {
-            display: block; width: 100%;
+            display: block; 
+            width: 100%;
             background-color: #25D366;
-            color: white; text-align: center;
-            padding: 12px 0; border-radius: 8px;
-            text-decoration: none; font-weight: 700; font-size: 14px;
+            color: white; 
+            text-align: center;
+            padding: 12px 0; 
+            border-radius: 8px;
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 14px;
             font-family: 'Outfit', sans-serif;
             box-sizing: border-box;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
             transition: var(--transition-smooth);
+            margin-top: auto;
         }
         .whatsapp-btn:hover { background-color: #20ba5a; transform: scale(1.02); }
 
@@ -598,8 +626,18 @@
             font-size: 14px;
         }
 
-        /* --- RESPONSIVE / MÓVIL (Patrón de 2 columnas + 5ta centrada abajo) --- */
+        /* --- MEDIA QUERIES PARA ADAPTACIÓN DE GRILLAS --- */
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas para tablets */
+            }
+        }
+
         @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr; /* 1 columna para celulares */
+            }
+
             .top-bar { display: none; }
             header { display: none; }
             nav.main-nav { display: none; }
@@ -646,7 +684,6 @@
             .brands-title { margin: 0; }
             .brands-header-wrapper { padding: 0 15px; }
 
-            /* Configuración especial para celular: 2 columnas, y la 5ta tarjeta toma toda la fila y se centra */
             .brands-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -959,7 +996,7 @@
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
-            <!-- Marca 5 (Se quedará centrada abajo en celular) -->
+            <!-- Marca 5 -->
             <div class="brand-card" onclick="filterByBrand('Pet´s Class')">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class">
@@ -1096,7 +1133,7 @@
 
             if (showRandom && items.length === products.length) {
                 const shuffled = [...products].sort(() => 0.5 - Math.random());
-                listToDisplay = shuffled.slice(0, 2);
+                listToDisplay = shuffled.slice(0, 3);
             }
 
             if (listToDisplay.length === 0) {
@@ -1110,12 +1147,14 @@
                 card.className = 'card';
                 card.innerHTML = `
                     <div class="card-img">
-                        <img src="${product.image}" alt="${product.name}">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible';">
                     </div>
                     <div class="card-body">
-                        <span class="card-brand">${product.brand}</span>
-                        <h3 class="card-title">${product.name}</h3>
-                        <p class="card-desc">${product.desc}</p>
+                        <div>
+                            <span class="card-brand">${product.brand}</span>
+                            <h3 class="card-title">${product.name}</h3>
+                            <p class="card-desc">${product.desc}</p>
+                        </div>
                         <a href="https://wa.me/5491158083666?text=${message}" target="_blank" class="whatsapp-btn">
                             Consultar por WhatsApp
                         </a>
