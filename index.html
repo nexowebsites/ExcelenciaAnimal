@@ -256,7 +256,7 @@
             padding: 0 25px;
         }
 
-        /* --- SECCIÓN DE MARCAS (NUEVO DISEÑO CON LOGOS LATERALES) --- */
+        /* --- SECCIÓN DE MARCAS CON LOGOS LATERALES --- */
         .brands-section {
             background: #FFFFFF;
             padding: 25px 0;
@@ -569,7 +569,7 @@
                 z-index: 1000;
             }
             .mobile-logo img {
-                height: 40px;
+                height: 38px;
                 object-fit: contain;
             }
             .hamburger-btn {
@@ -590,6 +590,15 @@
                 background-color: var(--primary-color);
                 border-radius: 3px;
                 transition: var(--transition-smooth);
+            }
+
+            /* Tamaños específicos para los logos laterales en celular */
+            .brand-side-logo {
+                height: 32px;
+            }
+            .brands-header-wrapper {
+                padding: 0 12px;
+                margin-bottom: 10px;
             }
 
             /* Panel Desplegable Lateral Móvil (Drawer) */
@@ -747,7 +756,7 @@
 
     <!-- CABECERA MÓVIL (Solo celular) -->
     <div class="mobile-header">
-        <!-- 🌟 AQUÍ ESTÁ EL LOGO DE EXCELENCIA ANIMAL EN LA PARTE SUPERIOR MÓVIL (Sustituyendo a Efesa) 🌟 -->
+        <!-- Logo de Excelencia Animal arriba a la izquierda en celular -->
         <div class="mobile-logo" onclick="goHome()" style="cursor: pointer;">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Excelencia Animal">
         </div>
@@ -882,22 +891,22 @@
 
     <!-- SECCIÓN DE MARCAS -->
     <div class="brands-section" id="brands-container">
-        <!-- Cabecera de marcas con logos laterales (Izquierda: Efesa | Derecha: Pets Class) -->
+        <!-- Logos a los costados del título de marcas (Izquierda: Efesa | Derecha: Pets Class) -->
         <div class="brands-header-wrapper">
-            <!-- 🌟 LOGO IZQUIERDA (Círculo azul): Reemplaza aquí la URL de tu logo de EFESA y su enlace 🌟 -->
+            <!-- Logo izquierdo (Efesa) con enlace -->
             <a href="URL_ENLACE_EFESA_AQUI" target="_blank">
                 <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" class="brand-side-logo">
             </a>
 
             <div class="brands-title">Nuestras Marcas</div>
 
-            <!-- 🌟 LOGO DERECHA (Círculo naranja): Reemplaza aquí la URL de tu logo de PETS CLASS y su enlace 🌟 -->
+            <!-- Logo derecho (Pets Class) con enlace -->
             <a href="URL_ENLACE_PETS_CLASS_AQUI" target="_blank">
                 <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Pets Class" class="brand-side-logo">
             </a>
         </div>
 
-        <!-- Grilla de marcas con el orden solicitado (KonKatt, Cat Way, Gato Real / AR Mascotas, Pet's Class) -->
+        <!-- Grilla de marcas ordenada exactamente como pediste -->
         <div class="brands-grid">
             <div class="brand-badge" onclick="filterByBrand('KonKatt')">KonKatt</div>
             <div class="brand-badge" onclick="filterByBrand('Cat Way')">Cat Way</div>
