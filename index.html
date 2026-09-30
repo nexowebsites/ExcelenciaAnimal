@@ -256,7 +256,7 @@
             padding: 0 25px;
         }
 
-        /* --- SECCIÓN DE MARCAS CON LOGOS LATERALES --- */
+        /* --- SECCIÓN DE MARCAS --- */
         .brands-section {
             background: #FFFFFF;
             padding: 25px 0;
@@ -277,6 +277,7 @@
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s;
+            display: none; /* Por defecto oculto en PC para que no aparezca donde no querías */
         }
         .brand-side-logo:hover {
             transform: scale(1.05);
@@ -284,7 +285,7 @@
         .brands-title {
             font-size: 13px;
             color: #64748B;
-            margin: 0;
+            margin: 0 auto; /* Centrado cuando los logos laterales están ocultos en PC */
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 800;
@@ -556,20 +557,20 @@
             header { display: none; } /* Ocultamos cabecera PC */
             nav.main-nav { display: none; } /* Ocultamos menú horizontal PC */
 
-            /* Cabecera Móvil Rediseñada y Equilibrada */
+            /* Cabecera Móvil Limpia */
             .mobile-header {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 background: #FFFFFF;
-                padding: 16px 20px; /* Más espacio arriba y abajo para que no se vea apretado */
-                box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* Sombra un poco más definida */
+                padding: 16px 20px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.06);
                 position: sticky;
                 top: 0;
                 z-index: 1000;
             }
             .mobile-logo img {
-                height: 95px; /* Tamaño destacado pero cómodo para la vista */
+                height: 52px;
                 object-fit: contain;
             }
             .hamburger-btn {
@@ -591,15 +592,17 @@
                 border-radius: 3px;
                 transition: var(--transition-smooth);
             }
-            }
 
-            /* Tamaños específicos para los logos laterales en celular */
+            /* Hacemos visibles los logos laterales EXCLUSIVAMENTE en celular */
             .brand-side-logo {
-                height: 32px;
+                display: block;
+                height: 34px;
+            }
+            .brands-title {
+                margin: 0; /* Restablecemos el centrado automático para que deje espacio a los logos laterales */
             }
             .brands-header-wrapper {
-                padding: 0 12px;
-                margin-bottom: 10px;
+                padding: 0 15px;
             }
 
             /* Panel Desplegable Lateral Móvil (Drawer) */
@@ -757,9 +760,8 @@
 
     <!-- CABECERA MÓVIL (Solo celular) -->
     <div class="mobile-header">
-        <!-- Logo de Excelencia Animal arriba a la izquierda en celular -->
         <div class="mobile-logo" onclick="goHome()" style="cursor: pointer;">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-29_at_12.16.51_PM-removebg-preview.png?raw=true">
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Excelencia Animal">
         </div>
         <button class="hamburger-btn" onclick="toggleMobileMenu()">
             <span></span>
@@ -892,22 +894,20 @@
 
     <!-- SECCIÓN DE MARCAS -->
     <div class="brands-section" id="brands-container">
-        <!-- Logos a los costados del título de marcas (Izquierda: Efesa | Derecha: Pets Class) -->
+        <!-- Logos laterales (Efesa a la izquierda y Pets Class a la derecha) visibles en celular -->
         <div class="brands-header-wrapper">
-            <!-- Logo izquierdo (Efesa) con enlace -->
-            <a href="URL_ENLACE_EFESA_AQUI" target="_blank">
+            <a href="#" target="_blank">
                 <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" class="brand-side-logo">
             </a>
 
             <div class="brands-title">Nuestras Marcas</div>
 
-            <!-- Logo derecho (Pets Class) con enlace -->
-            <a href="URL_ENLACE_PETS_CLASS_AQUI" target="_blank">
+            <a href="#" target="_blank">
                 <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Pets Class" class="brand-side-logo">
             </a>
         </div>
 
-        <!-- Grilla de marcas ordenada exactamente como pediste -->
+        <!-- Grilla de marcas -->
         <div class="brands-grid">
             <div class="brand-badge" onclick="filterByBrand('KonKatt')">KonKatt</div>
             <div class="brand-badge" onclick="filterByBrand('Cat Way')">Cat Way</div>
