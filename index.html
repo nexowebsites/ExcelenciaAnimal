@@ -88,9 +88,9 @@
             letter-spacing: 0.5px;
         }
 
-        /* Logo de Pets Class en la esquina superior derecha (PC) */
+        /* Logo de Pets Class a la derecha en la PC */
         .header-right-logo img {
-            height: 50px;
+            height: 60px;
             object-fit: contain;
             cursor: pointer;
             transition: transform 0.2s;
@@ -189,7 +189,7 @@
             transform: translateX(4px);
         }
 
-        /* --- ELEMENTOS EXCLUSIVOS PARA MÓVIL (OCULTOS EN PC) --- */
+        /* --- ELEMENTOS MÓVIL (Por defecto ocultos en PC) --- */
         .mobile-header, .mobile-drawer, .hamburger-btn, .mobile-search-bar {
             display: none;
         }
@@ -537,10 +537,10 @@
         /* --- RESPONSIVE / DISEÑO EXCLUSIVO PARA MÓVIL --- */
         @media (max-width: 768px) {
             .top-bar { display: none; }
-            header { display: none; } /* Ocultamos cabecera PC */
-            nav.main-nav { display: none; } /* Ocultamos menú horizontal PC */
+            header { display: none; } /* Ocultamos cabecera PC en celular */
+            nav.main-nav { display: none; } /* Ocultamos menú horizontal PC en celular */
 
-            /* Buscador móvil visible solo en celular */
+            /* Buscador móvil visible únicamente en celular */
             .mobile-search-bar {
                 display: flex !important;
                 background: #fff;
@@ -585,7 +585,7 @@
                 transition: var(--transition-smooth);
             }
 
-            /* Hacemos visibles los logos laterales EXCLUSIVAMENTE en celular */
+            /* Logos laterales visibles en celular */
             .brand-side-logo {
                 display: block;
                 height: 34px;
@@ -744,7 +744,7 @@
             <h1>EXCELENCIA ANIMAL</h1>
         </div>
         
-        <!-- Logo de Pets Class en reemplazo del buscador en la PC -->
+        <!-- Logo de Pets Class en la esquina superior derecha (PC) -->
         <div class="header-right-logo" onclick="goHome()" title="Pets Class">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Pets Class">
         </div>
@@ -886,7 +886,6 @@
 
     <!-- SECCIÓN DE MARCAS -->
     <div class="brands-section" id="brands-container">
-        <!-- Logos laterales visibles en celular -->
         <div class="brands-header-wrapper">
             <a href="#" target="_blank">
                 <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" class="brand-side-logo">
@@ -899,7 +898,6 @@
             </a>
         </div>
 
-        <!-- Grilla de marcas -->
         <div class="brands-grid">
             <div class="brand-badge" onclick="filterByBrand('KonKatt')">KonKatt</div>
             <div class="brand-badge" onclick="filterByBrand('Cat Way')">Cat Way</div>
@@ -1100,15 +1098,6 @@
             scrollToCatalog();
         }
 
-        function searchProducts() {
-            showCatalog();
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const filtered = products.filter(p => p.name.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query));
-            displayProducts(filtered, false);
-            document.getElementById('results-title').innerText = query ? `Búsqueda: "${query}"` : 'Catálogo General';
-            document.getElementById('reset-btn').style.display = query ? 'block' : 'none';
-        }
-
         function searchProductsMobile() {
             showCatalog();
             const query = document.getElementById('search-input-mobile').value.toLowerCase();
@@ -1119,7 +1108,6 @@
         }
 
         function resetFilters() {
-            if(document.getElementById('search-input')) document.getElementById('search-input').value = '';
             if(document.getElementById('search-input-mobile')) document.getElementById('search-input-mobile').value = '';
             displayProducts(products, true);
             document.getElementById('results-title').innerText = 'Catálogo General';
