@@ -941,12 +941,12 @@
     <!-- CARRUSEL BANNER FULL WIDTH -->
     <div class="carousel-container" id="main-banner">
         <div class="carousel-slide active">
-            <video autoplay muted loop playsinline>
+            <video muted playsinline>
                 <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/copy_CB4D12CC-35B5-4422-8E7C-AB9268D84844.mov" type="video/mp4">
             </video>
         </div>
         <div class="carousel-slide">
-            <video autoplay muted loop playsinline>
+            <video muted playsinline>
                 <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/copy_D4125F4D-B0F8-451F-9166-189F886A21DB.mov" type="video/mp4">
             </video>
         </div>
@@ -1265,15 +1265,45 @@
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
 
+        function updateSlideVideos() {
+            slides.forEach((slide, index) => {
+                const video = slide.querySelector('video');
+                if (video) {
+                    if (index === currentSlide) {
+                        video.currentTime = 0; // Reinicia al principio
+                        video.play().catch(() => {}); // Reproduce el actual
+                    } else {
+                        video.pause(); // Pausa los demás
+                        video.currentTime = 0; // Los reinicia
+                    }
+                }
+            });
+        }
+
         function showSlide(index) {
             slides[currentSlide].classList.remove('active');
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
+            updateSlideVideos();
         }
 
         function changeSlide(direction) {
             showSlide(currentSlide + direction);
         }
+
+        // Configurar eventos cuando los videos terminan (evento 'ended')
+        slides.forEach((slide, index) => {
+            const video = slide.querySelector('video');
+            if (video) {
+                video.addEventListener('ended', () => {
+                    // Pasa automáticamente a la derecha
+                    showSlide(currentSlide + 1);
+                });
+            }
+        });
+
+        // Inicializar reproductor de videos al cargar la página
+        updateSlideVideos();
 
         displayProducts(products, true);
     </script>
