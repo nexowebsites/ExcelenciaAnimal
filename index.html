@@ -428,6 +428,15 @@
             background: var(--primary-color);
             color: white;
         }
+        .category-desc {
+            margin: 10px 6px 0 6px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #64748B;
+        }
+        .category-desc:empty {
+            display: none;
+        }
 
         /* --- GRILLA DE PRODUCTOS (CORREGIDA PARA EVITAR ENCIMAMIENTOS) --- */
         .products-header {
@@ -1054,32 +1063,60 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
         <div id="catalog-view">
             <h2 class="section-title" style="margin-top: 10px;">Categorías Principales</h2>
             <div class="categories-grid">
-                <div class="category-card" onclick="filterByCategory('Piedras Comunes')">
-                    <h3>Piedras Comunes</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Piedras Comunes')">
+                        <h3>Piedras Comunes</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitario absorbente elaborado a base de diatomea, un mineral natural de alta capacidad de absorción. Ayuda a mantener la bandeja seca, controlar olores y brindar un ambiente más limpio y agradable para tu gato.
+</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Piedras Premium')">
-                    <h3>Piedras Premium</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Piedras Premium')">
+                        <h3>Piedras Premium</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitario premium de alta absorción, elaborado con diatomea seleccionada. Ayuda a controlar eficazmente la humedad y los olores, manteniendo la bandeja más seca, limpia y agradable por más tiempo.</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Piedras premium Perfumadas')">
-                    <h3>Piedras Perfumadas</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Piedras premium Perfumadas')">
+                        <h3>Piedras Perfumadas</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitario de diatomea con agradable fragancia y alta capacidad de absorción. Ayuda a controlar la humedad y los malos olores, manteniendo la bandeja seca, limpia y con un aroma fresco por más tiempo.</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Pellets de pino')">
-                    <h3>Pellets de pino</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Pellets de pino')">
+                        <h3>Pellets de pino</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitario elaborado con fibras de pino prensadas, de origen vegetal y excelente capacidad de absorción. Ayuda a controlar los olores y mantener la bandeja limpia, ofreciendo una opción práctica y natural para tu gato.</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Bentonitas aglomerantes')">
-                    <h3>Bentonitas aglomerantes</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Bentonitas aglomerantes')">
+                        <h3>Bentonitas aglomerantes</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitario elaborado con fibras de pino prensadas, de origen vegetal y excelente capacidad de absorción. Ayuda a controlar los olores y mantener la bandeja limpia, ofreciendo una opción práctica y natural para tu gato.</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Silicas gel')">
-                    <h3>Sílicas gel</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Silicas gel')">
+                        <h3>Sílicas gel</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitario de sílica gel con alta capacidad de absorción, ideal para retener la humedad y ayudar a controlar los olores. Sus cristales facilitan el mantenimiento de la bandeja y ofrecen mayor duración entre cambios.</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Gato')">
-                    <h3>Alimentos Húmedos Gato</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Gato')">
+                        <h3>Alimentos Húmedos Gato</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Alimentos húmedo para gatos, delicioso y nutritivo, pensado para satisfacer hasta los paladares mas exigentes con sus distintos sabores. Una opción ideal para complementar su alimentación von nutrientes y sabor. </p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Perro')">
-                    <h3>Alimentos Húmedos Perro</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Alimentos Húmedos Perro')">
+                        <h3>Alimentos Húmedos Perro</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Alimento húmedo para perros, elaborado para ofrecer una comida deliciosa y nutritiva que tu mejor amigo disfrutara en cada bocado.</p>
                 </div>
-                <div class="category-card" onclick="filterByCategory('Accesorios')">
-                    <h3>Accesorios</h3><span>Ver más</span>
+                <div class="category-item">
+                    <div class="category-card" onclick="filterByCategory('Accesorios')">
+                        <h3>Accesorios</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Amplia variedad de accesorios para gatos, pensados para brindarles comodidad, diversión y bienestar en cada momento<br>Encontrá rascadores, cunas y diferentes opciones en una amplia variedad de colores y estilos.</p>
                 </div>
             </div>
 
