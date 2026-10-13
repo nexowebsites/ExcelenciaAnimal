@@ -15,7 +15,7 @@
             --primary-light: #6A9C89;
             --accent-color: #E9B824;
             --bg-color: #051F3A;
-            --header-bg: #051F3A; /* ACTUALIZADO: Fondo de cabecera igual al resto del sitio */
+            --header-bg: #051F3A;
             --excelencia-orange: #d96800;
             --text-main: #2C3E50;
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -33,7 +33,7 @@
 
         /* --- BARRA SUPERIOR DE CONTACTO (PC) --- */
         .top-bar {
-            background: #051F3A; /* ACTUALIZADO */
+            background: #051F3A;
             color: #fff;
             font-size: 14px;
             font-weight: 500;
@@ -55,7 +55,7 @@
 
         /* --- CABECERA PRINCIPAL (PC) --- */
         header {
-            background-color: var(--header-bg); /* Fondo #051F3A */
+            background-color: var(--header-bg);
             padding: 18px 40px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             display: flex;
@@ -103,9 +103,9 @@
 
         /* --- MENÚ DE NAVEGACIÓN PRINCIPAL (PC) --- */
         nav.main-nav {
-            background-color: #FFFFFF;
-            border-bottom: 2px solid #EAECEE;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            background-color: #051F3A;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             display: flex;
             justify-content: center;
             position: relative;
@@ -124,7 +124,7 @@
         .nav-link {
             display: block;
             padding: 16px 22px;
-            color: #334155;
+            color: #FFFFFF;
             text-decoration: none;
             font-size: 15px;
             font-weight: 700;
@@ -133,8 +133,8 @@
             transition: var(--transition-smooth);
         }
         .nav-link:hover, .nav-item:hover .nav-link {
-            color: var(--primary-color);
-            background-color: #F4F7F6;
+            color: var(--excelencia-orange);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         /* --- MEGA MENÚ DESPLEGABLE (PC) --- */
@@ -142,15 +142,18 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: #FFFFFF;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            background: #051F3A;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
             border-radius: 0 0 12px 12px;
             width: 480px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             padding: 25px;
             gap: 25px;
-            border-top: 4px solid var(--primary-color);
+            border-top: 4px solid var(--excelencia-orange);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -164,10 +167,10 @@
         .dropdown-column h4 {
             font-size: 15px;
             font-family: 'Outfit', sans-serif;
-            color: var(--primary-color);
+            color: var(--excelencia-orange);
             margin: 0 0 12px 0;
             text-transform: uppercase;
-            border-bottom: 2px solid #E2E8F0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 6px;
             letter-spacing: 0.5px;
         }
@@ -180,7 +183,7 @@
             margin-bottom: 10px;
         }
         .dropdown-column ul li a {
-            color: #475569;
+            color: #E2E8F0;
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -253,8 +256,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            pointer-events: none;
         }
-        .carousel-slide.active { opacity: 1; }
+        .carousel-slide.active { 
+            opacity: 1; 
+            pointer-events: auto;
+        }
         .carousel-slide img, .carousel-slide video {
             width: 100%; 
             height: 100%;
@@ -263,12 +270,14 @@
         .carousel-btn {
             position: absolute;
             top: 50%; transform: translateY(-50%);
-            background: rgba(22, 66, 60, 0.7);
+            background: rgba(22, 66, 60, 0.85);
             color: white; border: none;
-            padding: 14px 18px; cursor: pointer;
-            font-size: 18px; border-radius: 50%;
-            z-index: 10;
+            padding: 16px 20px; cursor: pointer;
+            font-size: 20px; border-radius: 50%;
+            z-index: 500;
+            pointer-events: auto;
             transition: var(--transition-smooth);
+            -webkit-tap-highlight-color: transparent;
         }
         .carousel-btn:hover { background: rgba(22, 66, 60, 1); transform: translateY(-50%) scale(1.1); }
         .prev { left: 25px; }
@@ -663,7 +672,7 @@
             font-size: 14px;
         }
 
-        /* --- MEDIA QUERIES PARA ADAPTACIÓN DE GRILLAS --- */
+        /* --- MEDIA QUERIES PARA ADAPTACIÓN DE GRILLAS Y MÓVIL --- */
         @media (max-width: 1024px) {
             .grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -683,7 +692,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: #051F3A; /* ACTUALIZADO: Fondo azul oscuro en celular */
+                background: #051F3A;
                 padding: 3px 20px;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
                 position: sticky;
@@ -723,7 +732,7 @@
                 display: block;
                 width: 100%;
                 height: 3px;
-                background-color: #FFFFFF; /* Cambiado a blanco para contraste */
+                background-color: #FFFFFF;
                 border-radius: 3px;
                 transition: var(--transition-smooth);
             }
@@ -746,6 +755,7 @@
                 margin: 0 auto;
             }
 
+            /* --- MENÚ LATERAL MÓVIL (DRAWER) CON FONDO AZUL --- */
             .mobile-drawer {
                 display: block;
                 position: fixed;
@@ -753,20 +763,21 @@
                 right: -100%;
                 width: 310px;
                 height: 100%;
-                background: #FFFFFF;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+                background: #051F3A;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.5);
                 z-index: 2000;
                 transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
                 overflow-y: auto;
                 padding: 25px 20px;
                 box-sizing: border-box;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
             }
             .mobile-drawer.open { right: 0; }
             .drawer-top-area {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: 2px solid #E2E8F0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 padding-bottom: 15px;
                 margin-bottom: 20px;
             }
@@ -779,7 +790,7 @@
                 font-size: 28px;
                 background: none;
                 border: none;
-                color: #64748B;
+                color: #FFFFFF;
                 cursor: pointer;
                 padding: 0;
                 line-height: 1;
@@ -787,7 +798,7 @@
 
             .drawer-accordion-item {
                 margin-bottom: 12px;
-                border-bottom: 1px solid #F1F5F9;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 padding-bottom: 10px;
             }
             .drawer-accordion-btn {
@@ -798,13 +809,17 @@
                 font-size: 17px;
                 font-family: 'Outfit', sans-serif;
                 font-weight: 700;
-                color: var(--primary-color);
+                color: #FFFFFF;
                 padding: 12px 10px;
                 cursor: pointer;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 border-radius: 8px;
+                transition: background 0.2s;
+            }
+            .drawer-accordion-btn:hover {
+                background: rgba(255, 255, 255, 0.05);
             }
             .drawer-submenu {
                 display: none;
@@ -812,36 +827,45 @@
                 margin-top: 8px;
                 list-style: none;
                 margin-bottom: 0;
+                background: #051F3A;
             }
             .drawer-submenu.open { display: block; }
             .drawer-submenu li { margin-bottom: 12px; }
             .drawer-submenu li a {
-                color: #475569;
+                color: #CBD5E1;
                 text-decoration: none;
                 font-size: 16px;
                 font-weight: 600;
                 display: block;
                 padding: 6px 10px;
                 border-radius: 6px;
+                transition: color 0.2s;
+            }
+            .drawer-submenu li a:hover {
+                color: var(--excelencia-orange);
             }
             .drawer-direct-link {
                 display: block;
                 font-size: 17px;
                 font-family: 'Outfit', sans-serif;
                 font-weight: 700;
-                color: var(--primary-color);
+                color: #FFFFFF;
                 text-decoration: none;
                 padding: 14px 10px;
                 border-radius: 8px;
                 margin-bottom: 12px;
-                border-bottom: 1px solid #F1F5F9;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .drawer-direct-link:hover {
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--excelencia-orange);
             }
 
             .drawer-overlay {
                 display: none;
                 position: fixed;
                 top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.4);
+                background: rgba(0,0,0,0.6);
                 z-index: 1500;
             }
             .drawer-overlay.active { display: block; }
@@ -881,7 +905,7 @@
     <!-- CABECERA PRINCIPAL (PC) -->
     <header id="top-header">
         <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/efesa_logo_transparent.png?raw=true" alt="Efesa">
+            <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa">
         </div>
 
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
@@ -1009,8 +1033,7 @@
     <!-- CARRUSEL BANNER FULL WIDTH -->
     <div class="carousel-container" id="main-banner">
         <div class="carousel-slide active">
-            <!-- VIDEO OPTIMIZADO PARA NAVEGADORES WEB (AUTOPLAY / MUTED / PLAYSINLINE) -->
-            <video id="hero-video" autoplay loop muted playsinline preload="auto">
+            <video id="hero-video" muted playsinline preload="auto">
                 <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/copy_CB4D12CC-35B5-4422-8E7C-AB9268D84844.mov" type="video/mp4">
                 <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/copy_CB4D12CC-35B5-4422-8E7C-AB9268D84844.mov" type="video/quicktime">
             </video>
@@ -1029,7 +1052,7 @@
     <div class="brands-section" id="brands-container">
         <div class="brands-header-wrapper">
             <a href="#" target="_blank">
-                <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/efesa_logo_transparent.png?raw=true" alt="Efesa" class="brand-side-logo">
+                <img src="https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/49290460c85a55cd76146e768455166e9e26afa2/imagen_2026-09-29_121035988.png" alt="Efesa" class="brand-side-logo">
             </a>
             <div class="brands-title">Nuestras Marcas</div>
             <a href="#" target="_blank">
@@ -1283,7 +1306,6 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             }
         }
 
-        /* --- LISTADO DESPLEGABLE DEBAJO DE CADA CATEGORÍA --- */
         function buildProductCard(product) {
             const message = encodeURIComponent(`Hola, quiero consultar stock y precio de ${product.name} (${product.brand})`);
             const card = document.createElement('div');
@@ -1324,7 +1346,6 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             const item = card.parentElement;
             const label = card.querySelector('span');
 
-            // Si ya está abierta, la cerramos
             if (item._panel) {
                 item._panel.remove();
                 item._panel = null;
@@ -1333,7 +1354,6 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                 return;
             }
 
-            // Si está cerrada, armamos el listado y lo abrimos
             const panel = document.createElement('div');
             panel.className = 'category-products';
 
@@ -1438,63 +1458,76 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
         }
 
         let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-let slideTimer = null;
+        const slides = document.querySelectorAll('.carousel-slide');
+        let slideTimer = null;
 
-function changeSlide(direction) {
-    if (slideTimer) clearTimeout(slideTimer);
+        function changeSlide(direction) {
+            if (slideTimer) clearTimeout(slideTimer);
 
-    slides[currentSlide].classList.remove('active');
-    
-    const oldVideo = slides[currentSlide].querySelector('video');
-    if (oldVideo) {
-        oldVideo.pause();
-        oldVideo.currentTime = 0;
-    }
+            slides[currentSlide].classList.remove('active');
+            
+            const oldVideo = slides[currentSlide].querySelector('video');
+            if (oldVideo) {
+                oldVideo.pause();
+                oldVideo.currentTime = 0;
+            }
 
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    
-    manageSlidePlayback();
-}
-
-function manageSlidePlayback() {
-    if (slideTimer) clearTimeout(slideTimer);
-
-    const activeSlide = slides[currentSlide];
-    const activeVideo = activeSlide.querySelector('video');
-
-    if (activeVideo) {
-        activeVideo.currentTime = 0;
-        activeVideo.play().catch(() => {});
-
-        let duration = 7000;
-        if (activeVideo.duration && !isNaN(activeVideo.duration)) {
-            duration = activeVideo.duration * 1000;
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            
+            manageSlidePlayback();
         }
-        
-        slideTimer = setTimeout(() => {
-            changeSlide(1);
-        }, duration);
 
-    } else {
-        slideTimer = setTimeout(() => {
-            changeSlide(1);
-        }, 5000);
-    }
-}
+        function manageSlidePlayback() {
+            if (slideTimer) clearTimeout(slideTimer);
 
-window.onload = function() {
-    displayProducts(products, true);
+            const activeSlide = slides[currentSlide];
+            const activeVideo = activeSlide.querySelector('video');
 
-    // EVENTO CLAVE: Pasa al siguiente slide cuando finaliza el video
-    const heroVideo = document.getElementById('hero-video');
-    if (heroVideo) {
-        heroVideo.removeAttribute('loop'); // Asegura que no se repita en bucle infinito
-        heroVideo.addEventListener('ended', function() {
-            changeSlide(1);
-        });
-    }
+            if (activeVideo) {
+                activeVideo.currentTime = 0;
+                activeVideo.play().catch(() => {});
+
+                // Sincronización automática según la duración exacta del video actual
+                const checkDuration = () => {
+                    let duration = activeVideo.duration;
+                    if (!duration || isNaN(duration)) {
+                        duration = 7; // Respaldo por defecto si no carga de inmediato
+                    }
+                    slideTimer = setTimeout(() => {
+                        changeSlide(1);
+                    }, duration * 1000);
+                };
+
+                if (activeVideo.readyState >= 1) {
+                    checkDuration();
+                } else {
+                    activeVideo.onloadedmetadata = checkDuration;
+                }
+
+            } else {
+                slideTimer = setTimeout(() => {
+                    changeSlide(1);
+                }, 5000);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('active');
+        }
+
+        function toggleSubmenu(id) {
+            const submenu = document.getElementById(id);
+            submenu.classList.toggle('open');
+        }
+
+        window.onload = function() {
+            displayProducts(products, true);
+            manageSlidePlayback();
+        };
     </script>
 </body>
 </html>
