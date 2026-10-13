@@ -1452,31 +1452,53 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             }
         }
 
-        setInterval(() => {
+        let slideInterval;
+
+function changeSlide(direction) {
+    slides[currentSlide].classList.remove('active');
+    
+    // Pausa el video si salimos de la diapositiva
+    const oldVideo = slides[currentSlide].querySelector('video');
+    if (oldVideo) {
+        oldVideo.pause();
+        oldVideo.currentTime = 0;
+    }
+
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    
+    manageSlidePlayback();
+}
+
+function manageSlidePlayback() {
+    clearInterval(slideInterval);
+
+    const activeSlide = slides[currentSlide];
+    const activeVideo = activeSlide.querySelector('video');
+
+    if (activeVideo) {
+        // Si hay video, lo reproduce desde el inicio
+        activeVideo.currentTime = 0;
+        activeVideo.play().catch(() => {});
+    } else {
+        // Si es una imagen estática, la muestra por 5 segundos
+        slideInterval = setInterval(() => {
             changeSlide(1);
         }, 5000);
+    }
+}
 
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const overlay = document.getElementById('drawer-overlay');
-            drawer.classList.toggle('open');
-            overlay.classList.toggle('active');
-        }
+window.onload = function() {
+    displayProducts(products, true);
 
-        function toggleSubmenu(id) {
-            const submenu = document.getElementById(id);
-            submenu.classList.toggle('open');
-        }
-
-        window.onload = function() {
-            displayProducts(products, true);
-            
-            // Forzar reproducción de video al cargar
-            const vid = document.getElementById('hero-video');
-            if (vid) {
-                vid.play().catch(() => {});
-            }
-        };
+    // EVENTO CLAVE: Pasa al siguiente slide cuando finaliza el video
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        heroVideo.removeAttribute('loop'); // Asegura que no se repita en bucle infinito
+        heroVideo.addEventListener('ended', function() {
+            changeSlide(1);
+        });
+    }
     </script>
 </body>
 </html>
