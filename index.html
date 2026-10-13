@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excelencia Animal - Distribuidora</title>
     <!-- Metadatos SEO para indexación en Google -->
-    <meta name="description" content="Excelencia Animal es una distribuidora mayorista de productos para mascotas en CABA y GBA. Encontrá alimentos húmedos, piedras sanitarias, pellets de pino y accesorios.">
+    <meta name="description" content="Excelencia Animal es una distribuidora de productos para mascotas en CABA y GBA. Alimentos húmedos, piedras sanitarias, pellets y accesorios.">
     <meta name="keywords" content="Excelencia Animal, distribuidora de mascotas, alimentos para perros, alimentos para gatos, piedras sanitarias, bentonitas, pellets de pino, CABA, GBA">
-    
     <!-- Importamos fuentes modernas de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -16,7 +15,7 @@
             --primary-light: #6A9C89;
             --accent-color: #E9B824;
             --bg-color: #051F3A;
-            --header-bg: #FFFFFF;
+            --header-bg: #051F3A; /* ACTUALIZADO: Fondo de cabecera igual al resto del sitio */
             --excelencia-orange: #d96800;
             --text-main: #2C3E50;
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -34,7 +33,7 @@
 
         /* --- BARRA SUPERIOR DE CONTACTO (PC) --- */
         .top-bar {
-            background: linear-gradient(135deg, #102C25, #16423C);
+            background: #051F3A; /* ACTUALIZADO */
             color: #fff;
             font-size: 14px;
             font-weight: 500;
@@ -42,6 +41,7 @@
             display: flex;
             justify-content: flex-end;
             gap: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .top-bar a {
             color: #fff;
@@ -55,15 +55,16 @@
 
         /* --- CABECERA PRINCIPAL (PC) --- */
         header {
-            background-color: var(--header-bg);
+            background-color: var(--header-bg); /* Fondo #051F3A */
             padding: 18px 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .efesa-corner-container img {
@@ -194,9 +195,9 @@
 
         /* --- BUSCADOR UNIFICADO --- */
         .search-section-wrapper {
-            background: var(--bg-color); /* ZONA DE FONDO ACTUALIZADA */
+            background: var(--bg-color);
             padding: 14px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             justify-content: center;
         }
@@ -282,9 +283,9 @@
 
         /* --- SECCIÓN DE MARCAS ESTILO TARJETAS --- */
         .brands-section {
-            background: var(--bg-color); /* ZONA DE FONDO ACTUALIZADA */
+            background: var(--bg-color);
             padding: 35px 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            border-bottom: 2px solid rgba(255,255,255,0.05);
             margin-bottom: 35px;
         }
         .brands-header-wrapper {
@@ -665,13 +666,13 @@
         /* --- MEDIA QUERIES PARA ADAPTACIÓN DE GRILLAS --- */
         @media (max-width: 1024px) {
             .grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columnas para tablets */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             .grid {
-                grid-template-columns: 1fr; /* 1 columna para celulares */
+                grid-template-columns: 1fr;
             }
 
             .top-bar { display: none; }
@@ -682,12 +683,13 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: #FFFFFF;
+                background: #051F3A; /* ACTUALIZADO: Fondo azul oscuro en celular */
                 padding: 3px 20px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
                 position: sticky;
                 top: 0;
                 z-index: 1000;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
             .mobile-logo {
                 position: relative;
@@ -721,7 +723,7 @@
                 display: block;
                 width: 100%;
                 height: 3px;
-                background-color: var(--primary-color);
+                background-color: #FFFFFF; /* Cambiado a blanco para contraste */
                 border-radius: 3px;
                 transition: var(--transition-smooth);
             }
@@ -1007,8 +1009,10 @@
     <!-- CARRUSEL BANNER FULL WIDTH -->
     <div class="carousel-container" id="main-banner">
         <div class="carousel-slide active">
-            <video muted playsinline>
+            <!-- VIDEO OPTIMIZADO PARA NAVEGADORES WEB (AUTOPLAY / MUTED / PLAYSINLINE) -->
+            <video id="hero-video" autoplay loop muted playsinline preload="auto">
                 <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/copy_CB4D12CC-35B5-4422-8E7C-AB9268D84844.mov" type="video/mp4">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/copy_CB4D12CC-35B5-4422-8E7C-AB9268D84844.mov" type="video/quicktime">
             </video>
         </div>
         <div class="carousel-slide">
@@ -1279,6 +1283,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             }
         }
 
+        /* --- LISTADO DESPLEGABLE DEBAJO DE CADA CATEGORÍA --- */
         function buildProductCard(product) {
             const message = encodeURIComponent(`Hola, quiero consultar stock y precio de ${product.name} (${product.brand})`);
             const card = document.createElement('div');
@@ -1319,6 +1324,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             const item = card.parentElement;
             const label = card.querySelector('span');
 
+            // Si ya está abierta, la cerramos
             if (item._panel) {
                 item._panel.remove();
                 item._panel = null;
@@ -1327,6 +1333,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                 return;
             }
 
+            // Si está cerrada, armamos el listado y lo abrimos
             const panel = document.createElement('div');
             panel.className = 'category-products';
 
@@ -1437,6 +1444,12 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + direction + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
+            
+            // Si el slide activo tiene un video, nos aseguramos de reproducirlo
+            const activeVideo = slides[currentSlide].querySelector('video');
+            if (activeVideo) {
+                activeVideo.play().catch(() => {});
+            }
         }
 
         setInterval(() => {
@@ -1457,6 +1470,12 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
 
         window.onload = function() {
             displayProducts(products, true);
+            
+            // Forzar reproducción de video al cargar
+            const vid = document.getElementById('hero-video');
+            if (vid) {
+                vid.play().catch(() => {});
+            }
         };
     </script>
 </body>
