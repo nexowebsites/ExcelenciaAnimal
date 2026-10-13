@@ -1477,11 +1477,18 @@ function manageSlidePlayback() {
     const activeVideo = activeSlide.querySelector('video');
 
     if (activeVideo) {
-        // Si hay video, lo reproduce desde el inicio
         activeVideo.currentTime = 0;
         activeVideo.play().catch(() => {});
+        
+        // Lee la duración real del video actual y avanza automáticamente al terminar
+        activeVideo.onloadedmetadata = function() {
+            const durationInMs = activeVideo.duration * 1000;
+            slideInterval = setTimeout(() => {
+                changeSlide(1);
+            }, durationInMs);
+        };
     } else {
-        // Si es una imagen estática, la muestra por 5 segundos
+        // Si es una imagen estática, se muestra por 5 segundos
         slideInterval = setInterval(() => {
             changeSlide(1);
         }, 5000);
