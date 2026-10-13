@@ -1438,26 +1438,14 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
         }
 
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-
-        function changeSlide(direction) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            
-            // Si el slide activo tiene un video, nos aseguramos de reproducirlo
-            const activeVideo = slides[currentSlide].querySelector('video');
-            if (activeVideo) {
-                activeVideo.play().catch(() => {});
-            }
-        }
-
-        let slideInterval;
+const slides = document.querySelectorAll('.carousel-slide');
+let slideTimer = null;
 
 function changeSlide(direction) {
+    if (slideTimer) clearTimeout(slideTimer);
+
     slides[currentSlide].classList.remove('active');
     
-    // Pausa el video si salimos de la diapositiva
     const oldVideo = slides[currentSlide].querySelector('video');
     if (oldVideo) {
         oldVideo.pause();
@@ -1471,7 +1459,7 @@ function changeSlide(direction) {
 }
 
 function manageSlidePlayback() {
-    clearInterval(slideInterval);
+    if (slideTimer) clearTimeout(slideTimer);
 
     const activeSlide = slides[currentSlide];
     const activeVideo = activeSlide.querySelector('video');
@@ -1479,17 +1467,18 @@ function manageSlidePlayback() {
     if (activeVideo) {
         activeVideo.currentTime = 0;
         activeVideo.play().catch(() => {});
+
+        let duration = 7000;
+        if (activeVideo.duration && !isNaN(activeVideo.duration)) {
+            duration = activeVideo.duration * 1000;
+        }
         
-        // Lee la duración real del video actual y avanza automáticamente al terminar
-        activeVideo.onloadedmetadata = function() {
-            const durationInMs = activeVideo.duration * 1000;
-            slideInterval = setTimeout(() => {
-                changeSlide(1);
-            }, durationInMs);
-        };
+        slideTimer = setTimeout(() => {
+            changeSlide(1);
+        }, duration);
+
     } else {
-        // Si es una imagen estática, se muestra por 5 segundos
-        slideInterval = setInterval(() => {
+        slideTimer = setTimeout(() => {
             changeSlide(1);
         }, 5000);
     }
