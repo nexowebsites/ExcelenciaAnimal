@@ -7,6 +7,8 @@
     <!-- Metadatos SEO para indexación en Google -->
     <meta name="description" content="Excelencia Animal es una distribuidora de productos para mascotas en CABA y GBA. Alimentos húmedos, piedras sanitarias, pellets y accesorios.">
     <meta name="keywords" content="Excelencia Animal, distribuidora de mascotas, alimentos para perros, alimentos para gatos, piedras sanitarias, bentonitas, pellets de pino, CABA, GBA">
+    <!-- Verificación de Google Search Console -->
+    <meta name="google-site-verification" content="g5CY5VpeJRJnF1_6JyOkbtLkdNiP0JkrKrx6UPcD9oY" />
     <!-- Importamos fuentes modernas de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -59,21 +61,13 @@
             padding: 18px 40px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .efesa-corner-container img {
-            height: 55px;
-            object-fit: contain;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .efesa-corner-container img:hover { transform: scale(1.05); }
 
         .header-center {
             cursor: pointer;
@@ -92,14 +86,6 @@
             font-weight: 800;
             letter-spacing: 0.5px;
         }
-
-        .header-right-logo img {
-            height: 60px;
-            object-fit: contain;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .header-right-logo img:hover { transform: scale(1.05); }
 
         /* --- MENÚ DE NAVEGACIÓN PRINCIPAL (PC) --- */
         nav.main-nav {
@@ -304,16 +290,6 @@
             max-width: 1100px;
             margin: 0 auto 20px auto;
         }
-        .brand-side-logo {
-            height: 40px;
-            object-fit: contain;
-            cursor: pointer;
-            transition: transform 0.2s;
-            display: none;
-        }
-        .brand-side-logo:hover {
-            transform: scale(1.05);
-        }
         .brands-title {
             font-size: 14px;
             color: #CBD5E1;
@@ -516,6 +492,7 @@
             border-color: var(--primary-light);
         }
         .card-img {
+            position: relative;
             width: 100%; 
             height: 200px;
             background: #FFFFFF;
@@ -535,6 +512,51 @@
             max-height: 100%;
             object-fit: contain;
         }
+
+        /* --- FLECHITA PARA CAMBIAR DE COLOR EN LOS PRODUCTOS --- */
+        .color-arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(5, 31, 58, 0.85);
+            color: #FFFFFF;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: var(--transition-smooth);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .color-arrow:hover {
+            background: var(--excelencia-orange);
+        }
+        .color-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+        }
+        .color-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #CBD5E1;
+            transition: background 0.2s;
+        }
+        .color-dot.active {
+            background: var(--excelencia-orange);
+        }
+
         .card-body { 
             padding: 20px; 
             display: flex;
@@ -737,11 +759,11 @@
                 transition: var(--transition-smooth);
             }
 
-            .brand-side-logo {
-                display: block;
-                height: 34px;
+            .brands-title {
+                margin: 0 auto;
+                font-size: 24px;
+                letter-spacing: 2px;
             }
-            .brands-title { margin: 0; }
             .brands-header-wrapper { padding: 0 15px; }
 
             .brands-grid {
@@ -904,17 +926,9 @@
 
     <!-- CABECERA PRINCIPAL (PC) -->
     <header id="top-header">
-        <div class="efesa-corner-container" onclick="goHome()" title="Efesa">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/efesa_logo_transparent.png?raw=true" alt="Efesa">
-        </div>
-
         <div class="header-center" onclick="goHome()" title="Volver al inicio">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-29_142805793-removebg-preview.png?raw=true" alt="Logo">
             <h1>EXCELENCIA ANIMAL</h1>
-        </div>
-        
-        <div class="header-right-logo" onclick="goHome()" title="Pet's Class">
-            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class">
         </div>
     </header>
 
@@ -1044,6 +1058,24 @@
         <div class="carousel-slide">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-10-01-10-01-46.jpg?raw=true" alt="Banner Promocional">
         </div>
+        <!-- NUEVO: VIDEO 2 (cambiá NOMBRE-VIDEO-2.mov por el nombre real de tu archivo) -->
+        <div class="carousel-slide">
+            <video muted playsinline preload="metadata">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/NOMBRE-VIDEO-2.mov" type="video/mp4">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/NOMBRE-VIDEO-2.mov" type="video/quicktime">
+            </video>
+        </div>
+        <!-- NUEVO: VIDEO 3 (cambiá NOMBRE-VIDEO-3.mov por el nombre real de tu archivo) -->
+        <div class="carousel-slide">
+            <video muted playsinline preload="metadata">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/NOMBRE-VIDEO-3.mov" type="video/mp4">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/NOMBRE-VIDEO-3.mov" type="video/quicktime">
+            </video>
+        </div>
+        <!-- NUEVO: FOTO (cambiá NOMBRE-FOTO-BANNER.jpg por el nombre real de tu archivo) -->
+        <div class="carousel-slide">
+            <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/NOMBRE-FOTO-BANNER.jpg?raw=true" alt="Banner Promocional">
+        </div>
         <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
         <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
     </div>
@@ -1051,13 +1083,7 @@
     <!-- SECCIÓN DE MARCAS ESTILO TARJETAS -->
     <div class="brands-section" id="brands-container">
         <div class="brands-header-wrapper">
-            <a href="#" target="_blank">
-                <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/efesa_logo_transparent.png?raw=true" alt="Efesa" class="brand-side-logo">
-            </a>
             <div class="brands-title">Nuestras Marcas</div>
-            <a href="#" target="_blank">
-                <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class" class="brand-side-logo">
-            </a>
         </div>
 
         <div class="brands-grid">
@@ -1251,9 +1277,31 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             { id: 27, name: "Alimentos Húmedos Perro - Carne 100 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Alimento húmedo nutritivo sabor carne para perros.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-07-07.jpg?raw=true" },
             { id: 28, name: "Alimentos Húmedos Perro - Pollo 100 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Receta jugosa de pollo para consentir a tu can.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-25-33.jpg?raw=true" },
             { id: 29, name: "Alimentos Húmedos Cachorro - Pollo y leche 85 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Especialmente formulado para la etapa de cachorro.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-24-44.jpg?raw=true" },
-            { id: 30, name: "Accesorios - Cuna para gatos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Cuna suave y cómoda para el descanso de tu felino.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-11-59.jpg?raw=true" },
-            { id: 31, name: "Accesorios - Rascadores redondos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Ideal para el cuidado de sus uñas y entretenimiento.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-09-18.jpg?raw=true" },
-            { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-10-50.jpg?raw=true" },
+
+            // --- ACCESORIOS CON VARIOS COLORES ---
+            // La lista "images" son las fotos de cada color, en el orden en que van pasando con la flechita.
+            // Cambiá los nombres de ejemplo (CUNA-COLOR-2.jpg, etc.) por los nombres reales de tus imágenes.
+            { id: 30, name: "Accesorios - Cuna para gatos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Cuna suave y cómoda para el descanso de tu felino.",
+              image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-11-59.jpg?raw=true",
+              images: [
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-11-59.jpg?raw=true",
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/CUNA-COLOR-2.jpg?raw=true",
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/CUNA-COLOR-3.jpg?raw=true"
+              ] },
+            { id: 31, name: "Accesorios - Rascadores redondos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Ideal para el cuidado de sus uñas y entretenimiento.",
+              image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-09-18.jpg?raw=true",
+              images: [
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-09-18.jpg?raw=true",
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/REDONDO-COLOR-2.jpg?raw=true"
+              ] },
+            { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar.",
+              image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-10-50.jpg?raw=true",
+              images: [
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-10-50.jpg?raw=true",
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/OVALADO-COLOR-2.jpg?raw=true",
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/OVALADO-COLOR-3.jpg?raw=true"
+              ] },
+
             { id: 33, name: "Bidón Neutro - 6,5 kg", brand: "Cat Way", category: "Bentonitas aglomerantes", group: "Gato", desc: "Elimina y neutraliza los diversos olores facilmente.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-30-35.jpg?raw=true" },
             { id: 34, name: "Bidón Lavanda - 6,5 kg", brand: "Cat Way", category: "Bentonitas aglomerantes", group: "Gato", desc: "Neutraliza y cambia el mal olor por un refrescantee aroma a lavanda.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-34-25.jpg?raw=true" },
         ];
@@ -1275,25 +1323,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             }
 
             listToDisplay.forEach(product => {
-                const message = encodeURIComponent(`Hola, quiero consultar stock y precio de ${product.name} (${product.brand})`);
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="card-img">
-                        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible';">
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <span class="card-brand">${product.brand}</span>
-                            <h3 class="card-title">${product.name}</h3>
-                            <p class="card-desc">${product.desc}</p>
-                        </div>
-                        <a href="https://wa.me/5491158083666?text=${message}" target="_blank" class="whatsapp-btn">
-                            Consultar por WhatsApp
-                        </a>
-                    </div>
-                `;
-                grid.appendChild(card);
+                grid.appendChild(buildProductCard(product));
             });
 
             if (showRandom && items.length === products.length) {
@@ -1308,11 +1338,20 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
 
         function buildProductCard(product) {
             const message = encodeURIComponent(`Hola, quiero consultar stock y precio de ${product.name} (${product.brand})`);
+            const images = (product.images && product.images.length > 1) ? product.images : [product.image];
+            const hasColors = images.length > 1;
+
             const card = document.createElement('div');
             card.className = 'card';
             card.innerHTML = `
                 <div class="card-img">
-                    <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible';">
+                    <img src="${images[0]}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible';">
+                    ${hasColors ? `
+                        <button class="color-arrow" aria-label="Ver otro color">&#10095;</button>
+                        <div class="color-dots">
+                            ${images.map((_, i) => `<span class="color-dot${i === 0 ? ' active' : ''}"></span>`).join('')}
+                        </div>
+                    ` : ''}
                 </div>
                 <div class="card-body">
                     <div>
@@ -1325,6 +1364,18 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                     </a>
                 </div>
             `;
+
+            if (hasColors) {
+                let current = 0;
+                const img = card.querySelector('.card-img img');
+                const dots = card.querySelectorAll('.color-dot');
+                card.querySelector('.color-arrow').addEventListener('click', () => {
+                    current = (current + 1) % images.length;
+                    img.src = images[current];
+                    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+                });
+            }
+
             return card;
         }
 
