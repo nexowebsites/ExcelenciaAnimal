@@ -453,6 +453,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            scroll-margin-top: 130px;
         }
         .reset-filter-btn {
             background: #64748B;
@@ -513,7 +514,7 @@
             object-fit: contain;
         }
 
-        /* --- FLECHITA PARA CAMBIAR DE COLOR EN LOS PRODUCTOS --- */
+        /* --- FLECHITAS PARA CAMBIAR DE IMAGEN EN LOS PRODUCTOS --- */
         .color-arrow {
             position: absolute;
             top: 50%;
@@ -536,6 +537,10 @@
         }
         .color-arrow:hover {
             background: var(--excelencia-orange);
+        }
+        .color-arrow.prev {
+            left: 10px;
+            right: auto;
         }
         .color-dots {
             position: absolute;
@@ -705,6 +710,8 @@
             .grid {
                 grid-template-columns: 1fr;
             }
+
+            .products-header { scroll-margin-top: 100px; }
 
             .top-bar { display: none; }
             header { display: none; }
@@ -1203,7 +1210,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                 </div>
             </div>
 
-            <div class="products-header">
+            <div class="products-header" id="products-header">
                 <h2 class="section-title" id="results-title" style="margin:0; border:none;">Catálogo General</h2>
                 <button class="reset-filter-btn" id="reset-btn" style="display:none;" onclick="resetFilters()">Ver Todos</button>
             </div>
@@ -1240,6 +1247,53 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
     </footer>
 
     <script>
+        /* --- AYUDA PARA IMÁGENES ---
+           Podés escribir solo el nombre del archivo de GitHub (ej: "gatito-piedras.jpg")
+           o la dirección completa; las dos formas funcionan. */
+        const REPO_IMAGES = "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/";
+        function resolveImg(src) {
+            if (/^https?:\/\//i.test(src)) return src;
+            return REPO_IMAGES + (src.includes('%') ? src : encodeURI(src)) + "?raw=true";
+        }
+
+        /* --- SEGUNDA IMAGEN (CON GATITO O PERRO) DE CADA PRODUCTO ---
+           Escribí entre comillas el nombre del archivo de la imagen con la mascota.
+           Los que dejes vacíos ("") quedan igual que ahora, sin flechitas.
+           (Los accesorios no llevan porque ya tienen sus imágenes de colores). */
+        const PET_IMAGES = {
+            1: "",   // Piedras Economicas - 4,6 LT
+            2: "",   // Piedras Economicas - 9,2 LT
+            3: "",   // Piedras Economicas - 23 LT
+            4: "",   // Piedras Economicas - 50 LT
+            5: "",   // Piedras Premium - 4,6 LT
+            6: "",   // Piedras Premium - 9,2 LT
+            7: "",   // Piedras Premium Perfumadas - 9,2 LT Lavanda
+            8: "",   // Piedras Premium Perfumadas - 9,2 LT Manzana
+            9: "",   // Piedras Premium Perfumadas - 9,2 LT Citrus
+            10: "",  // Pellets de pino - 4 kg
+            11: "",  // Pellets de pino - 15 kg
+            12: "",  // Bentonitas aglomerantes - 5 kg (Premium)
+            13: "",  // Bentonitas aglomerantes - 12 kg (Premium)
+            14: "",  // Bentonitas aglomerantes - 20 kg (Económica)
+            15: "",  // Bentonitas aglomerantes - 12 kg Perfumada Lavanda Premium
+            16: "",  // Bentonitas aglomerantes - 5 kg Esfera Super Premium
+            17: "",  // Silicas gel - 1,8 kg Neutra
+            18: "",  // Silicas gel - 1,8 kg Lavanda
+            19: "",  // Productos Premium - Carbon Vegetal Activado 9,2 LT
+            20: "",  // Productos Premium - Duo 9,2 LT
+            21: "",  // Productos Premium - Duo 15 kg
+            22: "",  // Alimentos Húmedos Gato - Carne 85 gr
+            23: "",  // Alimentos Húmedos Gatito - Pollo y leche 85 gr
+            24: "",  // Alimentos Húmedos Gato - Salmón Rosado 85 gr
+            25: "",  // Alimentos Húmedos Gato - Frutos del mar 85 gr
+            26: "",  // Alimentos Húmedos Gato - Atún y Sardina 85 gr
+            27: "",  // Alimentos Húmedos Perro - Carne 100 gr
+            28: "",  // Alimentos Húmedos Perro - Pollo 100 gr
+            29: "",  // Alimentos Húmedos Cachorro - Pollo y leche 85 gr
+            33: "",  // Bidón Neutro - 6,5 kg
+            34: ""   // Bidón Lavanda - 6,5 kg
+        };
+
         const products = [
             { id: 1, name: "Piedras Economicas - 4,6 LT", brand: "KonKatt", category: "Piedras Economicas", group: "Gato", desc: "Piedras sanitarias tradicionales para el cuidado diario de tu felino.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-18-46.jpg?raw=true" },
             { id: 2, name: "Piedras Economicas - 9,2 LT", brand: "KonKatt", category: "Piedras Economicas", group: "Gato", desc: "Excelente absorción y rendimiento en presentación mediana.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-18-02.jpg?raw=true" },
@@ -1272,27 +1326,33 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             { id: 29, name: "Alimentos Húmedos Cachorro - Pollo y leche 85 gr", brand: "Pet´s Class", category: "Alimentos Húmedos Perro", group: "Perro", desc: "Especialmente formulado para la etapa de cachorro.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-24-44.jpg?raw=true" },
 
             // --- ACCESORIOS CON VARIOS COLORES ---
-            // La lista "images" son las fotos de cada color, en el orden en que van pasando con la flechita.
-            // Cambiá los nombres de ejemplo (CUNA-COLOR-2.jpg, etc.) por los nombres reales de tus imágenes.
+            // La lista "images" son las fotos de cada color, en el orden en que van pasando con las flechitas.
+            // Los nombres en MAYÚSCULAS (CUNA-COLOR-4.jpg, etc.) son de ejemplo: cambialos por los nombres reales de tus imágenes.
             { id: 30, name: "Accesorios - Cuna para gatos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Cuna suave y cómoda para el descanso de tu felino.",
               image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-11-59.jpg?raw=true",
               images: [
                 "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-11-59.jpg?raw=true",
                 "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/cesta_artesanal_sin_fondo.png?raw=true",
-                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/woven_cat_bed_isolated.png?raw=true"
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/woven_cat_bed_isolated.png?raw=true",
+                "CUNA-COLOR-4.jpg",
+                "CUNA-TODOS-LOS-COLORES.jpg"
               ] },
             { id: 31, name: "Accesorios - Rascadores redondos", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Ideal para el cuidado de sus uñas y entretenimiento.",
               image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-09-18.jpg?raw=true",
               images: [
                 "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-09-18.jpg?raw=true",
-                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/woven_placemat_isolated.png?raw=true"
+                "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/woven_placemat_isolated.png?raw=true",
+                "REDONDO-COLOR-3.jpg",
+                "REDONDO-TODOS-LOS-COLORES.jpg"
               ] },
             { id: 32, name: "Accesorios - Rascadores ovalados", brand: "AR Mascotas", category: "Accesorios", group: "Accesorios", desc: "Diseño ergonómico para rascar y jugar.",
               image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-10-50.jpg?raw=true",
               images: [
                 "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-22-10-50.jpg?raw=true",
                 "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/cat_scratch_pad_cutout.png?raw=true",
-                "https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/04644b4b1ac10b07418f0c6e8d29b89698569abd/woven_pet_mat_isolated.png"
+                "https://raw.githubusercontent.com/nexowebsites/ExcelenciaAnimal/04644b4b1ac10b07418f0c6e8d29b89698569abd/woven_pet_mat_isolated.png",
+                "OVALADO-COLOR-4.jpg",
+                "OVALADO-TODOS-LOS-COLORES.jpg"
               ] },
 
             { id: 33, name: "Bidón Neutro - 6,5 kg", brand: "Cat Way", category: "Bentonitas aglomerantes", group: "Gato", desc: "Elimina y neutraliza los diversos olores facilmente.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-30-35.jpg?raw=true" },
@@ -1331,7 +1391,11 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
 
         function buildProductCard(product) {
             const message = encodeURIComponent(`Hola, quiero consultar stock y precio de ${product.name} (${product.brand})`);
-            const images = (product.images && product.images.length > 1) ? product.images : [product.image];
+
+            // Imágenes del producto: las de colores (accesorios) o la principal + la de la mascota (si existe)
+            let images = (product.images && product.images.length > 1) ? product.images.slice() : [product.image];
+            if (PET_IMAGES[product.id]) images.push(PET_IMAGES[product.id]);
+            images = images.map(resolveImg);
             const hasColors = images.length > 1;
 
             const card = document.createElement('div');
@@ -1340,7 +1404,8 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                 <div class="card-img">
                     <img src="${images[0]}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible';">
                     ${hasColors ? `
-                        <button class="color-arrow" aria-label="Ver otro color">&#10095;</button>
+                        <button class="color-arrow prev" aria-label="Imagen anterior">&#10094;</button>
+                        <button class="color-arrow next" aria-label="Imagen siguiente">&#10095;</button>
                         <div class="color-dots">
                             ${images.map((_, i) => `<span class="color-dot${i === 0 ? ' active' : ''}"></span>`).join('')}
                         </div>
@@ -1362,11 +1427,17 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                 let current = 0;
                 const img = card.querySelector('.card-img img');
                 const dots = card.querySelectorAll('.color-dot');
-                card.querySelector('.color-arrow').addEventListener('click', () => {
-                    current = (current + 1) % images.length;
+                const showImage = (index) => {
+                    current = (index + images.length) % images.length;
+                    img.onerror = () => {
+                        img.onerror = null;
+                        img.src = 'https://via.placeholder.com/300x200?text=Imagen+No+Disponible';
+                    };
                     img.src = images[current];
                     dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-                });
+                };
+                card.querySelector('.color-arrow.prev').addEventListener('click', () => showImage(current - 1));
+                card.querySelector('.color-arrow.next').addEventListener('click', () => showImage(current + 1));
             }
 
             return card;
@@ -1439,13 +1510,18 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             document.getElementById('catalog-anchor').scrollIntoView({ behavior: 'smooth' });
         }
 
+        // Lleva directamente a los resultados (título + productos), sin pasar por las categorías
+        function scrollToResults() {
+            document.getElementById('products-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
         function filterByBrand(brandName) {
             showCatalog();
             const filtered = products.filter(p => p.brand === brandName);
             displayProducts(filtered, false);
             document.getElementById('results-title').innerText = `Productos de: ${brandName}`;
             document.getElementById('reset-btn').style.display = 'block';
-            scrollToCatalog();
+            scrollToResults();
         }
 
         function filterByCategory(categoryName) {
