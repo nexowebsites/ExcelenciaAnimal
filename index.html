@@ -327,6 +327,11 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-color: var(--primary-light);
         }
+        .brand-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary-light);
+        }
         .brand-card-img-box {
             height: 60px;
             display: flex;
@@ -357,6 +362,34 @@
             background-color: #cf6000;
         }
 
+        /* --- LISTADO DE PRODUCTOS QUE SE ABRE DEBAJO DE LAS MARCAS --- */
+        .brand-products {
+            max-width: 1100px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .brand-products-content {
+            padding-top: 30px;
+            transition: opacity 0.25s ease;
+        }
+        .brand-products-content.swapping {
+            opacity: 0;
+        }
+        .brand-products-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .brand-products-title {
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0;
+        }
+
         /* --- CATEGORÍAS --- */
         .section-title {
             font-size: 26px;
@@ -370,8 +403,11 @@
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-bottom: 45px;
+            gap: 0 25px;
+            margin-bottom: 20px;
+        }
+        .category-item {
+            margin-bottom: 25px;
         }
         .category-card {
             background: #FFFFFF;
@@ -436,8 +472,10 @@
         }
         .category-products {
             grid-column: 1 / -1;
-            margin: 0 0 10px 0;
-            animation: fadeIn 0.3s ease-in-out;
+            margin: 0;
+        }
+        .category-products.open {
+            margin-bottom: 35px;
         }
         .category-products-title {
             color: #FFFFFF;
@@ -447,13 +485,33 @@
             margin: 5px 0 18px 0;
         }
 
+        /* --- ANIMACIÓN SUAVE PARA ABRIR Y CERRAR LISTADOS --- */
+        .collapsible {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s ease,
+                        margin-bottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .collapsible.open {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        .collapsible > .collapsible-inner {
+            min-height: 0;
+            overflow: hidden;
+        }
+        .collapsible.expanded > .collapsible-inner {
+            overflow: visible;
+        }
+
         /* --- GRILLA DE PRODUCTOS --- */
         .products-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
-            scroll-margin-top: 130px;
         }
         .reset-filter-btn {
             background: #64748B;
@@ -652,6 +710,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Los productos entran de a uno, suavemente, cuando se abre un listado */
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: none; }
+        }
+        .category-products .card,
+        .brand-products .card {
+            animation: cardIn 0.5s ease backwards;
+        }
+
         /* --- FOOTER --- */
         footer {
             background: linear-gradient(135deg, #1E293B, #0F172A);
@@ -689,6 +757,12 @@
             transition: color 0.2s;
         }
         .footer-col ul li a:hover { color: var(--accent-color); padding-left: 5px; }
+        .footer-col p a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-col p a:hover { color: var(--accent-color); }
         .footer-bottom {
             max-width: 1200px;
             margin: 40px auto 0 auto;
@@ -710,8 +784,6 @@
             .grid {
                 grid-template-columns: 1fr;
             }
-
-            .products-header { scroll-margin-top: 100px; }
 
             .top-bar { display: none; }
             header { display: none; }
@@ -782,6 +854,9 @@
                 grid-column: 1 / -1;
                 max-width: 50%;
                 margin: 0 auto;
+            }
+            .brand-products {
+                padding: 0 10px;
             }
 
             /* --- MENÚ LATERAL MÓVIL (DRAWER) CON FONDO AZUL --- */
@@ -902,6 +977,12 @@
             .categories-grid { grid-template-columns: 1fr; }
             .carousel-container { height: 220px; }
             .footer-content { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        /* Si el dispositivo pide menos movimiento, se quitan las animaciones */
+        @media (prefers-reduced-motion: reduce) {
+            .collapsible, .brand-products-content { transition: none; }
+            .category-products .card, .brand-products .card { animation: none; }
         }
 
         /* --- CONTENEDOR PARA OCULTAR LA BARRA DE GOOGLE MAPS --- */
@@ -1088,39 +1169,46 @@
 
         <div class="brands-grid">
             <!-- Marca 1 -->
-            <div class="brand-card" onclick="filterByBrand('KonKatt')">
+            <div class="brand-card" onclick="filterByBrand('KonKatt', this)">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/image-removebg-preview.png?raw=true" alt="KonKatt">
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
             <!-- Marca 2 -->
-            <div class="brand-card" onclick="filterByBrand('Cat Way')">
+            <div class="brand-card" onclick="filterByBrand('Cat Way', this)">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/image-removebg-preview%20(1).png?raw=true" alt="Cat Way">
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
             <!-- Marca 3 -->
-            <div class="brand-card" onclick="filterByBrand('Gato Real')">
+            <div class="brand-card" onclick="filterByBrand('Gato Real', this)">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-30_153258618-removebg-preview.png?raw=true" alt="Gato Real">
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
             <!-- Marca 4 -->
-            <div class="brand-card" onclick="filterByBrand('AR Mascotas')">
+            <div class="brand-card" onclick="filterByBrand('AR Mascotas', this)">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/imagen_2026-09-30_151532264-removebg-preview.png?raw=true" alt="AR Mascotas">
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
             <!-- Marca 5 -->
-            <div class="brand-card" onclick="filterByBrand('Pet´s Class')">
+            <div class="brand-card" onclick="filterByBrand('Pet´s Class', this)">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class">
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
+            </div>
+        </div>
+
+        <!-- Aquí se abren los productos de la marca elegida -->
+        <div class="brand-products collapsible" id="brand-products">
+            <div class="collapsible-inner">
+                <div class="brand-products-content" id="brand-products-content"></div>
             </div>
         </div>
     </div>
@@ -1191,6 +1279,12 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                     <p class="category-desc">Sanitario de sílica gel con alta capacidad de absorción, ideal para retener la humedad y ayudar a controlar los olores. Sus cristales facilitan el mantenimiento de la bandeja y ofrecen mayor duración entre cambios.</p>
                 </div>
                 <div class="category-item">
+                    <div class="category-card" onclick="toggleCategory(this, 'Productos Premium')">
+                        <h3>Productos Premium</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Sanitarios de línea premium con fórmulas especiales, como el carbón vegetal activado y las combinaciones Duo, pensados para neutralizar los olores de manera eficaz. Ofrecen alta absorción para mantener la bandeja limpia, seca y fresca por más tiempo.</p>
+                </div>
+                <div class="category-item">
                     <div class="category-card" onclick="toggleCategory(this, 'Alimentos Húmedos Gato')">
                         <h3>Alimentos Húmedos Gato</h3><span>Ver más</span>
                     </div>
@@ -1225,8 +1319,8 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
         <div class="footer-content">
             <div class="footer-col">
                 <h4>Contacto</h4>
-                <p>💬 WhatsApp: 11 5808-3666</p>
-                <p>📧 Email: contacto@excelenciaanimal.com</p>
+                <p>💬 WhatsApp: <a href="https://wa.me/5491158083666" target="_blank" rel="noopener">11 5808-3666</a></p>
+                <p>📸 Instagram: <a href="https://www.instagram.com/excelencia.animal/" target="_blank" rel="noopener">@excelencia.animal</a></p>
             </div>
             <div class="footer-col">
                 <h4>Secciones</h4>
@@ -1443,6 +1537,52 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             return card;
         }
 
+        /* --- AYUDAS PARA LAS ANIMACIONES Y EL DESPLAZAMIENTO --- */
+        function afterTransition(el, callback) {
+            let finished = false;
+            const finish = () => {
+                if (finished) return;
+                finished = true;
+                el.removeEventListener('transitionend', onEnd);
+                callback();
+            };
+            const onEnd = (e) => {
+                if (e.target === el && e.propertyName === 'grid-template-rows') finish();
+            };
+            el.addEventListener('transitionend', onEnd);
+            setTimeout(finish, 650);
+        }
+
+        function openCollapsible(el) {
+            el.getBoundingClientRect(); // fuerza el estado inicial antes de animar
+            el.classList.add('open');
+            afterTransition(el, () => {
+                if (el.classList.contains('open')) el.classList.add('expanded');
+            });
+        }
+
+        function closeCollapsible(el, done) {
+            el.classList.remove('expanded');
+            el.classList.remove('open');
+            afterTransition(el, () => {
+                if (!el.classList.contains('open') && done) done();
+            });
+        }
+
+        function stickyOffset() {
+            const mobileHeader = document.querySelector('.mobile-header');
+            const header = (mobileHeader && getComputedStyle(mobileHeader).display !== 'none')
+                ? mobileHeader
+                : document.getElementById('top-header');
+            return header ? header.getBoundingClientRect().height : 0;
+        }
+
+        function scrollToElement(el, extra = 12) {
+            const y = el.getBoundingClientRect().top + window.pageYOffset - stickyOffset() - extra;
+            window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        }
+
+        /* --- LISTADO DE PRODUCTOS DEBAJO DE CADA CATEGORÍA --- */
         function placeCategoryPanel(item, panel) {
             panel.remove();
             const grid = item.parentElement;
@@ -1454,6 +1594,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             while (ref.nextElementSibling && ref.nextElementSibling.classList.contains('category-products')) {
                 ref = ref.nextElementSibling;
             }
+            panel.dataset.cols = cols;
             ref.after(panel);
         }
 
@@ -1461,16 +1602,21 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             const item = card.parentElement;
             const label = card.querySelector('span');
 
+            // Si ya está abierta, se cierra con animación
             if (item._panel) {
-                item._panel.remove();
+                const openPanel = item._panel;
                 item._panel = null;
                 card.classList.remove('open');
                 label.textContent = 'Ver más';
+                closeCollapsible(openPanel, () => openPanel.remove());
                 return;
             }
 
             const panel = document.createElement('div');
-            panel.className = 'category-products';
+            panel.className = 'category-products collapsible';
+
+            const inner = document.createElement('div');
+            inner.className = 'collapsible-inner';
 
             const title = document.createElement('h4');
             title.className = 'category-products-title';
@@ -1482,23 +1628,119 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             if (filtered.length === 0) {
                 list.innerHTML = '<p style="grid-column: 1/-1; color: #CBD5E1; font-size: 16px;">No se encontraron productos.</p>';
             } else {
-                filtered.forEach(p => list.appendChild(buildProductCard(p)));
+                filtered.forEach((p, i) => {
+                    const productCard = buildProductCard(p);
+                    productCard.style.animationDelay = (Math.min(i, 8) * 70) + 'ms';
+                    list.appendChild(productCard);
+                });
             }
 
-            panel.appendChild(title);
-            panel.appendChild(list);
+            inner.appendChild(title);
+            inner.appendChild(list);
+            panel.appendChild(inner);
 
             item._panel = panel;
             card.classList.add('open');
             label.textContent = 'Ver menos';
             placeCategoryPanel(item, panel);
+            openCollapsible(panel);
         }
 
+        // Si cambia la cantidad de columnas (por ejemplo al girar el celular), se reubican los listados abiertos
         window.addEventListener('resize', () => {
             document.querySelectorAll('.category-item').forEach(item => {
-                if (item._panel) placeCategoryPanel(item, item._panel);
+                if (!item._panel) return;
+                const cols = getComputedStyle(item.parentElement).gridTemplateColumns.split(' ').length;
+                if (String(cols) !== item._panel.dataset.cols) placeCategoryPanel(item, item._panel);
             });
         });
+
+        /* --- PRODUCTOS DE CADA MARCA (SE ABREN DEBAJO DE LAS MARCAS) --- */
+        let currentBrand = null;
+
+        function setActiveBrandCard(card) {
+            document.querySelectorAll('.brand-card').forEach(c => {
+                const isActive = (c === card);
+                c.classList.toggle('active', isActive);
+                const btn = c.querySelector('.brand-ver-productos-btn');
+                if (btn) btn.textContent = isActive ? 'Ocultar Productos' : 'Ver Productos';
+            });
+        }
+
+        function closeBrandPanel(scrollBack = false) {
+            const panel = document.getElementById('brand-products');
+            const content = document.getElementById('brand-products-content');
+            currentBrand = null;
+            setActiveBrandCard(null);
+            closeCollapsible(panel, () => { content.innerHTML = ''; });
+            if (scrollBack) scrollToElement(document.querySelector('.brands-grid'), 20);
+        }
+
+        function renderBrandProducts(brandName) {
+            const content = document.getElementById('brand-products-content');
+            content.innerHTML = '';
+
+            const head = document.createElement('div');
+            head.className = 'brand-products-head';
+
+            const title = document.createElement('h3');
+            title.className = 'brand-products-title';
+            title.textContent = `Productos de: ${brandName}`;
+
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'reset-filter-btn';
+            closeBtn.textContent = 'Cerrar';
+            closeBtn.addEventListener('click', () => closeBrandPanel(true));
+
+            head.appendChild(title);
+            head.appendChild(closeBtn);
+
+            const list = document.createElement('div');
+            list.className = 'grid';
+            const filtered = products.filter(p => p.brand.toLowerCase() === brandName.toLowerCase());
+            if (filtered.length === 0) {
+                list.innerHTML = '<p style="grid-column: 1/-1; color: #CBD5E1; font-size: 16px;">No se encontraron productos.</p>';
+            } else {
+                filtered.forEach((p, i) => {
+                    const productCard = buildProductCard(p);
+                    productCard.style.animationDelay = (Math.min(i, 8) * 70) + 'ms';
+                    list.appendChild(productCard);
+                });
+            }
+
+            content.appendChild(head);
+            content.appendChild(list);
+        }
+
+        function filterByBrand(brandName, card) {
+            const panel = document.getElementById('brand-products');
+            const content = document.getElementById('brand-products-content');
+
+            // Si tocan la misma marca otra vez, se cierra
+            if (currentBrand && currentBrand.toLowerCase() === brandName.toLowerCase()) {
+                closeBrandPanel();
+                return;
+            }
+
+            const wasOpen = currentBrand !== null;
+            currentBrand = brandName;
+            setActiveBrandCard(card);
+
+            if (wasOpen) {
+                // Cambio de marca: el contenido se desvanece, se reemplaza y vuelve a aparecer
+                content.classList.add('swapping');
+                setTimeout(() => {
+                    renderBrandProducts(brandName);
+                    content.classList.remove('swapping');
+                }, 220);
+            } else {
+                renderBrandProducts(brandName);
+                openCollapsible(panel);
+            }
+
+            // Lleva directamente a los productos de la marca
+            scrollToElement(panel);
+        }
 
         function showAllProducts() {
             displayProducts(products, false);
@@ -1508,20 +1750,6 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
 
         function scrollToCatalog() {
             document.getElementById('catalog-anchor').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Lleva directamente a los resultados (título + productos), sin pasar por las categorías
-        function scrollToResults() {
-            document.getElementById('products-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function filterByBrand(brandName) {
-            showCatalog();
-            const filtered = products.filter(p => p.brand === brandName);
-            displayProducts(filtered, false);
-            document.getElementById('results-title').innerText = `Productos de: ${brandName}`;
-            document.getElementById('reset-btn').style.display = 'block';
-            scrollToResults();
         }
 
         function filterByCategory(categoryName) {
