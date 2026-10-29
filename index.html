@@ -303,8 +303,8 @@
         
         .brands-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -344,6 +344,14 @@
             max-height: 50px;
             max-width: 100%;
             object-fit: contain;
+        }
+        .brand-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: #1E293B;
+            text-align: center;
+            line-height: 1.2;
         }
         .brand-ver-productos-btn {
             background-color: #E96D00;
@@ -483,6 +491,20 @@
             font-size: 20px;
             font-weight: 700;
             margin: 5px 0 18px 0;
+        }
+
+        /* --- OPCIONES DENTRO DE UNA CATEGORÍA (ej: Accesorios) --- */
+        .sub-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .sub-content {
+            padding-top: 22px;
+            transition: opacity 0.25s ease;
+        }
+        .sub-content.swapping {
+            opacity: 0;
         }
 
         /* --- ANIMACIÓN SUAVE PARA ABRIR Y CERRAR LISTADOS --- */
@@ -778,6 +800,9 @@
             .grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -850,13 +875,11 @@
                 gap: 12px;
                 padding: 0 10px;
             }
-            .brand-card:nth-child(5) {
-                grid-column: 1 / -1;
-                max-width: 50%;
-                margin: 0 auto;
-            }
             .brand-products {
                 padding: 0 10px;
+            }
+            .sub-options {
+                grid-template-columns: 1fr;
             }
 
             /* --- MENÚ LATERAL MÓVIL (DRAWER) CON FONDO AZUL --- */
@@ -981,7 +1004,7 @@
 
         /* Si el dispositivo pide menos movimiento, se quitan las animaciones */
         @media (prefers-reduced-motion: reduce) {
-            .collapsible, .brand-products-content { transition: none; }
+            .collapsible, .brand-products-content, .sub-content { transition: none; }
             .category-products .card, .brand-products .card { animation: none; }
         }
 
@@ -1066,6 +1089,7 @@
         </div>
 
         <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); filterByCategory('Accesorios')">Accesorios</a>
+        <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); filterByCategory('Paños Educativos')">Paños Educativos</a>
         <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); showSection('contact')">Zonas de Envíos</a>
         <a href="#" class="drawer-direct-link" onclick="toggleMobileMenu(); showSection('about')">Sobre Nosotros</a>
     </div>
@@ -1116,6 +1140,9 @@
                 <a href="#" class="nav-link" onclick="filterByCategory('Accesorios'); return false;">ACCESORIOS</a>
             </li>
             <li class="nav-item">
+                <a href="#" class="nav-link" onclick="filterByCategory('Paños Educativos'); return false;">PAÑOS EDUCATIVOS</a>
+            </li>
+            <li class="nav-item">
                 <a href="#" class="nav-link" onclick="showSection('contact'); return false;">ZONAS DE ENVÍOS</a>
             </li>
             <li class="nav-item">
@@ -1156,6 +1183,13 @@
         <!-- NUEVO: FOTO (cambiá NOMBRE-FOTO-BANNER.jpg por el nombre real de tu archivo) -->
         <div class="carousel-slide">
             <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/van_pet_supplies_delivery_16_9.png?raw=true" alt="Banner Promocional">
+        </div>
+        <!-- NUEVO: VIDEO 3 (cambiá NOMBRE-VIDEO-3.mp4 por el nombre real de tu archivo, en las dos líneas) -->
+        <div class="carousel-slide">
+            <video muted playsinline preload="metadata">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/VIDEO-2026-10-29-15-47-03.mov" type="video/mp4">
+                <source src="https://github.com/nexowebsites/ExcelenciaAnimal/raw/refs/heads/main/VIDEO-2026-10-29-15-47-03.mov" type="video/quicktime">
+            </video>
         </div>
         <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
         <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
@@ -1200,6 +1234,13 @@
             <div class="brand-card" onclick="filterByBrand('Pet´s Class', this)">
                 <div class="brand-card-img-box">
                     <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/WhatsApp_Image_2026-09-30_at_12.23.20_PM-removebg-preview.png?raw=true" alt="Pet's Class">
+                </div>
+                <button class="brand-ver-productos-btn">Ver Productos</button>
+            </div>
+            <!-- Marca 6: la de los Paños Educativos (el nombre se cambia arriba en el script: PANOS_BRAND; el logo: cambiá LOGO-MARCA-PANOS.png por el nombre real de tu archivo) -->
+            <div class="brand-card" onclick="filterByBrand(PANOS_BRAND, this)">
+                <div class="brand-card-img-box">
+                    <img src="https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-10-29-15-47-54.jpg?raw=true" alt="Marca de Paños Educativos" onerror="brandLogoFallback(this)">
                 </div>
                 <button class="brand-ver-productos-btn">Ver Productos</button>
             </div>
@@ -1302,6 +1343,12 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
                     </div>
                     <p class="category-desc">Amplia variedad de accesorios para gatos, pensados para brindarles comodidad, diversión y bienestar en cada momento.<br>Encontrá rascadores, cunas y diferentes opciones en una amplia variedad de colores y estilos.</p>
                 </div>
+                <div class="category-item">
+                    <div class="category-card" onclick="toggleCategory(this, 'Paños Educativos')">
+                        <h3>Paños Educativos</h3><span>Ver más</span>
+                    </div>
+                    <p class="category-desc">Paños absorbentes pensados para educar a los cachorros y facilitar su higiene, ayudando a mantener limpios y cuidados los espacios del hogar.</p>
+                </div>
             </div>
 
             <div class="products-header" id="products-header">
@@ -1341,6 +1388,27 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
     </footer>
 
     <script>
+        /* --- MARCA DE LOS PAÑOS EDUCATIVOS ---
+           Escribí acá el nombre real de la marca. Se usa en la tarjeta de marcas y en los dos productos de paños. */
+        const PANOS_BRAND = "Agropecuaria Centenario";
+
+        // Si el logo de la marca no carga, se muestra el nombre en texto
+        function brandLogoFallback(img) {
+            const span = document.createElement('span');
+            span.className = 'brand-text';
+            span.textContent = PANOS_BRAND;
+            img.replaceWith(span);
+        }
+
+        /* --- OPCIONES DENTRO DE UNA CATEGORÍA ---
+           Al tocar "Accesorios" aparecen estas dos opciones. */
+        const SUB_OPTIONS = {
+            'Accesorios': [
+                { label: 'Accesorios para gatos', category: 'Accesorios' },
+                { label: 'Paños Educativos', category: 'Paños Educativos' }
+            ]
+        };
+
         /* --- AYUDA PARA IMÁGENES ---
            Podés escribir solo el nombre del archivo de GitHub (ej: "gatito-piedras.jpg")
            o la dirección completa; las dos formas funcionan. */
@@ -1451,6 +1519,12 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
 
             { id: 33, name: "Bidón Neutro - 6,5 kg", brand: "Cat Way", category: "Bentonitas aglomerantes", group: "Gato", desc: "Elimina y neutraliza los diversos olores facilmente.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-30-35.jpg?raw=true" },
             { id: 34, name: "Bidón Lavanda - 6,5 kg", brand: "Cat Way", category: "Bentonitas aglomerantes", group: "Gato", desc: "Neutraliza y cambia el mal olor por un refrescantee aroma a lavanda.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-09-30-17-34-25.jpg?raw=true" },
+
+            // --- PAÑOS EDUCATIVOS ---
+            // Cambiá el nombre, la descripción y el nombre del archivo de la imagen de cada uno.
+            // La marca se cambia una sola vez, arriba (PANOS_BRAND).
+            { id: 35, name: "Paño Educativo - 10/U", brand: "Agropecuaria Centenario", category: "Paños Educativos", group: "Perro", desc: "Paño absorbente para educar a tu cachorro.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-10-29-10-39-13.jpg?raw=true" },
+            { id: 36, name: "Paño Educativo - 30/U", brand: "Agropecuaria Centenario", category: "Paños Educativos", group: "Perro", desc: "Paño absorbente para educar a tu cachorro.", image: "https://github.com/nexowebsites/ExcelenciaAnimal/blob/main/PHOTO-2026-10-29-10-40-27.jpg?raw=true" },
         ];
 
         function displayProducts(items, showRandom = false) {
@@ -1537,6 +1611,22 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             return card;
         }
 
+        /* Arma una grilla de productos con aparición escalonada */
+        function buildProductList(items) {
+            const list = document.createElement('div');
+            list.className = 'grid';
+            if (items.length === 0) {
+                list.innerHTML = '<p style="grid-column: 1/-1; color: #CBD5E1; font-size: 16px;">No se encontraron productos.</p>';
+                return list;
+            }
+            items.forEach((p, i) => {
+                const productCard = buildProductCard(p);
+                productCard.style.animationDelay = (Math.min(i, 8) * 70) + 'ms';
+                list.appendChild(productCard);
+            });
+            return list;
+        }
+
         /* --- AYUDAS PARA LAS ANIMACIONES Y EL DESPLAZAMIENTO --- */
         function afterTransition(el, callback) {
             let finished = false;
@@ -1598,6 +1688,74 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             ref.after(panel);
         }
 
+        /* Opciones dentro de una categoría (ej: Accesorios → para gatos / Paños Educativos) */
+        function buildSubOptions(subs) {
+            const wrap = document.createElement('div');
+
+            const options = document.createElement('div');
+            options.className = 'sub-options';
+            const cards = subs.map(s => {
+                const c = document.createElement('div');
+                c.className = 'category-card';
+                c.innerHTML = '<h3></h3><span>Ver más</span>';
+                c.querySelector('h3').textContent = s.label;
+                options.appendChild(c);
+                return c;
+            });
+
+            const box = document.createElement('div');
+            box.className = 'sub-products collapsible';
+            const boxInner = document.createElement('div');
+            boxInner.className = 'collapsible-inner';
+            const content = document.createElement('div');
+            content.className = 'sub-content';
+            boxInner.appendChild(content);
+            box.appendChild(boxInner);
+
+            let active = -1;
+
+            const render = (index) => {
+                content.innerHTML = '';
+                content.appendChild(buildProductList(products.filter(p => p.category === subs[index].category)));
+            };
+
+            cards.forEach((card, index) => {
+                card.addEventListener('click', () => {
+                    // Si tocan la opción abierta, se cierra
+                    if (active === index) {
+                        active = -1;
+                        card.classList.remove('open');
+                        card.querySelector('span').textContent = 'Ver más';
+                        closeCollapsible(box, () => { content.innerHTML = ''; });
+                        return;
+                    }
+
+                    const wasOpen = active !== -1;
+                    active = index;
+                    cards.forEach((c, i) => {
+                        c.classList.toggle('open', i === index);
+                        c.querySelector('span').textContent = (i === index) ? 'Ver menos' : 'Ver más';
+                    });
+
+                    if (wasOpen) {
+                        // Cambio de opción: el contenido se desvanece, se reemplaza y vuelve a aparecer
+                        content.classList.add('swapping');
+                        setTimeout(() => {
+                            render(index);
+                            content.classList.remove('swapping');
+                        }, 220);
+                    } else {
+                        render(index);
+                        openCollapsible(box);
+                    }
+                });
+            });
+
+            wrap.appendChild(options);
+            wrap.appendChild(box);
+            return wrap;
+        }
+
         function toggleCategory(card, categoryName) {
             const item = card.parentElement;
             const label = card.querySelector('span');
@@ -1621,22 +1779,15 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             const title = document.createElement('h4');
             title.className = 'category-products-title';
             title.textContent = card.querySelector('h3').textContent;
+            inner.appendChild(title);
 
-            const list = document.createElement('div');
-            list.className = 'grid';
-            const filtered = products.filter(p => p.category === categoryName);
-            if (filtered.length === 0) {
-                list.innerHTML = '<p style="grid-column: 1/-1; color: #CBD5E1; font-size: 16px;">No se encontraron productos.</p>';
+            const subs = SUB_OPTIONS[categoryName];
+            if (subs) {
+                inner.appendChild(buildSubOptions(subs));
             } else {
-                filtered.forEach((p, i) => {
-                    const productCard = buildProductCard(p);
-                    productCard.style.animationDelay = (Math.min(i, 8) * 70) + 'ms';
-                    list.appendChild(productCard);
-                });
+                inner.appendChild(buildProductList(products.filter(p => p.category === categoryName)));
             }
 
-            inner.appendChild(title);
-            inner.appendChild(list);
             panel.appendChild(inner);
 
             item._panel = panel;
@@ -1695,18 +1846,7 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             head.appendChild(title);
             head.appendChild(closeBtn);
 
-            const list = document.createElement('div');
-            list.className = 'grid';
-            const filtered = products.filter(p => p.brand.toLowerCase() === brandName.toLowerCase());
-            if (filtered.length === 0) {
-                list.innerHTML = '<p style="grid-column: 1/-1; color: #CBD5E1; font-size: 16px;">No se encontraron productos.</p>';
-            } else {
-                filtered.forEach((p, i) => {
-                    const productCard = buildProductCard(p);
-                    productCard.style.animationDelay = (Math.min(i, 8) * 70) + 'ms';
-                    list.appendChild(productCard);
-                });
-            }
+            const list = buildProductList(products.filter(p => p.brand.toLowerCase() === brandName.toLowerCase()));
 
             content.appendChild(head);
             content.appendChild(list);
