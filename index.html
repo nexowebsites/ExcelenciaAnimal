@@ -1072,33 +1072,7 @@
                 <li><a href="#" onclick="toggleMobileMenu(); filterByCategory('Alimentos Húmedos Gato')">Húmedos Gato</a></li>
             </ul>
         </div>
-
-       <function displayProducts(items) {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = '';
-
-            items.forEach(product => {
-                // Condición para agrandar exclusivamente las imágenes de los IDs 35 y 36
-              <const isSpecialImage = (product.id === 35 || product.id === 36);
-              <const customImageStyle = isSpecialImage ? 'height: 320px; object-fit: contain;' : '';
-
-                const card = document.createElement('div');
-                <card.className = 'card';
-                <card.innerHTML = `
-                    <div class="card-img" style="${isSpecialImage ? 'height: 320px;' : ''}">
-                        <img src="${resolveImg(product.image)}" style="${customImageStyle}" alt="${product.name}">
-                    </div>
-                    <div class="card-body">
-                        <span class="card-brand">${product.brand}</span>
-                        <h3 class="card-title">${product.name}</h3>
-                        <p class="card-desc">${product.desc}</p>
-                        <a href="https://wa.me/5491158083666?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(product.name)}" target="_blank" class="whatsapp-btn">Consultar por WhatsApp</a>
-                    </div>
-                `;
-                <grid.appendChild(card);
-            });
-        }
-
+        
         <div class="drawer-accordion-item">
             <button class="drawer-accordion-btn" onclick="toggleSubmenu('submenu-sanitarios')">
                 Sanitarios <span>▾</span>
