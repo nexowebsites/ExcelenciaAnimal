@@ -594,6 +594,15 @@
             object-fit: contain;
         }
 
+        /* --- IMÁGENES MÁS GRANDES PARA LOS PAÑOS EDUCATIVOS (10/U y 30/U) --- */
+        .card.card-large .card-img {
+            height: 340px;
+            padding: 4px;
+        }
+        @media (max-width: 768px) {
+            .card.card-large .card-img { height: 320px; }
+        }
+
         /* --- FLECHITAS PARA CAMBIAR DE IMAGEN EN LOS PRODUCTOS --- */
         .color-arrow {
             position: absolute;
@@ -1567,7 +1576,8 @@ Nuestro objetivo es brindar excelentes productos, atención personalizada y una 
             const hasColors = images.length > 1;
 
             const card = document.createElement('div');
-            card.className = 'card';
+            // Los Paños Educativos (10/U y 30/U) llevan la imagen más grande
+            card.className = 'card' + (product.category === 'Paños Educativos' ? ' card-large' : '');
             card.innerHTML = `
                 <div class="card-img">
                     <img src="${images[0]}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x200?text=Imagen+No+Disponible';">
